@@ -1,0 +1,392 @@
+/*
+ * The clay layer.
+ *
+ * Loaded last, so it re-surfaces the components the rest of the stylesheets
+ * already built rather than forking them. Everything here is doing one of four
+ * jobs:
+ *
+ *   1. matte 3D surfaces — the multi-layer shadow plus light/dark inset lips
+ *   2. give — squish on press, lift on hover, both on an overshoot curve
+ *   3. tilt — a small perspective rotation so tiles feel like objects
+ *   4. warmth — pastel section washes that alternate cool and warm
+ *
+ * Two rules hold the whole thing together. Anything the user can press gets
+ * give, and anything that cannot be pressed does not: decorative surfaces are
+ * matte and still, so the tactile signal keeps meaning something. And every
+ * transform here is disabled under prefers-reduced-motion at the foot of the
+ * file, where colour and depth survive but nothing moves.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Pressable things: buttons
+ * ------------------------------------------------------------------ */
+
+.btn {
+  border-radius: var(--clay-radius);
+  padding: 0.8rem 1.4rem;
+  box-shadow: var(--clay-shadow);
+  transition:
+    transform var(--dur-short) var(--ease-squish),
+    box-shadow var(--dur-short) var(--ease-out),
+    background var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out),
+    border-color var(--dur-short) var(--ease-out),
+    filter var(--dur-short) var(--ease-out);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--clay-shadow-lift);
+  /* Matte lift: brightening the surface a touch reads as the object catching
+     more of the light from above, which is cheaper and softer than a glow. */
+  filter: brightness(1.06);
+}
+
+/* The squish. Wider and shorter for the moment of contact, then the overshoot
+   curve lets it wobble back. This is the single most tactile thing on the page,
+   so it is deliberately on the press rather than the hover — you feel it. */
+.btn:active {
+  transform: translateY(1px) scale(0.97, 0.94);
+  box-shadow: var(--clay-shadow-press);
+  filter: brightness(0.98);
+  transition-duration: var(--dur-micro);
+}
+
+/*
+ * The primary action is coral, because on a page selling "your points are worth
+ * more together" the button should look like the happy outcome rather than like
+ * a legal agreement. The label is the deep brown, not white: ink-on-coral is
+ * 6.5:1 while white-on-coral is 2.3:1 and would fail outright.
+ */
+.btn--primary {
+  background: var(--color-coral);
+  color: var(--color-cocoa);
+}
+
+.btn--primary:hover {
+  background: #ff9b71;
+  color: var(--color-cocoa);
+}
+
+/* Kept for the dark bands, where coral on charcoal is muddier than a plain
+   light button. */
+.btn--dark {
+  background: var(--color-cocoa);
+  color: #fff;
+}
+
+.btn--dark:hover {
+  background: #3d2f27;
+  color: #fff;
+}
+
+.btn--secondary {
+  background: var(--color-surface);
+  border: 0;
+  color: var(--color-ink);
+}
+
+.btn--secondary:hover {
+  background: #fff;
+  color: var(--color-ink);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.12);
+  border: 0;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.14);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ------------------------------------------------------------------ *
+ * Pressable things: tabs, toggles, accordions
+ * ------------------------------------------------------------------ */
+
+.compare__toggle,
+.step-tabs {
+  border-radius: var(--clay-radius);
+  box-shadow: var(--clay-shadow-inset);
+  background: var(--color-surface-soft);
+  border: 0;
+  padding: 5px;
+  gap: 4px;
+}
+
+.compare__toggle button,
+.step-tabs button {
+  border-radius: calc(var(--clay-radius) - 7px);
+  transition:
+    transform var(--dur-short) var(--ease-squish),
+    background var(--dur-short) var(--ease-out),
+    box-shadow var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out);
+}
+
+.compare__toggle button:active,
+.step-tabs button:active {
+  transform: scale(0.96, 0.93);
+}
+
+.compare__toggle button[aria-pressed="true"],
+.step-tabs button[aria-selected="true"] {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--clay-shadow);
+}
+
+/* ------------------------------------------------------------------ *
+ * Matte surfaces: things that hold content but are not pressable
+ * ------------------------------------------------------------------ */
+
+.device,
+.pooled,
+.consent-box,
+.goal,
+.balance,
+.concept-art,
+.frag,
+.contrib,
+.alert-soft,
+.demo-banner,
+.persona,
+.pillar,
+.role,
+.fit {
+  border-radius: var(--clay-radius);
+  box-shadow: var(--clay-shadow);
+  border: 0;
+}
+
+.media,
+.band__media,
+.journey__media,
+.persona__portrait,
+.goal-figure {
+  border-radius: var(--clay-radius);
+  overflow: hidden;
+}
+
+.media {
+  box-shadow: var(--clay-shadow);
+}
+
+/* The pool, the goal and the balance are vessels, so they read as pressed *into*
+   the page rather than sitting on it. Same trick as a clay thumb-print. */
+.progress,
+.balance {
+  border-radius: 999px;
+  box-shadow: var(--clay-shadow-inset);
+  background: var(--color-surface-soft);
+}
+
+.progress__bar {
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-green), var(--color-sky));
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Icon chips: the small round holders. Coloured fills, ink glyphs, and a matte
+   edge so they look moulded rather than drawn. */
+.pillar__icon,
+.journey__icon,
+.workflow-stage__num,
+.success-mark {
+  border-radius: 40%;
+  box-shadow:
+    0 6px 14px -6px rgba(64, 49, 42, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 0 rgba(64, 49, 42, 0.08);
+  color: var(--color-cocoa);
+}
+
+.pillar__icon {
+  background: var(--color-sky);
+}
+
+.journey__icon {
+  background: var(--color-green-soft);
+}
+
+.workflow-stage__num {
+  background: var(--color-mustard-soft);
+}
+
+.success-mark {
+  background: var(--color-green);
+}
+
+/* Rotating the accent through the palette so a row of icons is a row of
+   colours, not five of the same chip. */
+.pillars > *:nth-child(2) .pillar__icon,
+.journey__item:nth-child(2) .journey__icon {
+  background: var(--color-coral-soft);
+}
+
+.pillars > *:nth-child(3) .pillar__icon,
+.journey__item:nth-child(3) .journey__icon {
+  background: var(--color-mustard-soft);
+}
+
+.pillars > *:nth-child(4) .pillar__icon {
+  background: var(--color-green-soft);
+}
+
+/* ------------------------------------------------------------------ *
+ * Chips and tags
+ * ------------------------------------------------------------------ */
+
+.role__tag,
+.fit,
+.usecase-list li,
+.touchpoints li {
+  border-radius: 999px;
+}
+
+.section__eyebrow {
+  color: var(--color-green-deep);
+}
+
+/* ------------------------------------------------------------------ *
+ * Section washes — alternating cool and warm so scrolling has a rhythm
+ * ------------------------------------------------------------------ */
+
+/*
+ * Alternating washes, driven off nth-of-type rather than a class on every
+ * section, so all ten pages pick up the same rhythm without ten sets of hand
+ * edits — and so adding a section later cannot forget to join in. Cool, warm,
+ * cool: the page breathes between the mark's two halves as you scroll.
+ */
+main > section:nth-of-type(odd) {
+  background-color: var(--color-surface-sky);
+}
+
+main > section:nth-of-type(even) {
+  background-color: var(--color-surface-sand);
+}
+
+/* Sections that own their own background keep it. */
+main > section.band,
+main > section.privacy-band,
+main > section.final-cta,
+main > section.hero,
+main > section.flow-hero,
+main > section.page-hero,
+main > section.partner-strip {
+  background-color: transparent;
+}
+
+.section--sky {
+  background-color: var(--color-surface-sky);
+}
+
+.section--sand {
+  background-color: var(--color-surface-sand);
+}
+
+/* ------------------------------------------------------------------ *
+ * Colour rotation for repeated small elements
+ * ------------------------------------------------------------------ */
+
+/* Five people in a household should not be five identical grey discs. */
+.avatar {
+  background: var(--color-sky);
+  color: var(--color-cocoa);
+  border: 0;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -2px 0 rgba(64, 49, 42, 0.08);
+}
+
+.avatar-row > *:nth-child(2) .avatar,
+.avatar-row > .avatar:nth-child(2) {
+  background: var(--color-coral-soft);
+}
+
+.avatar-row > *:nth-child(3) .avatar,
+.avatar-row > .avatar:nth-child(3) {
+  background: var(--color-mustard-soft);
+}
+
+.avatar-row > *:nth-child(4) .avatar,
+.avatar-row > .avatar:nth-child(4) {
+  background: var(--color-green-soft);
+}
+
+.avatar-row > *:nth-child(5) .avatar,
+.avatar-row > .avatar:nth-child(5) {
+  background: var(--color-sky-soft);
+}
+
+.fit {
+  background: var(--color-green-soft);
+  color: var(--color-green-deep);
+  box-shadow: none;
+}
+
+.fit--emerging {
+  background: var(--color-mustard-soft);
+  color: var(--color-mustard-deep);
+}
+
+/* The dark band goes warm charcoal rather than blue-black, so it reads as the
+   deepest value of the same clay rather than a different material. */
+.band,
+.privacy-band,
+.final-cta {
+  border-radius: var(--radius-xl);
+  margin-inline: var(--gutter);
+  overflow: hidden;
+}
+
+@media (min-width: 1240px) {
+  .band,
+  .privacy-band,
+  .final-cta {
+    margin-inline: auto;
+    max-width: calc(var(--max) + 2 * var(--gutter));
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Accent word — the one script moment
+ * ------------------------------------------------------------------ */
+
+/* Pacifico has a much larger optical size than Fraunces at the same em, and no
+   Thai coverage, so it is scaled down, nudged onto the baseline, and only ever
+   wrapped around one or two English words inside a heading. */
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 1.15em;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--color-coral-deep);
+  padding-inline: 0.06em;
+}
+
+/* On the dark footer the coral goes muddy, so the tagline takes the mustard,
+   which measures 8.9:1 against the charcoal. */
+.footer-lockup .script {
+  color: var(--color-mustard);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion: keep the depth, drop the movement
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover,
+  .btn:active,
+  .compare__toggle button:active,
+  .step-tabs button:active {
+    transform: none;
+    filter: none;
+  }
+}

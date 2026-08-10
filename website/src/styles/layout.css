@@ -8,7 +8,7 @@
   top: 0;
   z-index: 40;
   backdrop-filter: blur(12px);
-  background: rgba(242, 246, 245, 0.86);
+  background: rgba(239, 245, 249, 0.86);
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur-short) var(--ease-out), background var(--dur-short) var(--ease-out);
 }
@@ -74,7 +74,7 @@
   right: 100%;
   bottom: -0.3rem;
   height: 1.5px;
-  background: linear-gradient(90deg, var(--color-brand), var(--color-teal));
+  background: linear-gradient(90deg, var(--color-brand), var(--color-green));
   transition: right var(--dur-short) var(--ease-out);
 }
 
@@ -147,7 +147,7 @@
 .nav-drawer__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(14, 39, 49, 0.35);
+  background: rgba(47, 36, 30, 0.35);
   opacity: 0;
   transition: opacity var(--dur-short) var(--ease-out);
 }
@@ -219,12 +219,14 @@
   line-height: 1.25;
 }
 
-.footer-lockup span {
+/* Scoped to the Thai line specifically: a bare `span` here used to also catch
+   the script-set English tagline and reset it back to the body face. */
+.footer-lockup .footer-thai {
   display: block;
   margin-top: var(--space-2);
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  color: rgba(232, 240, 238, 0.72);
+  color: rgba(247, 239, 230, 0.72);
 }
 
 .footer-nav {
@@ -236,7 +238,7 @@
 
 .footer-nav a {
   text-decoration: none;
-  color: rgba(232, 240, 238, 0.86);
+  color: rgba(247, 239, 230, 0.86);
   font-size: var(--text-sm);
 }
 
@@ -247,11 +249,11 @@
 .footer-meta {
   margin-top: var(--space-7);
   padding-top: var(--space-5);
-  border-top: 1px solid rgba(232, 240, 238, 0.16);
+  border-top: 1px solid rgba(247, 239, 230, 0.16);
   display: grid;
   gap: var(--space-3);
   font-size: var(--text-xs);
-  color: rgba(232, 240, 238, 0.62);
+  color: rgba(247, 239, 230, 0.62);
   max-width: none;
 }
 
@@ -276,7 +278,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-teal);
+  color: var(--color-green);
 }
 
 .section__lead {

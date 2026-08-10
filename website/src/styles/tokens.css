@@ -1,53 +1,104 @@
 /*
- * Hallmark · genre: editorial · macrostructure: Split Studio
- * theme: custom: LINK Connection · enrichment: E5 hand-built product UI
+ * Hallmark · genre: playful product · macrostructure: Split Studio
+ * theme: custom: LINK Clay · enrichment: E5 hand-built product UI
  * nav: N9 Edge-aligned · footer: Ft1 Mast-headed
- * audience: Thai Gen Y/X household decision-makers + Gen Z activator
- * use: understand LINK + explore family pool · tone: warm editorial service
- * pre-emit critique: P5 H5 E4 S5 R4 V4
+ * audience: Thai Gen Z activators + Gen Y/X household decision-makers
+ * use: understand LINK + explore family pool · tone: warm, tactile, optimistic
  *
- * Axes — paper: light · display: roman-serif (Fraunces) · accent: cool teal/blue
- * Differs from cream+terracotta cliché via cool pearl canvas + connection teal
+ * Axes — paper: light pastel · display: soft serif (Fraunces SOFT/WONK)
+ * surface: claymorphic (soft 3D, matte, generous radii)
+ *
+ * ---------------------------------------------------------------------------
+ * Why this palette, and how it holds hands with the logo
+ * ---------------------------------------------------------------------------
+ * The LINK mark is fixed: a mobius ribbon running mauve→bronze→orange on one
+ * strand and mauve→vivid blue on the other. Rather than drop a pastel theme
+ * next to it and hope, the palette is built *out of* the mark's two halves:
+ *
+ *   the warm strand  →  the ink family. --color-ink is a deep version of the
+ *                       mark's own bronze, so every word on the page is the
+ *                       logo's left half. This is what stops the mark reading
+ *                       as pasted on: its warmth is the page's warmth.
+ *   the cool strand  →  the action family. --color-brand is unchanged from the
+ *                       mark's blue, and --color-sky is that same blue taken up
+ *                       to a pastel tint, which is where the clay surfaces come
+ *                       from.
+ *   the orange dot   →  --color-coral is its younger sibling: same hue region,
+ *                       higher lightness, friendlier. The mark's exact orange
+ *                       stays as --color-amber for moments that sit next to it.
+ *
+ * So the canvas is cool (sky-tinted pearl, not cream) while the type is warm
+ * (bronze-brown, not slate). That cool-surface/warm-ink split is what keeps a
+ * pastel clay theme out of both the corporate-SaaS pastel trap and the warm
+ * cream + terracotta serif cliché.
+ *
+ * Every pairing below is measured in scripts/contrast.mjs — pastels fail WCAG
+ * quietly, so nothing here is eyeballed. Rule of thumb enforced there: the raw
+ * pastels and mid-tones only ever paint surfaces and graphics; type uses the
+ * `-deep` variants.
  */
 
 :root {
-  /* Surfaces — cool pearl, not warm cream */
-  --color-canvas: #f2f6f5;
-  --color-surface: #ffffff;
-  --color-surface-soft: #e7efed;
-  --color-ink: #102e3a;
-  --color-ink-2: #35535c;
-  --color-muted: #5e7278;
-  --color-line: rgba(16, 46, 58, 0.12);
-  --color-line-strong: rgba(16, 46, 58, 0.22);
-
-  /*
-   * Brand — sampled from the official LINK mark (assets/brand/link-logo.png).
-   * The mark runs mauve → bronze → orange along one strand and mauve → vivid
-   * blue along the other, so the site's blue moved off the old generic #2f80ed
-   * onto the logo's blue, and the warm half became the accent family that
-   * replaces the earlier unrelated gold. The `-deep` variants are the
-   * text-safe versions; the raw logo hues only ever paint graphics.
+  /* ---- Surfaces: cool sky-tinted pastel, with a warm sand alternate -------
+   * These are deliberately real pastels rather than near-whites. Clay depends on
+   * the *background* being the mid tone so that a white object floating on it
+   * casts a shadow you can actually see; on a near-white canvas the whole
+   * multi-layer shadow stack disappears and everything flattens back into cards.
    */
+  --color-canvas: #e6eff7;
+  --color-canvas-warm: #f7ebdd;
+  --color-surface: #ffffff;
+  --color-surface-soft: #d9e6f1;
+  --color-surface-sky: #e6eff7;
+  --color-surface-sand: #f7ebdd;
+
+  /* ---- Ink: the mark's bronze strand, taken deep ------------------------- */
+  --color-ink: #40312a;
+  --color-ink-2: #635045;
+  --color-muted: #7d685c;
+  --color-cocoa: #2f241e;
+  --color-line: rgba(64, 49, 42, 0.2);
+  --color-line-strong: rgba(64, 49, 42, 0.34);
+
+  /* ---- Action: the mark's blue strand ----------------------------------- */
   --color-brand: #2360e8;
   --color-brand-deep: #1a48be;
   --color-brand-vivid: #0a53f6;
-  --color-teal: #1fa88a;
-  --color-mint: #d4f0e6;
+  --color-sky: #aee2f6;
+  --color-sky-soft: #dcf0fa;
+  --color-sky-deep: #0f6b9d;
+
+  /* ---- Play: coral, leaf, mustard ---------------------------------------- */
+  --color-coral: #ff8a5b;
+  --color-coral-soft: #ffdccf;
+  --color-coral-deep: #ad3b16;
+  --color-green: #7ec466;
+  --color-green-soft: #ddf1d4;
+  --color-green-deep: #256b38;
+  --color-mustard: #ffc93c;
+  --color-mustard-soft: #ffeeba;
+  --color-mustard-deep: #8a5a06;
+
+  /* ---- Held from the mark for moments that sit beside it ------------------ */
   --color-amber: #f0900f;
   --color-amber-deep: #8f5105;
   --color-bronze: #a47c5a;
   --color-bronze-deep: #7a5535;
-  --color-coral: #e05648;
-  --color-plum: #6b5a68;
-  --color-rose: #f3e4e7;
-  --color-navy: #0e2731;
-  --color-navy-ink: #e8f0ee;
+
+  /* ---- Dark band: warm charcoal, never blue-black ------------------------ */
+  --color-navy: #2f241e;
+  --color-navy-ink: #f7efe6;
   --color-focus: #1a48be;
 
-  /* Typography */
+  /* ---- Typography -------------------------------------------------------- */
+  /* Fraunces carries SOFT and WONK axes; both are pushed near their maximum in
+     base.css, which rounds the terminals and cants the italic-ish letters. Same
+     family as before, several years younger. */
   --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
   --font-body: "IBM Plex Sans", "Noto Sans Thai", ui-sans-serif, sans-serif;
+  /* Script face, reserved for single accent words. Never body, never a whole
+     heading, never Thai (Pacifico has no Thai coverage). */
+  --font-script: "Pacifico", "Fraunces", cursive;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -59,7 +110,7 @@
   --text-3xl: clamp(2rem, 3.5vw + 0.6rem, 2.85rem);
   --text-display: clamp(2.4rem, 5vw + 0.8rem, 4.5rem);
 
-  /* Space — 4pt scale */
+  /* ---- Space — 4pt scale ------------------------------------------------- */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -71,18 +122,42 @@
   --space-9: 6rem;
   --space-section: clamp(4.5rem, 8vw, 7.5rem);
 
-  --radius-sm: 10px;
-  --radius-md: 18px;
+  /* ---- Clay geometry ----------------------------------------------------- */
+  --radius-sm: 14px;
+  --radius-md: 20px;
   --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-xl: 34px;
+  --clay-radius: 24px;
 
-  --shadow-soft: 0 12px 36px rgba(16, 46, 58, 0.08);
+  /*
+   * Clay depth. Three jobs in one stack, and all three are needed or the
+   * surface reads as a flat card with a drop shadow:
+   *   1. a tight contact shadow, so the object sits *on* something
+   *   2. a wide soft shadow, so it has mass
+   *   3. two insets — a light top lip and a dark bottom lip — which is the
+   *      actual claymorphic tell: the object looks like it has a rounded,
+   *      matte edge catching light from above.
+   * The shadow colour is the ink brown rather than black, so shadows stay warm
+   * and never go grey-blue against the cool canvas.
+   */
+  --clay-shadow: 0 1px 2px rgba(64, 49, 42, 0.07), 0 10px 24px -8px rgba(64, 49, 42, 0.18),
+    inset 0 2px 0 rgba(255, 255, 255, 0.75), inset 0 -3px 0 rgba(64, 49, 42, 0.07);
+  --clay-shadow-lift: 0 2px 4px rgba(64, 49, 42, 0.08), 0 20px 38px -10px rgba(64, 49, 42, 0.24),
+    inset 0 2px 0 rgba(255, 255, 255, 0.85), inset 0 -3px 0 rgba(64, 49, 42, 0.06);
+  --clay-shadow-press: 0 1px 1px rgba(64, 49, 42, 0.1), 0 3px 8px -4px rgba(64, 49, 42, 0.18),
+    inset 0 3px 6px rgba(64, 49, 42, 0.14);
+  --clay-shadow-inset: inset 0 3px 8px rgba(64, 49, 42, 0.1),
+    inset 0 -2px 0 rgba(255, 255, 255, 0.6);
+  --shadow-soft: var(--clay-shadow);
+
   --max: 1180px;
   --gutter: clamp(1.25rem, 4vw, 2rem);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Overshoot, for anything that should feel like it has give in it. */
+  --ease-squish: cubic-bezier(0.34, 1.56, 0.64, 1);
   --dur-micro: 120ms;
   --dur-short: 220ms;
   --dur-long: 420ms;

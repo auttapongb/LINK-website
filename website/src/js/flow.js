@@ -85,7 +85,7 @@ function buildTimeline(section, stage, acts) {
   const bottom = top + height;
 
   const SURFACE = token("--color-surface") || "#ffffff";
-  const LINE = token("--color-line-strong") || "rgba(16,46,58,0.22)";
+  const LINE = token("--color-line-strong") || "rgba(64, 49, 42, 0.22)";
   const AMBER = token("--color-amber") || "#f0900f";
   const AMBER_DEEP = token("--color-amber-deep") || "#8f5105";
 

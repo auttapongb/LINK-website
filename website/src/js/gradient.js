@@ -76,11 +76,17 @@ void main() {
 }
 `;
 
+/*
+ * Clay pastels. Two cool (canvas, sky) and two warm (coral, mustard), so the
+ * field drifts between the mark's blue half and its orange half instead of
+ * sitting in one temperature. Kept high in lightness: this is behind a
+ * headline, and every stop here has to clear 4.5:1 against the ink brown.
+ */
 const PALETTE = {
-  c0: [0.949, 0.965, 0.961], // pearl canvas  #F2F6F5
-  c1: [0.847, 0.937, 0.902], // mint          #D8EFE6
-  c2: [0.851, 0.902, 0.973], // sky tint      #D9E6F8
-  c3: [0.741, 0.894, 0.851], // soft teal     #BDE4D9
+  c0: [0.937, 0.961, 0.976], // canvas    #eff5f9
+  c1: [0.682, 0.886, 0.965], // sky       #AEE2F6
+  c2: [1.0, 0.863, 0.812], // coral tint  #FFDCCF
+  c3: [1.0, 0.933, 0.729], // mustard tint #FFEEBA
 };
 
 function compile(gl, type, source) {

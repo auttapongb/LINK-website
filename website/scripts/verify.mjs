@@ -5,11 +5,13 @@
  *
  *   node scripts/verify.mjs [baseUrl]
  */
+import { spawn } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import puppeteer from "puppeteer-core";
 
-const BASE = process.argv[2] || "http://localhost:5174";
+const PORT = 5174;
+const BASE = process.argv[2] || `http://localhost:${PORT}`;
 const CHROME = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
 const OUT = resolve(process.cwd(), "..", "qa-shots");
 
@@ -34,6 +36,43 @@ const VIEWPORTS = [
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const reachable = async (url) => {
+  try {
+    const res = await fetch(url, { method: "HEAD" });
+    return res.ok || res.status === 405;
+  } catch {
+    return false;
+  }
+};
+
+/*
+ * The harness used to assume somebody had already started `vite preview` on the
+ * right port, which meant a green run and a connection-refused crash looked
+ * identical from the outside. It now starts its own server when nothing is
+ * listening, and shuts it down again on the way out.
+ */
+async function ensureServer() {
+  if (await reachable(BASE)) return null;
+  if (BASE !== `http://localhost:${PORT}`) {
+    console.error(`nothing serving ${BASE}, and it is not the port this script manages`);
+    process.exit(1);
+  }
+  console.log(`starting vite preview on ${PORT}`);
+  // Vite's own entry rather than npx, so this needs no shell and stays quiet.
+  const child = spawn(
+    process.execPath,
+    [resolve("node_modules", "vite", "bin", "vite.js"), "preview", "--port", String(PORT), "--strictPort"],
+    { stdio: "ignore" }
+  );
+  for (let i = 0; i < 40; i++) {
+    await sleep(500);
+    if (await reachable(BASE)) return child;
+  }
+  child.kill();
+  console.error("vite preview never came up");
+  process.exit(1);
+}
 
 const AUDIT = `(() => {
   const hidden = [];
@@ -60,13 +99,43 @@ const AUDIT = `(() => {
       });
     }
   });
-  const images = [...document.images]
+  /*
+   * Two separate image failures, because they look nothing alike:
+   *
+   *   broken  — the byte stream never decoded. naturalWidth is 0.
+   *   collapsed — the file decoded perfectly but lays out at zero size. This is
+   *     what an SVG with a viewBox and no width/height does inside a flex or
+   *     grid item, and naturalWidth reports a healthy 300 the whole time, so the
+   *     old check waved it through. Five partner logos once shipped invisible
+   *     this way. Anything under 4px in either axis counts, since 1px tracking
+   *     pixels and spacer gifs are not something this site uses.
+   */
+  const broken = [...document.images]
     .filter((i) => !(i.complete && i.naturalWidth > 0))
     .map((i) => ({ src: i.currentSrc || i.src, complete: i.complete, w: i.naturalWidth }));
+
+  const collapsed = [...document.images]
+    .filter((i) => {
+      if (!(i.complete && i.naturalWidth > 0)) return false;
+      const cs = getComputedStyle(i);
+      if (cs.display === 'none' || cs.visibility === 'hidden') return false;
+      if (i.closest('[hidden]')) return false;
+      const r = i.getBoundingClientRect();
+      return r.width < 4 || r.height < 4;
+    })
+    .map((i) => {
+      const r = i.getBoundingClientRect();
+      return {
+        src: (i.currentSrc || i.src).split('/').pop(),
+        box: r.width.toFixed(1) + 'x' + r.height.toFixed(1),
+        natural: i.naturalWidth + 'x' + i.naturalHeight,
+      };
+    });
   return {
     hidden: hidden.slice(0, 12),
     hiddenCount: hidden.length,
-    images,
+    images: broken,
+    collapsedImages: collapsed,
     scrollW: document.documentElement.scrollWidth,
     winW: window.innerWidth,
     docH: document.documentElement.scrollHeight,
@@ -88,6 +157,7 @@ async function scrollThrough(page) {
 }
 
 const report = [];
+const server = await ensureServer();
 
 const browser = await puppeteer.launch({
   executablePath: CHROME,
@@ -147,6 +217,7 @@ for (const [vpName, viewport] of VIEWPORTS) {
       hidden: audit.hidden,
       hiddenBeforeScroll: preScroll ? preScroll.hidden : [],
       brokenImages: audit.images,
+      collapsedImages: audit.collapsedImages,
       gradientReady: audit.gradientReady,
       icons: `${audit.icons}/${audit.iconHosts}`,
       docH: audit.docH,
@@ -157,6 +228,7 @@ for (const [vpName, viewport] of VIEWPORTS) {
 }
 
 await browser.close();
+server?.kill();
 
 writeFileSync(`${OUT}/report.json`, JSON.stringify(report, null, 2));
 
@@ -170,6 +242,8 @@ for (const r of report) {
   if (r.hiddenBeforeScroll?.length)
     issues.push(`reduced-motion hid content before scroll: ${JSON.stringify(r.hiddenBeforeScroll)}`);
   if (r.brokenImages.length) issues.push(`images: ${JSON.stringify(r.brokenImages)}`);
+  if (r.collapsedImages?.length)
+    issues.push(`images laid out at zero size: ${JSON.stringify(r.collapsedImages)}`);
   if (r.icons.split("/")[0] !== r.icons.split("/")[1]) issues.push(`icons unmounted: ${r.icons}`);
 
   if (issues.length) {
@@ -182,3 +256,4 @@ for (const r of report) {
 }
 
 console.log(`\n${problems} page(s) with issues. Screenshots in ${OUT}`);
+process.exit(problems ? 1 : 0);

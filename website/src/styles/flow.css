@@ -24,7 +24,7 @@
   background:
     radial-gradient(ellipse 46% 42% at 78% 16%, rgba(35, 96, 232, 0.2), transparent 66%),
     radial-gradient(ellipse 44% 40% at 14% 82%, rgba(164, 124, 90, 0.22), transparent 64%),
-    radial-gradient(ellipse 52% 48% at 52% 54%, rgba(31, 168, 138, 0.14), transparent 70%),
+    radial-gradient(ellipse 52% 48% at 52% 54%, rgba(126, 196, 102, 0.14), transparent 70%),
     linear-gradient(172deg, #ffffff, var(--color-canvas) 62%);
   animation: atmos-drift 30s var(--ease-in-out) infinite alternate;
 }
@@ -75,7 +75,7 @@
 }
 
 .stat:last-child {
-  border-top-color: var(--color-teal);
+  border-top-color: var(--color-green);
 }
 
 .stat__value {
@@ -170,7 +170,7 @@
 .flow-scene [data-flow-pulse="1"] { stroke: var(--color-amber); }
 .flow-scene [data-flow-pulse="2"] { stroke: var(--color-bronze); }
 .flow-scene [data-flow-pulse="3"] { stroke: var(--color-brand); }
-.flow-scene [data-flow-pulse="4"] { stroke: var(--color-teal); }
+.flow-scene [data-flow-pulse="4"] { stroke: var(--color-green); }
 .flow-scene [data-flow-pulse="5"] { stroke: var(--color-brand-vivid); }
 
 .flow-scene [data-flow-vessel] {
@@ -180,21 +180,21 @@
 }
 
 .flow-scene [data-flow-level] {
-  stroke: var(--color-teal);
+  stroke: var(--color-green);
   stroke-width: 2.5;
   stroke-linecap: round;
 }
 
 .flow-scene [data-flow-fence] {
   fill: none;
-  stroke: var(--color-teal);
+  stroke: var(--color-green);
   stroke-width: 1.5;
   stroke-dasharray: 7 6;
 }
 
 .flow-scene [data-flow-rule] {
   fill: var(--color-surface);
-  stroke: var(--color-teal);
+  stroke: var(--color-green);
   stroke-width: 2;
 }
 
@@ -291,7 +291,7 @@
   display: block;
   margin-top: 0.15rem;
   font-size: var(--text-xs);
-  color: rgba(232, 240, 238, 0.76);
+  color: rgba(247, 239, 230, 0.76);
 }
 
 /* ---- Acts -------------------------------------------------------- */
@@ -327,7 +327,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-teal);
+  color: var(--color-green);
   margin-bottom: var(--space-2);
 }
 
@@ -485,8 +485,8 @@
 }
 
 .band .burn-list li {
-  color: rgba(232, 240, 238, 0.86);
-  border-bottom-color: rgba(232, 240, 238, 0.18);
+  color: rgba(247, 239, 230, 0.86);
+  border-bottom-color: rgba(247, 239, 230, 0.18);
 }
 
 .burn-list li::before {

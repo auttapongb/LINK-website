@@ -1,4 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600;700&display=swap");
+/* Fraunces is requested with its SOFT and WONK axes this time. Same family the
+   site already used, but SOFT rounds every terminal and WONK cants the g and the
+   f, which is most of the distance between "editorial" and "friendly" without
+   swapping in a novelty face. Pacifico is one weight, reserved for single accent
+   words. */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,SOFT,WONK,wght@9..144,0..100,0..1,500;9..144,0..100,0..1,650;9..144,0..100,0..1,700&family=Pacifico&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@600;700&display=swap");
 
 *,
 *::before,
@@ -23,13 +28,9 @@ body {
   font-size: var(--text-base);
   line-height: 1.6;
   color: var(--color-ink);
-  background:
-    radial-gradient(1200px 600px at 12% -10%, rgba(35, 96, 232, 0.1), transparent 55%),
-    radial-gradient(900px 500px at 88% 8%, rgba(31, 168, 138, 0.12), transparent 50%),
-    /* A trace of the mark's bronze half, so the canvas belongs to the logo. */
-    radial-gradient(1100px 520px at 96% 74%, rgba(164, 124, 90, 0.09), transparent 58%),
-    linear-gradient(180deg, #eef4f3 0%, var(--color-canvas) 28%, var(--color-canvas) 100%);
-  background-attachment: fixed;
+  /* The sections paint their own alternating pastel, so the body only has to
+     cover the gaps and the overscroll area. */
+  background-color: var(--color-canvas);
 }
 
 img,
@@ -60,8 +61,11 @@ h4 {
   font-family: var(--font-display);
   font-style: normal;
   font-weight: 650;
+  /* Soft terminals and the wonky g/f. This is the single biggest lever on how
+     old the page feels, and it costs no extra request. */
+  font-variation-settings: "SOFT" 100, "WONK" 1;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   overflow-wrap: anywhere;
   min-width: 0;
   margin: 0 0 var(--space-4);

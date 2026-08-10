@@ -31,7 +31,7 @@
   height: 2px;
   transform: scaleX(0);
   transform-origin: left center;
-  background: linear-gradient(90deg, var(--color-brand), var(--color-teal));
+  background: linear-gradient(90deg, var(--color-brand), var(--color-green));
 }
 
 /* ------------------------------------------------------------------ *
@@ -81,9 +81,10 @@
   display: block;
   /* Static fallback that stays visible if WebGL is unavailable. */
   background:
-    radial-gradient(ellipse 62% 52% at 74% 30%, rgba(31, 168, 138, 0.2), transparent 70%),
-    radial-gradient(ellipse 48% 44% at 16% 68%, rgba(35, 96, 232, 0.16), transparent 66%),
-    radial-gradient(ellipse 40% 38% at 92% 84%, rgba(240, 144, 15, 0.12), transparent 68%),
+    radial-gradient(ellipse 58% 50% at 76% 26%, rgba(174, 226, 246, 0.75), transparent 70%),
+    radial-gradient(ellipse 46% 42% at 14% 70%, rgba(255, 138, 91, 0.28), transparent 66%),
+    radial-gradient(ellipse 42% 40% at 92% 86%, rgba(255, 201, 60, 0.3), transparent 68%),
+    radial-gradient(ellipse 40% 36% at 40% 12%, rgba(126, 196, 102, 0.22), transparent 70%),
     linear-gradient(168deg, #ffffff 0%, var(--color-canvas) 55%);
 }
 
@@ -92,11 +93,13 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* Enough veil to keep the headline at 10:1 over the photo, but not so much
+     that it erases the pastel field behind it. */
   background: linear-gradient(
     100deg,
-    rgba(242, 246, 245, 0.94) 0%,
-    rgba(242, 246, 245, 0.82) 34%,
-    rgba(242, 246, 245, 0.1) 62%,
+    rgba(230, 239, 247, 0.82) 0%,
+    rgba(230, 239, 247, 0.66) 34%,
+    rgba(230, 239, 247, 0.08) 62%,
     transparent 78%
   );
 }
@@ -125,7 +128,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(200deg, rgba(31, 168, 138, 0.22), transparent 46%, rgba(35, 96, 232, 0.18));
+  background: linear-gradient(200deg, rgba(255, 201, 60, 0.28), transparent 46%, rgba(174, 226, 246, 0.32));
   mix-blend-mode: soft-light;
 }
 
@@ -217,7 +220,7 @@
 }
 
 .orbit-field [data-orbit-flow] {
-  stroke: var(--color-teal);
+  stroke: var(--color-green);
   stroke-width: 3.5;
   stroke-linecap: round;
   /* Hidden until the timeline gives it a real dash, so the full ellipse never
@@ -237,7 +240,7 @@
 
 .orbit-field [data-orbit-node] {
   fill: var(--color-surface);
-  stroke: var(--color-teal);
+  stroke: var(--color-green);
   stroke-width: 2;
 }
 
@@ -263,7 +266,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(170deg, rgba(31, 168, 138, 0.16), transparent 55%, rgba(16, 46, 58, 0.14));
+  background: linear-gradient(170deg, rgba(126, 196, 102, 0.16), transparent 55%, rgba(64, 49, 42, 0.14));
   mix-blend-mode: soft-light;
   pointer-events: none;
 }
@@ -320,8 +323,8 @@ li:hover > .media img {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(96deg, rgba(14, 39, 49, 0.95) 0%, rgba(14, 39, 49, 0.88) 50%, rgba(14, 39, 49, 0.72) 100%),
-    linear-gradient(0deg, rgba(31, 168, 138, 0.26), transparent 60%);
+    linear-gradient(96deg, rgba(47, 36, 30, 0.95) 0%, rgba(47, 36, 30, 0.88) 50%, rgba(47, 36, 30, 0.72) 100%),
+    linear-gradient(0deg, rgba(126, 196, 102, 0.26), transparent 60%);
 }
 
 .band h2,
@@ -330,11 +333,11 @@ li:hover > .media img {
 }
 
 .band p {
-  color: rgba(232, 240, 238, 0.82);
+  color: rgba(247, 239, 230, 0.82);
 }
 
 .band .section__eyebrow {
-  color: #7fd9c2;
+  color: #b9e5a7;
 }
 
 /* ------------------------------------------------------------------ *
@@ -356,7 +359,7 @@ li:hover > .media img {
   pointer-events: none;
   background: radial-gradient(
     520px circle at calc(var(--spot-x) * 1%) calc(var(--spot-y) * 1%),
-    rgba(31, 168, 138, 0.22),
+    rgba(126, 196, 102, 0.22),
     transparent 62%
   );
 }
@@ -395,7 +398,7 @@ li:hover > .media img {
   padding: var(--space-7) var(--gutter) var(--space-4);
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.92);
-  background: linear-gradient(0deg, rgba(14, 39, 49, 0.78), transparent);
+  background: linear-gradient(0deg, rgba(47, 36, 30, 0.78), transparent);
 }
 
 @media (min-width: 1220px) {
@@ -423,13 +426,13 @@ li:hover > .media img {
   display: grid;
   place-items: center;
   border-radius: var(--radius-sm);
-  background: var(--color-mint);
-  color: #14705d;
+  background: var(--color-green-soft);
+  color: #2f7d43;
   font-size: 1.1rem;
 }
 
 .journey__item:last-child .journey__icon {
-  background: #dce9fb;
+  background: #dcf0fa;
   color: var(--color-brand-deep);
 }
 
@@ -538,7 +541,7 @@ li:hover > .media img {
   height: 140%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 55% 60% at 82% 18%, rgba(31, 168, 138, 0.24), transparent 68%),
+    radial-gradient(ellipse 55% 60% at 82% 18%, rgba(126, 196, 102, 0.24), transparent 68%),
     radial-gradient(ellipse 48% 52% at 8% 52%, rgba(35, 96, 232, 0.18), transparent 64%),
     radial-gradient(ellipse 42% 46% at 62% 96%, rgba(164, 124, 90, 0.14), transparent 66%);
   animation: atmos-drift 26s var(--ease-in-out) infinite alternate;
@@ -559,12 +562,26 @@ li:hover > .media img {
   height: 1px;
   border: 0;
   margin: 0 0 var(--space-5);
-  background: linear-gradient(90deg, var(--color-teal), var(--color-brand) 45%, transparent);
+  /* Three-stop so the divider itself carries the palette's warm-to-cool run,
+     which is the same journey the mark makes. */
+  background: linear-gradient(
+    90deg,
+    var(--color-coral) 0%,
+    var(--color-mustard) 22%,
+    var(--color-green) 44%,
+    var(--color-sky) 66%,
+    transparent 100%
+  );
   transform-origin: left center;
 }
 
+.rule {
+  height: 3px;
+  border-radius: 999px;
+}
+
 .rule--light {
-  background: linear-gradient(90deg, #7fd9c2, rgba(127, 217, 194, 0.25) 55%, transparent);
+  background: linear-gradient(90deg, var(--color-mustard), var(--color-sky) 55%, transparent);
 }
 
 /* ------------------------------------------------------------------ *
@@ -579,9 +596,9 @@ li:hover > .media img {
   justify-content: center;
   margin-bottom: var(--space-3);
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(232, 240, 238, 0.28);
+  border: 1px solid rgba(247, 239, 230, 0.28);
   background: rgba(255, 255, 255, 0.08);
-  color: #7fd9c2;
+  color: #b9e5a7;
   font-size: 1.15rem;
 }
 
@@ -617,7 +634,7 @@ li:hover > .media img {
 
 .partner-strip__list li:hover .partner-badge {
   transform: translateY(-2px);
-  border-color: var(--color-teal);
+  border-color: var(--color-green);
   color: var(--color-brand-deep);
 }
 
@@ -639,7 +656,7 @@ li:hover > .media img {
   }
 
   .hero__veil {
-    background: linear-gradient(180deg, rgba(242, 246, 245, 0.9) 0%, rgba(242, 246, 245, 0.55) 55%, transparent 100%);
+    background: linear-gradient(180deg, rgba(239, 245, 249, 0.9) 0%, rgba(239, 245, 249, 0.55) 55%, transparent 100%);
   }
 
   .hero__cue {

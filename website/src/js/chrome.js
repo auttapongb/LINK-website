@@ -90,8 +90,8 @@ export function mountChrome() {
         <div class="footer-brand">
           ${BRAND_LOCKUP}
           <p class="footer-lockup">
-            Worth More Together.
-            <span>${THAI_TAGLINE}</span>
+            <span class="script">Worth More Together</span>
+            <span class="footer-thai">${THAI_TAGLINE}</span>
           </p>
         </div>
         <ul class="footer-nav">

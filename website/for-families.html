@@ -16,10 +16,11 @@
     <div data-chrome-header></div>
     <main id="main">
       <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
         <div class="shell split">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">For families</p>
-            <h1 class="page-hero__title">The family is the buying unit.</h1>
+            <h1 class="page-hero__title" data-split>The family is the buying unit.</h1>
             <p class="section__lead">
               LINK is for households that already earn across everyday programs — and want those points to become something they can enjoy together.
             </p>
@@ -27,7 +28,19 @@
               Gen Y (30–44) and Gen X (45+) are the primary value contributors and decision-makers. Gen Z (18–29) is the activator who often installs, invites, and nudges the household into motion.
             </p>
           </div>
-          <div class="pooled reveal" style="--i: 1">
+          <div class="media media--wide media--hover" data-wipe>
+            <img
+              src="/assets/photos/hero-family.webp"
+              alt="A family together at home — the household LINK is designed around."
+              width="2400"
+              height="1400"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+        <div class="shell">
+          <div class="pooled reveal" style="--i: 2; margin-top: var(--space-7)">
             <h2 style="font-size: var(--text-xl)">Worth More Together.</h2>
             <p>Thai families already hold enough loyalty points for a real reward — they just can’t see them, so the points quietly expire alone.</p>
             <p class="thai-lockup" style="margin-top: var(--space-3)">รวมกันคุ้มกว่า</p>
@@ -37,48 +50,100 @@
 
       <section class="section" aria-labelledby="roles-title">
         <div class="shell">
-          <h2 id="roles-title" class="reveal" style="--i: 0">Three roles. One pool.</h2>
-          <div class="roles" style="margin-top: var(--space-5)">
-            <article class="role reveal" style="--i: 0">
-              <div class="role__meta">
-                <span class="role__name">Nan, 42 — The Value Accumulator</span>
-                <span class="role__tag">Primary decision</span>
+          <hr class="rule" data-rule />
+          <h2 id="roles-title" data-split>Three roles. One pool.</h2>
+          <div class="personas" style="margin-top: var(--space-6)">
+            <article class="persona reveal" style="--i: 0">
+              <div class="persona__portrait">
+                <img
+                  src="/assets/photos/persona-nan.webp"
+                  alt="Portrait representing Nan, a working mother in her early forties."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <blockquote>“Show me that the family gets real value — and let me approve what moves.”</blockquote>
-              <p>
-                Working mother and household decision-maker. High family spend, value-driven. She needs proof that pooling protects value — and explicit consent before points move.
-              </p>
+              <div>
+                <div class="role__meta">
+                  <span class="role__name">Nan, 42 — The Value Accumulator</span>
+                  <span class="role__tag">Primary decision</span>
+                </div>
+                <blockquote>“Show me that the family gets real value — and let me approve what moves.”</blockquote>
+                <p>
+                  Working mother and household decision-maker. High family spend, value-driven. She needs proof that pooling protects value — and explicit consent before points move.
+                </p>
+              </div>
             </article>
-            <article class="role reveal" style="--i: 1">
-              <div class="role__meta">
-                <span class="role__name">Wit, 54 — The Trusted Provider</span>
-                <span class="role__tag">Primary value</span>
+            <article class="persona reveal" style="--i: 1">
+              <div class="persona__portrait">
+                <img
+                  src="/assets/photos/persona-wit.webp"
+                  alt="Portrait representing Wit, a father in his mid fifties."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <blockquote>“I earn points. I just don’t have time to chase them across five apps.”</blockquote>
-              <p>
-                Strong purchasing power, careful spender. He earns consistently but tracks points less actively. He needs security reassurance and a tangible family payoff.
-              </p>
+              <div>
+                <div class="role__meta">
+                  <span class="role__name">Wit, 54 — The Trusted Provider</span>
+                  <span class="role__tag">Primary value</span>
+                </div>
+                <blockquote>“I earn points. I just don’t have time to chase them across five apps.”</blockquote>
+                <p>
+                  Strong purchasing power, careful spender. He earns consistently but tracks points less actively. He needs security reassurance and a tangible family payoff.
+                </p>
+              </div>
             </article>
-            <article class="role reveal" style="--i: 2">
-              <div class="role__meta">
-                <span class="role__name">Ploy, 24 — The Activator</span>
-                <span class="role__tag">Setup &amp; admin</span>
+            <article class="persona reveal" style="--i: 2">
+              <div class="persona__portrait">
+                <img
+                  src="/assets/photos/persona-ploy.webp"
+                  alt="Portrait representing Ploy, a woman in her mid twenties."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
-              <blockquote>“I’ll set it up. Just make it simple enough that everyone can join.”</blockquote>
-              <p>
-                Digital-native and phone-first. She opens the family pool, links programs, and nudges expiring points — removing setup friction so Nan and Wit can decide with confidence.
-              </p>
+              <div>
+                <div class="role__meta">
+                  <span class="role__name">Ploy, 24 — The Activator</span>
+                  <span class="role__tag">Setup &amp; admin</span>
+                </div>
+                <blockquote>“I’ll set it up. Just make it simple enough that everyone can join.”</blockquote>
+                <p>
+                  Digital-native and phone-first. She opens the family pool, links programs, and nudges expiring points — removing setup friction so Nan and Wit can decide with confidence.
+                </p>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="final-cta">
+      <section class="band" aria-labelledby="families-band-title">
+        <div class="band__media" data-band-media aria-hidden="true">
+          <img src="/assets/photos/dining.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+        </div>
+        <div class="band__scrim" aria-hidden="true"></div>
         <div class="shell reveal" style="--i: 0">
-          <h2>See the path from roles to reward.</h2>
+          <p class="section__eyebrow">The payoff</p>
+          <hr class="rule rule--light" data-rule />
+          <h2 id="families-band-title" data-split>The reward is the table everyone sits at.</h2>
+          <p class="section__lead">
+            A pooled goal is easier to care about than a balance. LINK keeps the target something the household can picture — a meal, a trip, a weekend that belongs to all of them.
+          </p>
+        </div>
+      </section>
+
+      <section class="final-cta" data-spotlight>
+        <div class="shell reveal" style="--i: 0">
+          <h2 data-split>See the path from roles to reward.</h2>
           <p>Walk through Connect → Pool → Use, then explore the pilot demo.</p>
           <div class="btn-row">
-            <a class="btn btn--primary" href="/how-it-works.html">See how LINK works</a>
+            <a class="btn btn--primary" href="/how-it-works.html">See how LINK works<span data-icon="arrow-right"></span></a>
             <a class="btn btn--secondary" href="/privacy.html">How consent works</a>
           </div>
         </div>

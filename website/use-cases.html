@@ -16,9 +16,11 @@
     <div data-chrome-header></div>
     <main id="main">
       <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
         <div class="shell reveal" style="--i: 0">
           <p class="section__eyebrow">Use cases</p>
-          <h1 class="page-hero__title">Built for people who already do life together.</h1>
+          <hr class="rule" data-rule />
+          <h1 class="page-hero__title" data-split>Built for people who already do life together.</h1>
           <p class="section__lead">
             LINK starts with the Thai household — then extends to other groups that already share routines, meals, or plans.
           </p>
@@ -27,33 +29,51 @@
 
       <section class="section">
         <div class="shell">
-          <ul class="usecase-list reveal" style="--i: 0">
-            <li>
+          <ul class="usecase-list">
+            <li class="reveal" style="--i: 0">
+              <div class="media media--hover">
+                <img src="/assets/photos/hero-family.webp" alt="" width="2400" height="1400" loading="lazy" decoding="async" />
+              </div>
               <strong>Families</strong>
               <span>See BTS, Lotus’s, AIS, iBerry and IHG balances in one place. Pool toward a getaway with consent from each member.</span>
               <span class="fit">Best fit</span>
             </li>
-            <li>
+            <li class="reveal" style="--i: 1">
+              <div class="media media--hover">
+                <img src="/assets/photos/usecase-friends.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
               <strong>Roommates / best friends</strong>
               <span>Share progress for dinners out, weekend escapes, or a treat nobody wants to fund alone.</span>
               <span class="fit">Strong fit</span>
             </li>
-            <li>
+            <li class="reveal" style="--i: 2">
+              <div class="media media--hover">
+                <img src="/assets/photos/dining.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
               <strong>Food lovers / dining groups</strong>
               <span>Turn social meals into momentum toward a shared celebration or short stay.</span>
               <span class="fit">Strong fit</span>
             </li>
-            <li>
+            <li class="reveal" style="--i: 3">
+              <div class="media media--hover">
+                <img src="/assets/photos/usecase-travel.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
               <strong>Travel groups</strong>
               <span>Collect toward a stay when companions already plan together. Exploratory in Year-1.</span>
               <span class="fit fit--emerging">Emerging use case</span>
             </li>
-            <li>
+            <li class="reveal" style="--i: 4">
+              <div class="media media--hover">
+                <img src="/assets/photos/commute.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
               <strong>Colleagues / commuter groups</strong>
               <span>Lightweight pooling for people who share a commute rhythm more than a household budget.</span>
               <span class="fit fit--emerging">Emerging use case</span>
             </li>
-            <li>
+            <li class="reveal" style="--i: 5">
+              <div class="media media--hover">
+                <img src="/assets/photos/usecase-students.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
               <strong>Students / new graduates</strong>
               <span>Smaller balances and longer horizons — a longer-term fit as the platform grows.</span>
               <span class="fit fit--emerging">Emerging use case</span>
@@ -65,11 +85,11 @@
         </div>
       </section>
 
-      <section class="final-cta">
+      <section class="final-cta" data-spotlight>
         <div class="shell reveal" style="--i: 0">
-          <h2>Start with the household story.</h2>
+          <h2 data-split>Start with the household story.</h2>
           <div class="btn-row">
-            <a class="btn btn--primary" href="/for-families.html">For families</a>
+            <a class="btn btn--primary" href="/for-families.html">For families<span data-icon="arrow-right"></span></a>
             <a class="btn btn--secondary" href="/partners.html">Pilot partners</a>
           </div>
         </div>

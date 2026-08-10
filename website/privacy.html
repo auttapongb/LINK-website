@@ -16,31 +16,40 @@
     <div data-chrome-header></div>
     <main id="main">
       <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
         <div class="shell reveal" style="--i: 0">
           <p class="section__eyebrow">Privacy</p>
-          <h1 class="page-hero__title">Your family shares the goal — not control of each other’s points.</h1>
+          <hr class="rule" data-rule />
+          <h1 class="page-hero__title" data-split>Your family shares the goal — not control of each other’s points.</h1>
           <p class="section__lead">
             Designed around on-device visibility, tokenized connections and explicit consent. This is a privacy-first product stance — not a legal guarantee.
           </p>
         </div>
       </section>
 
-      <section class="privacy-band">
+      <section class="privacy-band band" data-spotlight>
+        <div class="band__media" data-band-media aria-hidden="true">
+          <img src="/assets/photos/mobile.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+        </div>
+        <div class="band__scrim" aria-hidden="true"></div>
         <div class="shell">
           <div class="pillars">
             <article class="pillar reveal" style="--i: 0">
+              <span class="pillar__icon" data-icon="eye"></span>
               <h3>On-device visibility</h3>
               <p>
                 Point information is brought into a shared experience so the household can see opportunity — without turning the pool into unrestricted access to everyone’s balances.
               </p>
             </article>
             <article class="pillar reveal" style="--i: 1">
+              <span class="pillar__icon" data-icon="key-round"></span>
               <h3>Explicit consent before transfer</h3>
               <p>
                 Each member stays in control of point movement. A contribution only proceeds after the owner confirms.
               </p>
             </article>
             <article class="pillar reveal" style="--i: 2">
+              <span class="pillar__icon" data-icon="shield-check"></span>
               <h3>Minimal / tokenized connections</h3>
               <p>
                 Partner connections are intended to stay limited to what the shared experience needs — not a free harvest of household data.
@@ -52,7 +61,8 @@
 
       <section class="section">
         <div class="shell" style="max-width: 720px">
-          <h2 class="reveal" style="--i: 0">What this page does not claim</h2>
+          <hr class="rule" data-rule />
+          <h2 data-split>What this page does not claim</h2>
           <div class="faq reveal" style="--i: 1; margin-top: var(--space-4)">
             <details open>
               <summary>Is LINK “100% secure” or “unhackable”?</summary>
@@ -70,11 +80,11 @@
         </div>
       </section>
 
-      <section class="final-cta">
+      <section class="final-cta" data-spotlight>
         <div class="shell reveal" style="--i: 0">
-          <h2>See consent inside the product flow.</h2>
+          <h2 data-split>See consent inside the product flow.</h2>
           <div class="btn-row">
-            <a class="btn btn--primary" href="/how-it-works.html">How LINK works</a>
+            <a class="btn btn--primary" href="/how-it-works.html">How LINK works<span data-icon="arrow-right"></span></a>
             <a class="btn btn--secondary" href="/faq.html">FAQ</a>
           </div>
         </div>

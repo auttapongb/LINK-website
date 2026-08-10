@@ -1,0 +1,135 @@
+[
+  {
+    "file": "hero-family.webp",
+    "width": 2400,
+    "height": 1400,
+    "bytes": 344668,
+    "source": "Unsplash",
+    "photographer": "Daria",
+    "pageUrl": "https://unsplash.com/photos/a-family-posing-for-a-picture-in-the-woods-ZLtM9l_9nGI",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A young Asian couple with three small children standing together among sunlit trees, everyone relaxed and smiling at the camera."
+  },
+  {
+    "file": "commute.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 303750,
+    "source": "Unsplash",
+    "photographer": "Joshua Rawson-Harris",
+    "pageUrl": "https://unsplash.com/photos/people-standing-on-train-station-during-daytime-Dy178VIBO18",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "Commuters waiting along a covered platform at a Bangkok railway station while two Thai trains stand at the tracks."
+  },
+  {
+    "file": "groceries.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 337476,
+    "source": "Unsplash",
+    "photographer": "Markus Winkler",
+    "pageUrl": "https://unsplash.com/photos/two-people-walking-through-a-market-with-fruit-and-vegetables-_32teXYhzpY",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "Two shoppers carrying bags walk down the produce aisle of a Bangkok fresh-food market, fruit and vegetable stalls stacked on either side."
+  },
+  {
+    "file": "mobile.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 357314,
+    "source": "Unsplash",
+    "photographer": "Chris Yang",
+    "pageUrl": "https://unsplash.com/photos/woman-leaning-back-on-white-wall-and-using-smartphone-EcWOVYEe87s",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "An Asian woman in a cream knit sweater leans against a pale wall reading her smartphone in soft indoor light."
+  },
+  {
+    "file": "dining.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 295874,
+    "source": "Unsplash",
+    "photographer": "National Cancer Institute",
+    "pageUrl": "https://unsplash.com/photos/family-eating-at-the-table-BQPi8F_UON0",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "An Asian family of three sharing a home-cooked meal at a round table, rice and stir-fried dishes in front of them, the mother being fed a bite by her daughter."
+  },
+  {
+    "file": "getaway.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 352790,
+    "source": "Unsplash",
+    "photographer": "Anton Lammert",
+    "pageUrl": "https://unsplash.com/photos/a-resort-with-a-swimming-pool-surrounded-by-palm-trees-Esf0lVbV2Dc",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A beachfront resort pool at dusk on Koh Samui, Thailand, with palm trees, empty loungers and furled umbrellas facing a calm blue sea."
+  },
+  {
+    "file": "usecase-friends.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 344704,
+    "source": "Unsplash",
+    "photographer": "Setengah Limasore",
+    "pageUrl": "https://unsplash.com/photos/friends-are-relaxing-and-chatting-together-outdoors-awiq8Yl1akU",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A group of young Southeast Asian adults sitting and laughing together on a wooden platform in a shaded outdoor pavilion, one of them on his phone."
+  },
+  {
+    "file": "usecase-travel.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 244078,
+    "source": "Unsplash",
+    "photographer": "Duy Pham",
+    "pageUrl": "https://unsplash.com/photos/people-holding-shoulders-sitting-on-wall-Cecb0_8Hx-o",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A row of young Asian friends sitting with arms around each other's shoulders, seen from behind, looking out over a bay with cable cars crossing overhead."
+  },
+  {
+    "file": "usecase-students.webp",
+    "width": 1800,
+    "height": 1100,
+    "bytes": 168796,
+    "source": "Unsplash",
+    "photographer": "Maccy",
+    "pageUrl": "https://unsplash.com/photos/people-sitting-and-standing-inside-classroom-lYpzjpGuy6o",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A young Asian student in glasses sitting at his desk in a classroom with a chalkboard behind him and a classmate standing nearby, warm muted tones."
+  },
+  {
+    "file": "persona-nan.webp",
+    "width": 900,
+    "height": 1100,
+    "bytes": 90782,
+    "source": "Unsplash",
+    "photographer": "Vitaly Gariev",
+    "pageUrl": "https://unsplash.com/photos/smiling-woman-in-white-shirt-against-colorful-wall-TE-hl5u8qkA",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "An Asian woman smiling warmly with her arms folded, wearing an everyday white button shirt, against a teal, blush and coral geometric wall."
+  },
+  {
+    "file": "persona-wit.webp",
+    "width": 900,
+    "height": 1100,
+    "bytes": 82280,
+    "source": "Unsplash",
+    "photographer": "Vitaly Gariev",
+    "pageUrl": "https://unsplash.com/photos/an-older-asian-man-in-a-plaid-shirt-dN-32CEr_O4",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "An Asian man in his early fifties wearing a yellow-and-blue plaid shirt over a white tee, calm and steady expression, against a plain grey-green wall."
+  },
+  {
+    "file": "persona-ploy.webp",
+    "width": 900,
+    "height": 1100,
+    "bytes": 38481,
+    "source": "Unsplash",
+    "photographer": "Ereng hu",
+    "pageUrl": "https://unsplash.com/photos/a-smiling-young-woman-in-a-white-dress-outdoors-HOvnm0KYp7M",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "A young Asian woman in a casual white sundress smiling over her shoulder in a bright open-air university walkway.",
+    "note": "Re-cropped tighter than the original download so the subject scale matches the other two persona portraits."
+  }
+]

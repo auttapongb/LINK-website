@@ -16,9 +16,11 @@
     <div data-chrome-header></div>
     <main id="main">
       <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
         <div class="shell reveal" style="--i: 0">
           <p class="section__eyebrow">FAQ</p>
-          <h1 class="page-hero__title">Questions families actually ask.</h1>
+          <hr class="rule" data-rule />
+          <h1 class="page-hero__title" data-split>Questions families actually ask.</h1>
           <p class="section__lead">Short answers. No invented metrics. No live signup theatre.</p>
         </div>
       </section>
@@ -70,12 +72,24 @@
         </div>
       </section>
 
-      <section class="final-cta">
-        <div class="shell reveal" style="--i: 0">
-          <h2>Still curious? See the demo.</h2>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo</a>
-            <a class="btn btn--secondary" href="/">Back home</a>
+      <section class="final-cta" data-spotlight>
+        <div class="shell final-cta__grid">
+          <div class="reveal" style="--i: 0">
+            <h2 data-split>Still curious? See the demo.</h2>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="/demo.html">Explore the LINK demo<span data-icon="arrow-right"></span></a>
+              <a class="btn btn--secondary" href="/">Back home</a>
+            </div>
+          </div>
+          <div class="media media--wide media--hover" data-wipe>
+            <img
+              src="/assets/photos/usecase-friends.webp"
+              alt="A group of friends together — the kind of group LINK is designed for."
+              width="1800"
+              height="1100"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>

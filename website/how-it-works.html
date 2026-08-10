@@ -16,18 +16,33 @@
     <div data-chrome-header></div>
     <main id="main">
       <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
         <div class="shell reveal" style="--i: 0">
           <p class="section__eyebrow">How it works</p>
-          <h1 class="page-hero__title">Connect. Pool. Use together.</h1>
+          <hr class="rule" data-rule />
+          <h1 class="page-hero__title" data-split>Connect. Pool. Use together.</h1>
           <p class="section__lead">
             LINK is a service journey, not another loyalty card. The household sees what it already has, decides what matters, and moves with consent.
           </p>
           <div class="btn-row">
-            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo</a>
+            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo<span data-icon="arrow-right"></span></a>
             <a class="btn btn--secondary" href="/#family-pool">See the family pool</a>
           </div>
         </div>
       </section>
+
+      <figure class="goal-figure" data-parallax-scope data-wipe>
+        <img
+          src="/assets/photos/groceries.webp"
+          alt="Everyday shopping — one of the ordinary moments that quietly earns points."
+          width="1800"
+          height="1100"
+          loading="lazy"
+          decoding="async"
+          data-parallax="7"
+        />
+        <figcaption>Earn → Pool → Burn starts with the week the household already has.</figcaption>
+      </figure>
 
       <section class="section" aria-label="Workflow stages">
         <div class="shell workflow">
@@ -105,13 +120,25 @@
         </div>
       </section>
 
-      <section class="final-cta">
-        <div class="shell reveal" style="--i: 0">
-          <h2>Ready to see the pool in motion?</h2>
-          <p>Open the pilot demo, or meet the family roles that make LINK work at home.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo</a>
-            <a class="btn btn--secondary" href="/for-families.html">For families</a>
+      <section class="final-cta" data-spotlight>
+        <div class="shell final-cta__grid">
+          <div class="reveal" style="--i: 0">
+            <h2 data-split>Ready to see the pool in motion?</h2>
+            <p>Open the pilot demo, or meet the family roles that make LINK work at home.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="/demo.html">Explore the LINK demo<span data-icon="arrow-right"></span></a>
+              <a class="btn btn--secondary" href="/for-families.html">For families</a>
+            </div>
+          </div>
+          <div class="media media--wide media--hover" data-wipe>
+            <img
+              src="/assets/photos/getaway.webp"
+              alt="A resort setting representing the Year-1 hero goal of a family getaway."
+              width="1800"
+              height="1100"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>

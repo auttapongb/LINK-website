@@ -23,57 +23,62 @@
     <div data-chrome-header></div>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__atmosphere" aria-hidden="true"></div>
-        <svg class="hero__motif" viewBox="0 0 64 32" aria-hidden="true">
-          <path d="M18 16c0-6.075 4.925-11 11-11h2c6.075 0 11 4.925 11 11s-4.925 11-11 11h-2c-6.075 0-11-4.925-11-11Z" stroke="#2F80ED" stroke-width="4.5" fill="none"/>
-          <path d="M22 16c0-6.075 4.925-11 11-11h2c6.075 0 11 4.925 11 11s-4.925 11-11 11h-2c-6.075 0-11-4.925-11-11Z" stroke="#1FA88A" stroke-width="4.5" fill="none"/>
-        </svg>
-        <div class="shell split">
-          <div class="reveal" style="--i: 0">
-            <p class="hero__brand" aria-label="LINK">LINK</p>
-            <p class="hero__eyebrow">One family. Five loyalty programs. One shared goal.</p>
-            <h1 id="hero-title" class="hero__title">Your points are worth more together.</h1>
-            <p class="hero__support">Five small balances can become one real family trip.</p>
-            <p class="hero__body">
+      <section class="hero" aria-labelledby="hero-title" data-hero>
+        <canvas class="hero__gradient" data-gradient aria-hidden="true"></canvas>
+        <figure class="hero__photo" data-hero-photo data-hero-depth="0.35" aria-hidden="true">
+          <img
+            src="/assets/photos/hero-family.webp"
+            alt=""
+            width="2400"
+            height="1400"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+        <div class="hero__veil" aria-hidden="true"></div>
+
+        <div class="hero__inner" data-hero-inner>
+          <div class="hero__copy">
+            <p class="hero__brand" data-hero-brand aria-label="LINK">LINK</p>
+            <p class="hero__eyebrow" data-hero-copy>One family. Five loyalty programs. One shared goal.</p>
+            <h1 id="hero-title" class="hero__title" data-hero-title>Your points are worth more together.</h1>
+            <p class="hero__support" data-hero-copy>Five small balances can become one real family trip.</p>
+            <p class="hero__body" data-hero-copy>
               LINK brings the points your family already earns across BTS, Lotus’s, AIS, iBerry and IHG into one shared view — so scattered balances become something you can actually use together.
             </p>
-            <div class="btn-row">
-              <a class="btn btn--primary" href="/how-it-works.html">See how LINK works</a>
+            <div class="btn-row" data-hero-copy>
+              <a class="btn btn--primary" href="/how-it-works.html">See how LINK works<span data-icon="arrow-right"></span></a>
               <a class="btn btn--secondary" href="#family-pool">Explore the family pool</a>
             </div>
-            <ul class="trust-row" aria-label="Trust signals">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-2.8 7.4-7 9-4.2-1.6-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
-                Privacy-first
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
-                Explicit transfer consent
-              </li>
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg>
-                5-partner pilot
-              </li>
+            <ul class="trust-row" aria-label="Trust signals" data-hero-copy>
+              <li><span data-icon="shield-check"></span>Privacy-first</li>
+              <li><span data-icon="key-round"></span>Explicit transfer consent</li>
+              <li><span data-icon="handshake"></span>5-partner pilot</li>
             </ul>
-            <p class="thai-lockup">รวมกันคุ้มกว่า · Worth More Together.</p>
+            <p class="thai-lockup" data-hero-copy>รวมกันคุ้มกว่า · Worth More Together.</p>
           </div>
 
-          <div class="hero-stage reveal" style="--i: 1" aria-hidden="false">
-            <div class="orbit" aria-hidden="true">
-              <span class="orbit__chip">BTS</span>
-              <span class="orbit__chip">Lotus’s</span>
-              <span class="orbit__chip">AIS</span>
-              <span class="orbit__chip">iBerry</span>
-              <span class="orbit__chip">IHG</span>
-            </div>
-            <div class="stream" aria-hidden="true">
-              <span class="stream__dot"></span>
-              <span class="stream__dot"></span>
-              <span class="stream__dot"></span>
-              <span class="stream__dot"></span>
-              <span class="stream__dot"></span>
-            </div>
+          <div class="hero-stage" data-hero-stage data-hero-depth="1.3">
+            <svg class="orbit-field" viewBox="0 0 480 480" aria-hidden="true" focusable="false">
+              <g transform="rotate(-16 240 240)">
+                <ellipse data-orbit-arc cx="240" cy="240" rx="212" ry="120" />
+                <ellipse data-orbit-flow="teal" cx="240" cy="240" rx="212" ry="120" />
+                <circle data-orbit-node="0.08" r="5" />
+                <circle data-orbit-node="0.58" r="4" />
+              </g>
+              <g transform="rotate(34 240 240)">
+                <ellipse data-orbit-arc cx="240" cy="240" rx="196" ry="152" />
+                <ellipse data-orbit-flow="brand" cx="240" cy="240" rx="196" ry="152" />
+                <circle data-orbit-node="0.32" r="4.5" />
+              </g>
+              <g transform="rotate(-4 240 240)">
+                <ellipse data-orbit-arc cx="240" cy="240" rx="146" ry="196" />
+                <ellipse data-orbit-flow="gold" cx="240" cy="240" rx="146" ry="196" />
+                <circle data-orbit-node="0.18" r="4" />
+                <circle data-orbit-node="0.72" r="5" />
+              </g>
+            </svg>
+
             <div class="device" id="family-pool" aria-label="Illustrative LINK family pool interface">
               <div class="device__bar"><span>09:41</span><span>Illustrative</span></div>
               <div class="device__screen">
@@ -88,7 +93,7 @@
                 </div>
                 <div class="balance">
                   <div class="balance__meta"><span>Combined balance</span><span>Demo only</span></div>
-                  <div class="balance__value">48,260</div>
+                  <div class="balance__value" data-count="48260">48,260</div>
                 </div>
                 <div class="goal">
                   <div class="goal__top"><strong>Family getaway · IHG stay</strong><span>68%</span></div>
@@ -108,6 +113,8 @@
             </div>
           </div>
         </div>
+
+        <a class="hero__cue" href="#problem">Scroll<span data-icon="arrow-right"></span></a>
       </section>
 
       <section class="partner-strip" aria-labelledby="partner-strip-title">
@@ -128,7 +135,8 @@
         <div class="shell split">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">The problem</p>
-            <h2 id="problem-title">The problem isn’t earning more. It’s seeing what your family already has.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="problem-title" data-split>The problem isn’t earning more. It’s seeing what your family already has.</h2>
             <p class="section__lead">
               Points disappear in separate apps, separate accounts and separate expiry dates. LINK makes the opportunity visible, so the family can decide what is worth doing together.
             </p>
@@ -162,7 +170,8 @@
         <div class="shell">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">How LINK works</p>
-            <h2 id="how-title">From scattered points to one shared goal.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="how-title" data-split>From scattered points to one shared goal.</h2>
             <p class="section__lead">A simple path for the household: connect programs, pool with consent, then use the progress together. Earn → Pool → Burn.</p>
           </div>
           <div class="split" style="margin-top: var(--space-7)" data-steps>
@@ -241,7 +250,8 @@
         <div class="shell split">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">Family roles</p>
-            <h2 id="families-title">One family. Different roles. One reason to LINK.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="families-title" data-split>One family. Different roles. One reason to LINK.</h2>
             <p class="section__lead">
               Gen Y and Gen X carry the household value and decisions. Gen Z often makes setup easy enough that everyone can join.
             </p>
@@ -279,21 +289,67 @@
         <div class="shell">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">Shared goal</p>
-            <h2 id="goal-title">Watch everyday points become a real shared goal.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="goal-title" data-split>Watch everyday points become a real shared goal.</h2>
             <p class="section__lead">
               The commute, the grocery run, the phone bill and dinner out are small moments on their own. Together, they can move the family closer to the trip.
             </p>
           </div>
-          <div class="journey reveal" style="--i: 1; margin-top: var(--space-6)">
-            <div class="journey__item"><strong>Commute</strong><span>BTS rides add steady progress</span></div>
-            <div class="journey__item"><strong>Groceries</strong><span>Lotus’s shopping feeds the pool</span></div>
-            <div class="journey__item"><strong>Phone bill</strong><span>AIS spend grows quietly</span></div>
-            <div class="journey__item"><strong>Dinner out</strong><span>iBerry moments contribute</span></div>
-            <div class="journey__item"><strong>Getaway</strong><span>Year-1 hero: IHG family stay</span></div>
+
+          <figure class="goal-figure" data-parallax-scope data-wipe>
+            <img
+              src="/assets/photos/getaway.webp"
+              alt="A resort pool on a bright day, standing in for the Year-1 hero goal: a family getaway."
+              width="1800"
+              height="1100"
+              loading="lazy"
+              decoding="async"
+              data-parallax="7"
+            />
+            <figcaption>Year-1 hero goal — an IHG family stay, built from everyday spend.</figcaption>
+          </figure>
+
+          <div class="journey" data-journey>
+            <div class="journey__item" data-journey-item>
+              <div class="journey__media">
+                <img src="/assets/photos/commute.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="journey__icon" data-icon="train-front"></div>
+              <strong>Commute</strong><span>BTS rides add steady progress</span>
+            </div>
+            <div class="journey__item" data-journey-item>
+              <div class="journey__media">
+                <img src="/assets/photos/groceries.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="journey__icon" data-icon="shopping-basket"></div>
+              <strong>Groceries</strong><span>Lotus’s shopping feeds the pool</span>
+            </div>
+            <div class="journey__item" data-journey-item>
+              <div class="journey__media">
+                <img src="/assets/photos/mobile.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="journey__icon" data-icon="smartphone"></div>
+              <strong>Phone bill</strong><span>AIS spend grows quietly</span>
+            </div>
+            <div class="journey__item" data-journey-item>
+              <div class="journey__media">
+                <img src="/assets/photos/dining.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="journey__icon" data-icon="utensils-crossed"></div>
+              <strong>Dinner out</strong><span>iBerry moments contribute</span>
+            </div>
+            <div class="journey__item" data-journey-item>
+              <div class="journey__media">
+                <img src="/assets/photos/getaway.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+              </div>
+              <div class="journey__icon" data-icon="plane"></div>
+              <strong>Getaway</strong><span>Year-1 hero: IHG family stay</span>
+            </div>
           </div>
+
           <div class="btn-row reveal" style="--i: 2">
             <button class="btn btn--secondary" type="button" data-lightbox-open>View the full pilot concept</button>
-            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo</a>
+            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo<span data-icon="arrow-right"></span></a>
           </div>
         </div>
       </section>
@@ -302,7 +358,8 @@
         <div class="shell">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">Use cases</p>
-            <h2 id="usecases-title">Built for people who already do life together.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="usecases-title" data-split>Built for people who already do life together.</h2>
             <p class="section__lead">Family is the hero case. Other groups show how the same idea can extend.</p>
           </div>
           <ul class="usecase-list reveal" style="--i: 1; margin-top: var(--space-6)">
@@ -347,7 +404,8 @@
         <div class="shell">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">Partners</p>
-            <h2 id="partners-title">Earn where life already happens.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="partners-title" data-split>Earn where life already happens.</h2>
           </div>
           <div class="partner-blocks reveal" style="--i: 1; margin-top: var(--space-5)">
             <article class="partner-block">
@@ -377,31 +435,39 @@
         </div>
       </section>
 
-      <section class="privacy-band" id="privacy" aria-labelledby="privacy-title">
+      <section class="privacy-band band" id="privacy" aria-labelledby="privacy-title" data-spotlight>
+        <div class="band__media" data-band-media aria-hidden="true">
+          <img src="/assets/photos/mobile.webp" alt="" width="1800" height="1100" loading="lazy" decoding="async" />
+        </div>
+        <div class="band__scrim" aria-hidden="true"></div>
         <div class="shell">
           <div class="reveal" style="--i: 0">
-            <p class="section__eyebrow" style="color: #7fd9c2">Privacy &amp; consent</p>
-            <h2 id="privacy-title">Your family shares the goal — not control of each other’s points.</h2>
+            <p class="section__eyebrow">Privacy &amp; consent</p>
+            <hr class="rule rule--light" data-rule />
+            <h2 id="privacy-title" data-split>Your family shares the goal — not control of each other’s points.</h2>
             <p class="section__lead">
               LINK is designed around a privacy-first model with on-device visibility, tokenized connections and explicit approval before points move.
             </p>
           </div>
           <div class="pillars reveal" style="--i: 1">
             <article class="pillar">
+              <span class="pillar__icon" data-icon="eye"></span>
               <h3>On-device visibility</h3>
               <p>Point information is brought into a shared experience without turning the family pool into a free-for-all.</p>
             </article>
             <article class="pillar">
+              <span class="pillar__icon" data-icon="key-round"></span>
               <h3>Explicit consent</h3>
               <p>Each member stays in control of point movement — nothing transfers without approval.</p>
             </article>
             <article class="pillar">
+              <span class="pillar__icon" data-icon="shield-check"></span>
               <h3>Tokenized connections</h3>
               <p>Partner links are designed to stay minimal — enough to see opportunity, not to surrender ownership.</p>
             </article>
           </div>
           <div class="btn-row">
-            <a class="btn btn--ghost" href="/privacy.html">Read the privacy approach</a>
+            <a class="btn btn--ghost" href="/privacy.html">Read the privacy approach<span data-icon="arrow-right"></span></a>
           </div>
         </div>
       </section>
@@ -410,7 +476,8 @@
         <div class="shell" style="max-width: 820px">
           <div class="reveal" style="--i: 0">
             <p class="section__eyebrow">FAQ</p>
-            <h2 id="faq-title">Straight answers before you explore further.</h2>
+            <hr class="rule" data-rule />
+            <h2 id="faq-title" data-split>Straight answers before you explore further.</h2>
           </div>
           <div class="faq reveal" style="--i: 1; margin-top: var(--space-5)">
             <details>
@@ -440,13 +507,25 @@
         </div>
       </section>
 
-      <section class="final-cta" aria-labelledby="final-title">
-        <div class="shell reveal" style="--i: 0">
-          <h2 id="final-title">Five small balances. One shared memory.</h2>
-          <p>See how LINK turns the points your family already earns into something worth doing together.</p>
-          <div class="btn-row">
-            <a class="btn btn--primary" href="/demo.html">Explore the LINK demo</a>
-            <a class="btn btn--secondary" href="/how-it-works.html">Back to how it works</a>
+      <section class="final-cta" aria-labelledby="final-title" data-spotlight>
+        <div class="shell final-cta__grid">
+          <div class="reveal" style="--i: 0">
+            <h2 id="final-title" data-split>Five small balances. One shared memory.</h2>
+            <p>See how LINK turns the points your family already earns into something worth doing together.</p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="/demo.html">Explore the LINK demo<span data-icon="arrow-right"></span></a>
+              <a class="btn btn--secondary" href="/how-it-works.html">Back to how it works</a>
+            </div>
+          </div>
+          <div class="media media--wide media--hover" data-wipe>
+            <img
+              src="/assets/photos/hero-family.webp"
+              alt="A family spending time together — the everyday moments LINK is built around."
+              width="2400"
+              height="1400"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>

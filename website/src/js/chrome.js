@@ -30,6 +30,13 @@ export function mountChrome() {
   const footerHost = document.querySelector("[data-chrome-footer]");
   if (!headerHost || !footerHost) return;
 
+  if (!document.querySelector(".grain")) {
+    const grain = document.createElement("div");
+    grain.className = "grain";
+    grain.setAttribute("aria-hidden", "true");
+    document.body.appendChild(grain);
+  }
+
   const navLinks = PAGES.map(
     (p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`
   ).join("");
@@ -45,11 +52,12 @@ export function mountChrome() {
         <nav aria-label="Primary">
           <ul class="nav__links">${navLinks}</ul>
         </nav>
-        <a class="btn btn--primary nav__cta" href="/demo.html">Explore LINK</a>
+        <a class="btn btn--primary nav__cta" href="/demo.html">Explore LINK<span data-icon="arrow-right"></span></a>
         <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
+      <div class="scroll-progress" data-scroll-progress aria-hidden="true"></div>
     </header>
     <div class="nav-drawer" data-nav-drawer hidden>
       <div class="nav-drawer__backdrop" data-nav-close></div>

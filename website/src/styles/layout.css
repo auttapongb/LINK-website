@@ -88,7 +88,8 @@
   color: var(--color-ink);
 }
 
-.nav__cta {
+/* Scoped so the generic `.btn { display: inline-flex }` cannot win here. */
+.nav .nav__cta {
   display: none;
 }
 
@@ -316,7 +317,7 @@
 
 @media (min-width: 860px) {
   .nav__links,
-  .nav__cta {
+  .nav .nav__cta {
     display: flex;
   }
 

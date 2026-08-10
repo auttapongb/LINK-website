@@ -1,0 +1,718 @@
+/*
+ * v2 additions: texture, imagery, full-bleed bands, orbit motif and the
+ * supporting states for the GSAP/Lenis motion layer.
+ * Everything here extends the existing "LINK Connection" tokens.
+ */
+
+/* ------------------------------------------------------------------ *
+ * Paper texture
+ * ------------------------------------------------------------------ */
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reading progress
+ * ------------------------------------------------------------------ */
+
+.scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--color-brand), var(--color-teal));
+}
+
+/* ------------------------------------------------------------------ *
+ * Icons
+ * ------------------------------------------------------------------ */
+
+[data-icon] {
+  display: inline-flex;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+}
+
+/* ------------------------------------------------------------------ *
+ * SplitText lines
+ * ------------------------------------------------------------------ */
+
+.split-line {
+  display: block;
+  padding-bottom: 0.08em;
+}
+
+/* ------------------------------------------------------------------ *
+ * Hero v2 — full bleed, one composition
+ * ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  align-items: center;
+  min-height: 88svh;
+  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3.5rem, 8vw, 6rem);
+}
+
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Static fallback that stays visible if WebGL is unavailable. */
+  background:
+    radial-gradient(ellipse 62% 52% at 74% 30%, rgba(31, 168, 138, 0.2), transparent 70%),
+    radial-gradient(ellipse 48% 44% at 16% 68%, rgba(47, 128, 237, 0.16), transparent 66%),
+    linear-gradient(168deg, #ffffff 0%, var(--color-canvas) 55%);
+}
+
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(242, 246, 245, 0.94) 0%,
+    rgba(242, 246, 245, 0.82) 34%,
+    rgba(242, 246, 245, 0.1) 62%,
+    transparent 78%
+  );
+}
+
+.hero__photo {
+  position: absolute;
+  z-index: -2;
+  margin: 0;
+  inset: 0 0 0 auto;
+  width: min(58%, 900px);
+  overflow: hidden;
+  will-change: transform;
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 42%;
+  filter: saturate(0.9) contrast(1.02);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 26%, #000 62%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.55) 26%, #000 62%);
+}
+
+.hero__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(31, 168, 138, 0.22), transparent 46%, rgba(47, 128, 237, 0.18));
+  mix-blend-mode: soft-light;
+}
+
+.hero__inner {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  width: min(100% - (var(--gutter) * 2), var(--max));
+  margin-inline: auto;
+}
+
+.hero__brand {
+  font-family: var(--font-wordmark);
+  font-size: clamp(3.4rem, 11vw, 7rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 0.92;
+  margin: 0 0 var(--space-4);
+  color: var(--color-teal);
+}
+
+.hero__title {
+  max-width: 15ch;
+  margin-bottom: var(--space-4);
+}
+
+.hero__cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 3vw, 2rem);
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.hero__cue .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  transform: rotate(90deg);
+  animation: cue-nudge 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes cue-nudge {
+  0%,
+  100% {
+    transform: rotate(90deg) translateX(0);
+  }
+  50% {
+    transform: rotate(90deg) translateX(4px);
+  }
+}
+
+/* Orbit motif behind the product panel */
+
+.hero-stage {
+  position: relative;
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit-field {
+  position: absolute;
+  width: min(125%, 560px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.orbit-field ellipse {
+  fill: none;
+}
+
+.orbit-field [data-orbit-arc] {
+  stroke: var(--color-line-strong);
+  stroke-width: 1;
+}
+
+.orbit-field [data-orbit-flow] {
+  stroke: var(--color-teal);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  /* Hidden until the timeline replaces this with a travelling dash, so the
+     full ellipse never flashes on load or when motion is switched off. */
+  stroke-dasharray: 0 9999;
+}
+
+.orbit-field [data-orbit-flow="brand"] {
+  stroke: var(--color-brand);
+}
+
+.orbit-field [data-orbit-flow="gold"] {
+  stroke: var(--color-gold);
+}
+
+.orbit-field [data-orbit-node] {
+  fill: var(--color-surface);
+  stroke: var(--color-teal);
+  stroke-width: 2;
+}
+
+/* ------------------------------------------------------------------ *
+ * Imagery
+ * ------------------------------------------------------------------ */
+
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-soft);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-out);
+}
+
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(170deg, rgba(31, 168, 138, 0.16), transparent 55%, rgba(16, 46, 58, 0.14));
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.media--wide {
+  aspect-ratio: 16 / 10;
+}
+
+.media--tall {
+  aspect-ratio: 4 / 5;
+}
+
+.media--square {
+  aspect-ratio: 1;
+}
+
+.media--hover:hover img,
+a:hover > .media img,
+li:hover > .media img {
+  transform: scale(1.05);
+}
+
+.media__caption {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* Full-bleed imagery band */
+
+.band {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding: clamp(4.5rem, 10vw, 8rem) 0;
+  color: var(--color-navy-ink);
+}
+
+.band__media {
+  position: absolute;
+  inset: -8% 0;
+  z-index: -2;
+  will-change: transform;
+}
+
+.band__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.band__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(96deg, rgba(14, 39, 49, 0.95) 0%, rgba(14, 39, 49, 0.88) 50%, rgba(14, 39, 49, 0.72) 100%),
+    linear-gradient(0deg, rgba(31, 168, 138, 0.26), transparent 60%);
+}
+
+.band h2,
+.band h3 {
+  color: #fff;
+}
+
+.band p {
+  color: rgba(232, 240, 238, 0.82);
+}
+
+.band .section__eyebrow {
+  color: #7fd9c2;
+}
+
+/* ------------------------------------------------------------------ *
+ * Cursor spotlight
+ * ------------------------------------------------------------------ */
+
+[data-spotlight] {
+  --spot-x: 70;
+  --spot-y: 30;
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at calc(var(--spot-x) * 1%) calc(var(--spot-y) * 1%),
+    rgba(31, 168, 138, 0.22),
+    transparent 62%
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Full-bleed figure
+ * ------------------------------------------------------------------ */
+
+.bleed,
+.goal-figure {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+}
+
+.goal-figure {
+  position: relative;
+  margin-block: var(--space-7);
+  height: clamp(230px, 40vw, 520px);
+  overflow: hidden;
+}
+
+.goal-figure img {
+  position: absolute;
+  inset: -10% 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.goal-figure figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-7) var(--gutter) var(--space-4);
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(0deg, rgba(14, 39, 49, 0.78), transparent);
+}
+
+@media (min-width: 1220px) {
+  .goal-figure figcaption {
+    padding-inline: max(var(--gutter), calc(50vw - (var(--max) / 2)));
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Journey ribbon with iconography
+ * ------------------------------------------------------------------ */
+
+.journey__item {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+  align-content: start;
+  padding: var(--space-3) 0 0;
+  background: none;
+}
+
+.journey__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-mint);
+  color: #14705d;
+  font-size: 1.1rem;
+}
+
+.journey__item:last-child .journey__icon {
+  background: #dce9fb;
+  color: var(--color-brand-deep);
+}
+
+.journey__media {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: var(--space-1);
+  background: var(--color-surface-soft);
+}
+
+.journey__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 800ms var(--ease-out);
+}
+
+.journey__item:hover .journey__media img {
+  transform: scale(1.06);
+}
+
+/* ------------------------------------------------------------------ *
+ * Personas with portraits
+ * ------------------------------------------------------------------ */
+
+.personas {
+  display: grid;
+}
+
+.persona {
+  display: grid;
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.persona:last-child {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.persona__portrait {
+  width: min(100%, 220px);
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-surface-soft);
+}
+
+.persona__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-out);
+}
+
+.persona:hover .persona__portrait img {
+  transform: scale(1.04);
+}
+
+/* ------------------------------------------------------------------ *
+ * Use case rows with thumbnails
+ * ------------------------------------------------------------------ */
+
+.usecase-list li {
+  align-items: center;
+}
+
+.usecase-list .media {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------------ *
+ * Partner blocks
+ * ------------------------------------------------------------------ */
+
+.partner-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.partner-block__icon {
+  display: inline-flex;
+  width: 2.1rem;
+  height: 2.1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-mint);
+  color: #14705d;
+  font-size: 1.05rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Page hero atmosphere for inner pages
+ * ------------------------------------------------------------------ */
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+/* The hero already carries generous bottom padding; don't stack a full
+   section rhythm on top of it. */
+.page-hero + .section {
+  padding-top: var(--space-7);
+}
+
+.page-hero__atmos {
+  position: absolute;
+  inset: -20% 0 auto;
+  z-index: -1;
+  height: 140%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 60% at 82% 18%, rgba(31, 168, 138, 0.24), transparent 68%),
+    radial-gradient(ellipse 48% 52% at 8% 52%, rgba(47, 128, 237, 0.18), transparent 64%);
+  animation: atmos-drift 26s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes atmos-drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3%, 2%, 0) scale(1.08);
+  }
+}
+
+/* Section divider rule that draws itself in */
+
+.rule {
+  height: 1px;
+  border: 0;
+  margin: 0 0 var(--space-5);
+  background: linear-gradient(90deg, var(--color-teal), var(--color-brand) 45%, transparent);
+  transform-origin: left center;
+}
+
+.rule--light {
+  background: linear-gradient(90deg, #7fd9c2, rgba(127, 217, 194, 0.25) 55%, transparent);
+}
+
+/* ------------------------------------------------------------------ *
+ * Privacy pillars
+ * ------------------------------------------------------------------ */
+
+.pillar__icon {
+  display: inline-flex;
+  width: 2.4rem;
+  height: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(232, 240, 238, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: #7fd9c2;
+  font-size: 1.15rem;
+}
+
+/* ------------------------------------------------------------------ *
+ * Final CTA
+ * ------------------------------------------------------------------ */
+
+.final-cta__grid {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+@media (min-width: 860px) {
+  .final-cta__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Partner strip upgrade
+ * ------------------------------------------------------------------ */
+
+.partner-strip {
+  backdrop-filter: blur(6px);
+}
+
+.partner-badge {
+  transition: transform var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out);
+}
+
+.partner-strip__list li:hover .partner-badge {
+  transform: translateY(-2px);
+  border-color: var(--color-teal);
+  color: var(--color-brand-deep);
+}
+
+/* ------------------------------------------------------------------ *
+ * Responsive
+ * ------------------------------------------------------------------ */
+
+@media (max-width: 899px) {
+  .hero__photo {
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 44%;
+    opacity: 0.55;
+  }
+
+  .hero__photo img {
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 42%, #000 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 42%, #000 100%);
+  }
+
+  .hero__veil {
+    background: linear-gradient(180deg, rgba(242, 246, 245, 0.9) 0%, rgba(242, 246, 245, 0.55) 55%, transparent 100%);
+  }
+
+  .hero__cue {
+    display: none;
+  }
+
+  .hero-stage {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 700px) {
+  .journey__item {
+    gap: var(--space-3);
+  }
+}
+
+@media (min-width: 860px) {
+  .hero__inner {
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  }
+
+  .persona {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .usecase-list li {
+    grid-template-columns: 250px 1fr 0.85fr auto;
+    gap: var(--space-5);
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    min-height: 100svh;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__cue .icon,
+  .page-hero__atmos {
+    animation: none;
+  }
+
+  .orbit-field [data-orbit-flow] {
+    display: none;
+  }
+
+  .media img,
+  .journey__media img,
+  .persona__portrait img {
+    transition: none;
+  }
+
+  .media--hover:hover img,
+  .journey__item:hover .journey__media img,
+  .persona:hover .persona__portrait img,
+  a:hover > .media img,
+  li:hover > .media img {
+    transform: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+}

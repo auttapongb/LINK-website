@@ -13,6 +13,9 @@ references/
 # Local filesystem snapshots
 website-v1-backup/
 
+# QA screenshots produced by website/scripts/verify.mjs
+qa-shots/
+
 # Tooling / OS
 .hallmark/
 .DS_Store

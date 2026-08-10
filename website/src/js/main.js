@@ -37,42 +37,6 @@ export function initInteractions() {
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  const revealNodes = document.querySelectorAll(".reveal");
-  if (revealNodes.length && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.16 }
-    );
-    revealNodes.forEach((node) => io.observe(node));
-  } else {
-    revealNodes.forEach((node) => node.classList.add("is-in"));
-  }
-
-  const progressBars = document.querySelectorAll(".progress__bar");
-  if (progressBars.length && "IntersectionObserver" in window) {
-    const pio = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-on");
-            pio.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    progressBars.forEach((bar) => pio.observe(bar));
-  } else {
-    progressBars.forEach((bar) => bar.classList.add("is-on"));
-  }
-
   document.querySelectorAll("[data-compare]").forEach((root) => {
     const buttons = root.querySelectorAll("[data-compare-btn]");
     const panels = root.querySelectorAll("[data-compare-panel]");

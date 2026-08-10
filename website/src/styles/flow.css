@@ -407,13 +407,13 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.8);
+  /* Neutral-at-rest is applied in tiles.css under `hover: hover`, so a phone
+     shows the real colours instead of a permanently grey row. */
   transition: filter var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
 }
 
 .partner-logo:hover .partner-logo__mark img,
 .partner-logo:focus-within .partner-logo__mark img {
-  filter: none;
   transform: scale(1.04);
 }
 
@@ -501,58 +501,7 @@
 
 /* ---- Partners page rows ----------------------------------------- */
 
-.partner-block__brand {
-  display: grid;
-  justify-items: start;
-  gap: var(--space-2);
-}
-
-.partner-block__brand .partner-logo__mark {
-  justify-items: start;
-  place-items: center start;
-  margin-bottom: var(--space-1);
-}
-
-/* Same darkening pass as the logo row, so a partner reads the same way
-   wherever it appears. */
-.partner-block__brand img {
-  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.8);
-  transition: filter var(--dur-long) var(--ease-out);
-}
-
-.partner-block:hover .partner-block__brand img {
-  filter: none;
-}
-
-.partner-block__mult {
-  margin: 0;
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-amber-deep);
-}
-
-/* ---- Touchpoints (partners page) -------------------------------- */
-
-.touchpoints {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
-  list-style: none;
-  margin-top: var(--space-3);
-}
-
-.touchpoints li {
-  font-size: var(--text-xs);
-  color: var(--color-muted);
-}
-
-.touchpoints li + li::before {
-  content: "·";
-  margin-right: var(--space-3);
-  color: var(--color-line-strong);
-}
+/* The partner block header and its logo treatment moved to tiles.css. */
 
 @media (min-width: 700px) {
   .stat-row {

@@ -7,3 +7,4 @@
 /* Last, so the clay treatment re-surfaces the components above rather than
    forcing every one of them to know about it. */
 @import "./clay.css";
+@import "./tiles.css";

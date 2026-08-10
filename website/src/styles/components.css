@@ -143,12 +143,9 @@
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.72);
+  /* The neutral-at-rest treatment is applied in tiles.css, inside a
+     `hover: hover` query, so touch devices are not left on grey forever. */
   transition: filter var(--dur-long) var(--ease-out);
-}
-
-.partner-mark:hover img {
-  filter: none;
 }
 
 .partner-strip__note {
@@ -660,20 +657,8 @@
   gap: 0;
 }
 
-.partner-block {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-6) 0;
-  border-top: 1px solid var(--color-line);
-}
-
-.partner-block:last-child {
-  border-bottom: 1px solid var(--color-line);
-}
-
-.partner-block h3 {
-  margin: 0;
-}
+/* Surfacing and layout for these now live in tiles.css, next to the sub-brand
+   grid they wrap. */
 
 /* Privacy dark section */
 .privacy-band {
@@ -888,12 +873,6 @@
   .usecase-list li {
     grid-template-columns: 1.2fr 0.8fr auto;
     align-items: baseline;
-  }
-
-  .partner-block {
-    grid-template-columns: 230px 1fr;
-    gap: var(--space-5);
-    align-items: start;
   }
 
   .sitemap-list {

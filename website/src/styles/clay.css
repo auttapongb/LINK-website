@@ -242,8 +242,7 @@
 
 .role__tag,
 .fit,
-.usecase-list li,
-.touchpoints li {
+.usecase-list li {
   border-radius: 999px;
 }
 

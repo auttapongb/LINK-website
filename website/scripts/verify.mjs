@@ -169,14 +169,39 @@ mkdirSync(OUT, { recursive: true });
 
 for (const [vpName, viewport] of VIEWPORTS) {
   for (const [name, path] of PAGES) {
-    if (vpName === "mobile" && !["home", "earn-to-burn", "for-families", "use-cases", "faq"].includes(name)) continue;
-    if (vpName === "reduced" && !["home", "earn-to-burn", "for-families", "use-cases"].includes(name)) continue;
+    // Partners is in both narrow lists now: 27 sub-brand tiles make it the
+    // densest grid on the site, and its logo treatment is the thing that behaves
+    // differently on a touch pointer.
+    if (vpName === "mobile" && !["home", "earn-to-burn", "for-families", "use-cases", "faq", "partners"].includes(name))
+      continue;
+    if (vpName === "reduced" && !["home", "earn-to-burn", "for-families", "use-cases", "partners"].includes(name))
+      continue;
 
     const page = await browser.newPage();
     await page.setViewport(viewport);
 
-    if (vpName === "reduced") {
-      await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
+    /*
+     * Chromium's device emulation leaves the hover and pointer media features
+     * reporting a mouse, so a `hover: hover` rule still applies at 390px wide and
+     * anything gated behind it looks fine in the harness while being wrong on a
+     * real phone. Stating them explicitly is what makes the mobile pass mean
+     * something. Puppeteer's emulateMediaFeatures rejects anything outside a
+     * small allow-list, so this goes through raw CDP — which replaces the whole
+     * feature set at once, hence reduced-motion being set here too.
+     */
+    const features = [];
+    if (vpName === "reduced") features.push({ name: "prefers-reduced-motion", value: "reduce" });
+    if (vpName === "mobile") {
+      features.push(
+        { name: "hover", value: "none" },
+        { name: "any-hover", value: "none" },
+        { name: "pointer", value: "coarse" },
+        { name: "any-pointer", value: "coarse" }
+      );
+    }
+    if (features.length) {
+      const client = await page.createCDPSession();
+      await client.send("Emulation.setEmulatedMedia", { features });
     }
 
     const consoleErrors = [];

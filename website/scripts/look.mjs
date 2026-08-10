@@ -45,6 +45,20 @@ for (const vp of [
 ]) {
   const page = await browser.newPage();
   await page.setViewport({ width: vp.width, height: vp.height, deviceScaleFactor: 1 });
+  // Emulation otherwise still reports a mouse at phone widths, which hides every
+  // bug that lives behind a `hover: hover` query. Puppeteer's own
+  // emulateMediaFeatures rejects `hover`, so this goes through raw CDP.
+  if (vp.key === "m") {
+    const client = await page.createCDPSession();
+    await client.send("Emulation.setEmulatedMedia", {
+      features: [
+        { name: "hover", value: "none" },
+        { name: "any-hover", value: "none" },
+        { name: "pointer", value: "coarse" },
+        { name: "any-pointer", value: "coarse" },
+      ],
+    });
+  }
   for (const t of targets) {
     if (vp.key === "m" && args.length === 0 && !/home-hero|partners|earn/.test(t.name)) continue;
     await page.goto(`${BASE}${t.path}`, { waitUntil: "networkidle2" });

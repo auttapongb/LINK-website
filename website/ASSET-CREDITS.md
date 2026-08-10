@@ -77,7 +77,13 @@ endorsement, sponsorship, or affiliation with any of these companies is implied 
 claimed. Each mark remains the property of its respective owner. Files were
 downloaded and are served locally rather than hot-linked, and none of the artwork
 has been recoloured or redrawn — the site's neutral grey rendering is a CSS filter
-applied at display time, reversed on hover.
+applied at display time and reversed on hover.
+
+That filter is scoped to `@media (hover: hover)`. On a touch device there is no
+hover to reveal the colour with, so the restrained treatment would not be "at
+rest", it would be permanent, and every partner would be grey forever on a phone.
+Pointers that can reveal the colour get the quiet version; pointers that cannot
+get the real marks immediately.
 
 Machine-readable details (intrinsic aspect ratio, optical scale, format) live in
 `public/assets/brand/partners/manifest.json`.
@@ -148,6 +154,59 @@ Machine-readable details (intrinsic aspect ratio, optical scale, format) live in
 - **Trademark holder:** Six Continents Limited / InterContinental Hotels Group PLC
   (IHG Hotels & Resorts).
 
+## Partner sub-brand marks
+
+The partners page shows a row of sub-brand tiles under each partner — the
+individual formats, lines and hotel brands where a household actually earns.
+Where a free-licensed mark exists it is used; where one does not, the tile is a
+clean typographic lockup in the site's own display face rather than invented
+artwork, and the list below records exactly which fell back to type.
+
+Everything under this heading carries the same conditions as the five parent
+marks above: third-party trademarks, reproduced small, for nominative
+identification inside a non-commercial academic concept, no endorsement implied,
+served locally rather than hot-linked, artwork unmodified apart from stripping
+editor metadata and adding the intrinsic `width`/`height` that stops an `<img>`
+laying the SVG out at zero size.
+
+### Sourced from Wikimedia Commons
+
+All six are tagged `{{PD-textlogo}}` — below the threshold of originality for
+copyright — plus a trademark notice.
+
+| Tile | File | Commons file page | Trademark holder |
+| --- | --- | --- | --- |
+| BTS Gold Line | `partners/bts-gold-line.svg` | [File:BTS-Logo Gold.svg](https://commons.wikimedia.org/wiki/File:BTS-Logo_Gold.svg) | Bangkok Mass Transit System PCL |
+| Kimpton Maa-Lai Bangkok | `partners/kimpton.svg` | [File:Kimpton Hotels & Restaurants logo.svg](https://commons.wikimedia.org/wiki/File:Kimpton_Hotels_%26_Restaurants_logo.svg) | Kimpton Hotel & Restaurant Group / IHG |
+| Crowne Plaza | `partners/crowne-plaza.svg` | [File:Crowne Plaza logo.svg](https://commons.wikimedia.org/wiki/File:Crowne_Plaza_logo.svg) | Six Continents Hotels / IHG |
+| Holiday Inn | `partners/holiday-inn.svg` | [File:Holiday Inn by IHG logo.svg](https://commons.wikimedia.org/wiki/File:Holiday_Inn_by_IHG_logo.svg) | Holiday Hospitality Franchising / IHG |
+| Holiday Inn Express | `partners/holiday-inn-express.svg` | [File:Holiday Inn Express by IHG logo.svg](https://commons.wikimedia.org/wiki/File:Holiday_Inn_Express_by_IHG_logo.svg) | Holiday Hospitality Franchising / IHG |
+| Hotel Indigo | `partners/hotel-indigo.svg` | [File:HotelIndigoLogo.svg](https://commons.wikimedia.org/wiki/File:HotelIndigoLogo.svg) | Six Continents Hotels / IHG |
+
+### Reusing a parent mark
+
+Four tiles are the parent brand itself rather than a distinct sub-brand, so they
+reuse the parent file already credited above: Lotus's Hypermarket (`lotuss.svg`),
+BTS Sukhumvit & Silom (`bts.svg`), AIS 5G mobile (`ais.svg`), iBerry ice cream
+(`iberry.png`), IHG Hotels & Resorts (`ihg.svg`).
+
+### Typographic tiles — no free mark could be sourced
+
+Sixteen sub-brands have no logo on Wikimedia Commons, no Simple Icons entry, and
+no public press or brand-resources page offering a downloadable file. Rather than
+redraw a lookalike, each is set as its name in Fraunces:
+
+- **Lotus's:** Go Fresh, SMART app, Pharmacy, Food Court
+- **BTS / Rabbit:** Rabbit card, Rabbit merchant partners
+- **iBerry Group:** Kub Kao' Kub Pla, ThongSmith, Ros'niyom, Charoen Gang,
+  Fran's, Chin Bo Dang
+- **AIS:** Fibre, PLAY, online store
+- **IHG:** InterContinental — the parent IHG lockup and every other IHG brand in
+  the row is on Commons, but the InterContinental brand mark itself is not
+
+Each tile still links to that brand's real site, so the name is doing the
+identification work the logo would have done.
+
 ## Icons — Lucide
 
 [Lucide](https://lucide.dev) v1, [ISC licence](https://github.com/lucide-icons/lucide/blob/main/LICENSE).
@@ -156,9 +215,15 @@ Installed from npm and imported icon-by-icon in `src/js/icons.js` so only the
 
 ## Fonts — Google Fonts
 
-Fraunces, IBM Plex Sans, Noto Sans Thai and Noto Serif Thai, all under the
-[SIL Open Font License 1.1](https://openfontlicense.org/). Loaded from the
-Google Fonts CSS API (unchanged from v1).
+Fraunces, Pacifico, IBM Plex Sans, Noto Sans Thai and Noto Serif Thai, all under
+the [SIL Open Font License 1.1](https://openfontlicense.org/). Loaded from the
+Google Fonts CSS API.
+
+Fraunces is requested with its `SOFT` and `WONK` variable axes, which round the
+terminals and cant the g and f — the same family the site has always used, set
+several years younger. Pacifico is present for exactly one string, the
+"Worth More Together" tagline; it has no Thai coverage, so the Thai half of the
+lockup stays in Noto.
 
 ## Motion libraries
 

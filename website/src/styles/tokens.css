@@ -1,0 +1,79 @@
+/*
+ * Hallmark · genre: editorial · macrostructure: Split Studio
+ * theme: custom: LINK Connection · enrichment: E5 hand-built product UI
+ * nav: N9 Edge-aligned · footer: Ft1 Mast-headed
+ * audience: Thai Gen Y/X household decision-makers + Gen Z activator
+ * use: understand LINK + explore family pool · tone: warm editorial service
+ * pre-emit critique: P5 H5 E4 S5 R4 V4
+ *
+ * Axes — paper: light · display: roman-serif (Fraunces) · accent: cool teal/blue
+ * Differs from cream+terracotta cliché via cool pearl canvas + connection teal
+ */
+
+:root {
+  /* Surfaces — cool pearl, not warm cream */
+  --color-canvas: #f2f6f5;
+  --color-surface: #ffffff;
+  --color-surface-soft: #e7efed;
+  --color-ink: #102e3a;
+  --color-ink-2: #35535c;
+  --color-muted: #5e7278;
+  --color-line: rgba(16, 46, 58, 0.12);
+  --color-line-strong: rgba(16, 46, 58, 0.22);
+
+  /* Brand */
+  --color-brand: #2f80ed;
+  --color-brand-deep: #1f63c4;
+  --color-teal: #1fa88a;
+  --color-mint: #d4f0e6;
+  --color-gold: #c9972e;
+  --color-coral: #e05648;
+  --color-plum: #6e4a56;
+  --color-rose: #f3e4e7;
+  --color-navy: #0e2731;
+  --color-navy-ink: #e8f0ee;
+  --color-focus: #1f63c4;
+
+  /* Typography */
+  --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Noto Sans Thai", ui-sans-serif, sans-serif;
+  --font-wordmark: "Fraunces", Georgia, serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.35rem;
+  --text-xl: 1.7rem;
+  --text-2xl: 2.15rem;
+  --text-3xl: clamp(2rem, 3.5vw + 0.6rem, 2.85rem);
+  --text-display: clamp(2.4rem, 5vw + 0.8rem, 4.5rem);
+
+  /* Space — 4pt scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-section: clamp(4.5rem, 8vw, 7.5rem);
+
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --shadow-soft: 0 12px 36px rgba(16, 46, 58, 0.08);
+  --max: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 2rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+}

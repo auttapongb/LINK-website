@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LINK demo — Pilot concept</title>
+    <meta
+      name="description"
+      content="Interactive pilot concept for LINK: explore an illustrative family pool, consent step, and getaway progress. Not a live signup."
+    />
+    <meta name="theme-color" content="#1FA88A" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div data-chrome-header></div>
+    <main id="main">
+      <section class="page-hero">
+        <div class="shell reveal" style="--i: 0">
+          <div class="demo-banner" role="status">
+            Pilot concept / demo — illustrative only. No live partner login. No payment. No submitting signup.
+          </div>
+          <p class="section__eyebrow">Demo</p>
+          <h1 class="page-hero__title">Explore the family pool.</h1>
+          <p class="section__lead">
+            Switch through Connect, Pool, and Use to see how LINK could feel inside a household — with consent before any transfer.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="shell split" data-steps>
+          <div class="steps reveal" style="--i: 0">
+            <div class="step-tabs" role="tablist" aria-label="Demo states">
+              <button type="button" role="tab" id="demo-tab-connect" aria-controls="demo-step-connect" aria-selected="true" tabindex="0">
+                <span class="num">01</span><span class="label">Connect</span>
+              </button>
+              <button type="button" role="tab" id="demo-tab-pool" aria-controls="demo-step-pool" aria-selected="false" tabindex="-1">
+                <span class="num">02</span><span class="label">Pool</span>
+              </button>
+              <button type="button" role="tab" id="demo-tab-use" aria-controls="demo-step-use" aria-selected="false" tabindex="-1">
+                <span class="num">03</span><span class="label">Use</span>
+              </button>
+            </div>
+            <div style="margin-top: var(--space-5)">
+              <div id="demo-step-connect" role="tabpanel" data-step-panel aria-labelledby="demo-tab-connect">
+                <h2 style="font-size: var(--text-2xl)">Programs in one view</h2>
+                <p>Ploy links the family’s everyday programs. Nan and Wit can see the opportunity without giving up ownership.</p>
+              </div>
+              <div id="demo-step-pool" role="tabpanel" data-step-panel hidden aria-labelledby="demo-tab-pool">
+                <h2 style="font-size: var(--text-2xl)">Consent before movement</h2>
+                <p>When points are close to expiry, LINK asks the owner to approve a contribution to the shared getaway goal.</p>
+              </div>
+              <div id="demo-step-use" role="tabpanel" data-step-panel hidden aria-labelledby="demo-tab-use">
+                <h2 style="font-size: var(--text-2xl)">Progress toward the trip</h2>
+                <p>Year-1 hero goal: turn shared progress into an IHG family getaway — a memory built from ordinary life.</p>
+              </div>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn--secondary" href="/how-it-works.html">Read the full walkthrough</a>
+              <button class="btn btn--primary" type="button" data-demo-modal-open>Join pilot (demo)</button>
+            </div>
+          </div>
+
+          <div class="hero-stage reveal" style="--i: 1">
+            <div class="device" aria-label="Illustrative LINK demo interface">
+              <div class="device__bar"><span>LINK demo</span><span>Illustrative</span></div>
+              <div class="device__screen">
+                <div class="device-state is-active" data-device-state="demo-step-connect">
+                  <p class="device__label">Home</p>
+                  <h3 class="device__title">Somsri Family Pool</h3>
+                  <div class="avatar-row" aria-hidden="true">
+                    <span class="avatar">Na</span><span class="avatar">Wi</span><span class="avatar">Pl</span><span class="avatar">Be</span><span class="avatar">Mi</span>
+                  </div>
+                  <ul class="contrib">
+                    <li><span>BTS</span><span>Connected</span></li>
+                    <li><span>Lotus’s</span><span>Connected</span></li>
+                    <li><span>AIS</span><span>Connected</span></li>
+                    <li><span>iBerry</span><span>Connected</span></li>
+                    <li><span>IHG</span><span>Goal</span></li>
+                  </ul>
+                </div>
+                <div class="device-state" data-device-state="demo-step-pool">
+                  <p class="device__label">Confirm</p>
+                  <h3 class="device__title">Pool expiring points</h3>
+                  <div class="alert-soft"><span>!</span><span>2,400 pts expire in 18 days</span></div>
+                  <div class="consent-box">
+                    <p>Nan approves moving Lotus’s points into the family getaway goal.</p>
+                    <div class="consent-actions">
+                      <button type="button">Not now</button>
+                      <button class="confirm" type="button">Approve</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="device-state" data-device-state="demo-step-use">
+                  <div class="success-mark" aria-hidden="true">✓</div>
+                  <p class="device__label" style="text-align:center">Reward path</p>
+                  <h3 class="device__title" style="text-align:center">IHG family getaway</h3>
+                  <div class="balance">
+                    <div class="balance__meta"><span>Pool progress</span><span>Demo</span></div>
+                    <div class="balance__value">82%</div>
+                  </div>
+                  <div class="progress" aria-hidden="true"><div class="progress__bar is-on" style="--progress: 82%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div data-chrome-footer></div>
+
+    <div class="lightbox" data-demo-modal hidden>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="join-title">
+        <div class="lightbox__head">
+          <div>
+            <h2 id="join-title" style="font-size: var(--text-xl); margin-bottom: 0.35rem">Pilot concept / demo</h2>
+            <p class="concept-caption">This action does not submit data or create an account.</p>
+          </div>
+          <button class="lightbox__close" type="button" data-demo-modal-close aria-label="Close">✕</button>
+        </div>
+        <p>
+          Thanks for exploring LINK. In a live product, this would begin household setup. Here, it simply demonstrates the intended next step for an academic pilot.
+        </p>
+        <div class="btn-row">
+          <button class="btn btn--primary" type="button" data-demo-modal-close>Got it</button>
+          <a class="btn btn--secondary" href="/faq.html">Read FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/js/app.js"></script>
+  </body>
+</html>

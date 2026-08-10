@@ -16,6 +16,7 @@ const OUT = resolve(process.cwd(), "..", "qa-shots");
 const PAGES = [
   ["home", "/"],
   ["how-it-works", "/how-it-works.html"],
+  ["earn-to-burn", "/earn-to-burn.html"],
   ["for-families", "/for-families.html"],
   ["use-cases", "/use-cases.html"],
   ["partners", "/partners.html"],
@@ -98,8 +99,8 @@ mkdirSync(OUT, { recursive: true });
 
 for (const [vpName, viewport] of VIEWPORTS) {
   for (const [name, path] of PAGES) {
-    if (vpName === "mobile" && !["home", "for-families", "use-cases", "faq"].includes(name)) continue;
-    if (vpName === "reduced" && !["home", "for-families", "use-cases"].includes(name)) continue;
+    if (vpName === "mobile" && !["home", "earn-to-burn", "for-families", "use-cases", "faq"].includes(name)) continue;
+    if (vpName === "reduced" && !["home", "earn-to-burn", "for-families", "use-cases"].includes(name)) continue;
 
     const page = await browser.newPage();
     await page.setViewport(viewport);

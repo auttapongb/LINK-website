@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Square icon cut of the LINK mark. Same geometry as link-mark.svg, but the
+  ribbon is stroked at 20 units instead of 13 so it survives a 16px favicon;
+  scaled down to a 64-unit square the drawn width lands at 1px at 16px and 2px
+  at 32px, where the 13-unit original would disappear.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LINK">
+  <defs>
+    <linearGradient id="faviconWarm" gradientUnits="userSpaceOnUse" x1="6.5" y1="0" x2="271.3" y2="0">
+      <stop offset="0" stop-color="#8B7A80" />
+      <stop offset="0.3" stop-color="#A47C5A" />
+      <stop offset="0.55" stop-color="#C98734" />
+      <stop offset="1" stop-color="#FB9304" />
+    </linearGradient>
+    <linearGradient id="faviconCool" gradientUnits="userSpaceOnUse" x1="6.5" y1="0" x2="271.3" y2="0">
+      <stop offset="0" stop-color="#8B7A80" />
+      <stop offset="0.3" stop-color="#5A69A6" />
+      <stop offset="0.55" stop-color="#3B61C4" />
+      <stop offset="1" stop-color="#0854F4" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4.7 23.25) scale(0.1966)">
+    <g fill="none" stroke-width="20" stroke-linecap="butt">
+      <path
+        stroke="url(#faviconWarm)"
+        d="M6.5 44.5C6.5 37 15.4 6.5 57.9 6.5c30.8 0 51 15.5 81 38 30 22.5 50.3 38 81 38 42.5 0 51.4-30.5 51.4-38s-8.9-38-51.4-38c-30.7 0-51 15.5-81 38-30 22.5-50.2 38-81 38C15.4 82.5 6.5 52 6.5 44.5Z"
+      />
+      <path
+        stroke="url(#faviconCool)"
+        d="M271.3 44.5c0-7.5-8.9-38-51.4-38-30.7 0-51 15.5-81 38-30 22.5-50.2 38-81 38C15.4 82.5 6.5 52 6.5 44.5"
+      />
+      <circle cx="138.9" cy="44.5" r="14" fill="#0A53F6" stroke="none" />
+    </g>
+  </g>
+</svg>

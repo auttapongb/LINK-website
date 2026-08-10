@@ -1,0 +1,62 @@
+[
+  {
+    "key": "lotuss",
+    "name": "Lotus's",
+    "file": "lotuss.svg",
+    "type": "svg",
+    "kind": "wordmark",
+    "aspect": 4.63,
+    "opticalScale": 1.0,
+    "fallback": false,
+    "darkOnLight": true,
+    "notes": "Reference mark for optical sizing: heavy geometric letterforms that fill the full viewBox height. The trailing apostrophe-s is brand yellow #F9BE00, which sits at roughly 1.5:1 against the pearl background — a neutral treatment must darken rather than fade it, or that half of the wordmark disappears."
+  },
+  {
+    "key": "bts",
+    "name": "BTS",
+    "file": "bts.svg",
+    "type": "svg",
+    "kind": "combination",
+    "aspect": 0.82,
+    "opticalScale": 1.3,
+    "fallback": false,
+    "darkOnLight": true,
+    "notes": "The only portrait mark in the set: a small BTS logotype above the blue/red interlocking rail device. The logotype is about 12% of the total height, so it will not be readable at row scale — treat this as a symbol and render the brand name in text alongside it. Scaled up to 1.3 to give the narrow column comparable presence."
+  },
+  {
+    "key": "ais",
+    "name": "AIS",
+    "file": "ais.svg",
+    "type": "svg",
+    "kind": "combination",
+    "aspect": 2.78,
+    "opticalScale": 1.2,
+    "fallback": false,
+    "darkOnLight": true,
+    "notes": "Green gradient swoosh above and behind the AIS logotype. The letters occupy only the lower ~52% of the viewBox, hence the scale-up. Fills are gradient-clipped, so the file keeps its clipPath and linearGradient defs (ids are prefixed ais-*). The lime swoosh (#bfdf19) is very light and needs a darkening neutral treatment, not opacity."
+  },
+  {
+    "key": "iberry",
+    "name": "iBerry",
+    "file": "iberry.png",
+    "type": "png",
+    "kind": "wordmark",
+    "aspect": 3.52,
+    "opticalScale": 1.15,
+    "fallback": false,
+    "darkOnLight": true,
+    "notes": "Genuine mark, but raster only — no vector version is published anywhere. Transparent PNG at 176x50, so keep the rendered height at or below ~25px to stay crisp on 2x displays. Ink fills the full bitmap with no internal padding. The wordmark is set lowercase ('iberry') and is the pre-2026 logotype; the group refreshed its identity in 2026 but has published no downloadable asset."
+  },
+  {
+    "key": "ihg",
+    "name": "IHG",
+    "file": "ihg.svg",
+    "type": "svg",
+    "kind": "wordmark",
+    "aspect": 6.03,
+    "opticalScale": 0.88,
+    "fallback": false,
+    "darkOnLight": true,
+    "notes": "Secondary horizontal lockup: the IHG monogram plus a stacked 'HOTELS & RESORTS' descriptor, so the file already spells out the brand name. By far the widest mark in the set, scaled down so it does not dominate the row. Solid #000000 throughout, and includes a small registered-trademark glyph that will go soft below ~28px."
+  }
+]

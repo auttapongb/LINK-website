@@ -119,22 +119,36 @@
 .partner-strip__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-3);
+  align-items: center;
+  gap: var(--space-4) clamp(1.5rem, 4vw, 3rem);
   list-style: none;
 }
 
-.partner-badge {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.25rem;
-  padding: 0.35rem 0.85rem;
-  border: 1px solid var(--color-line);
-  border-radius: var(--radius-sm);
-  background: var(--color-surface);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--color-ink);
+/* Real partner marks, held to one optical weight and knocked back to neutral
+   grey so the strip reads as one row instead of five competing brands. */
+.partner-mark {
+  display: grid;
+  place-items: center;
+  height: 2.7rem;
+}
+
+/* Sized by height rather than max-height: these are SVGs, and an auto height on
+   an SVG image resolves against its own viewBox, which puts five brands at five
+   unrelated sizes. Fixing the height and letting the width follow is what makes
+   the row read as one optical weight. --logo-scale corrects per mark, because a
+   tall roundel and a long wordmark cannot share a cap height. */
+.partner-mark img {
+  display: block;
+  height: calc(1.7rem * var(--logo-scale, 1));
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.72);
+  transition: filter var(--dur-long) var(--ease-out);
+}
+
+.partner-mark:hover img {
+  filter: none;
 }
 
 .partner-strip__note {
@@ -454,7 +468,7 @@
 .pooled {
   padding: var(--space-5);
   border-radius: var(--radius-lg);
-  background: linear-gradient(145deg, rgba(47, 128, 237, 0.08), rgba(31, 168, 138, 0.12));
+  background: linear-gradient(145deg, rgba(35, 96, 232, 0.08), rgba(31, 168, 138, 0.12));
   border: 1px solid var(--color-line);
 }
 
@@ -747,7 +761,7 @@
   text-align: left;
   padding: var(--space-8) 0;
   background:
-    linear-gradient(120deg, rgba(47, 128, 237, 0.08), rgba(31, 168, 138, 0.12)),
+    linear-gradient(120deg, rgba(35, 96, 232, 0.08), rgba(31, 168, 138, 0.12), rgba(164, 124, 90, 0.1)),
     var(--color-surface);
   border-block: 1px solid var(--color-line);
 }
@@ -784,8 +798,8 @@
 
 .demo-banner {
   padding: var(--space-3) var(--space-4);
-  background: rgba(201, 151, 46, 0.12);
-  border: 1px solid rgba(201, 151, 46, 0.35);
+  background: rgba(240, 144, 15, 0.1);
+  border: 1px solid rgba(240, 144, 15, 0.34);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
   color: var(--color-ink);
@@ -877,8 +891,9 @@
   }
 
   .partner-block {
-    grid-template-columns: 180px 1fr;
-    align-items: baseline;
+    grid-template-columns: 230px 1fr;
+    gap: var(--space-5);
+    align-items: start;
   }
 
   .sitemap-list {

@@ -9,14 +9,18 @@
       content="LINK helps Thai families see, pool, and use loyalty points from BTS, Lotus’s, AIS, iBerry and IHG toward a shared goal — starting with a family getaway."
     />
     <meta name="theme-color" content="#1FA88A" />
-    <meta property="og:title" content="LINK — Worth More Together" />
-    <meta
-      property="og:description"
-      content="Scattered loyalty points become one shared family goal. Privacy-first. Explicit consent. Year-1 pilot with five everyday partners."
-    />
+    <meta property="og:site_name" content="LINK" />
+    <meta property="og:title" content="LINK — Your points are worth more together" />
+    <meta property="og:description" content="LINK helps Thai families see, pool, and use loyalty points from BTS, Lotus’s, AIS, iBerry and IHG toward a shared goal — starting with a family getaway." />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/brand/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+    <meta name="twitter:image" content="/assets/brand/og-image.jpg" />
+    <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
@@ -39,7 +43,7 @@
 
         <div class="hero__inner" data-hero-inner>
           <div class="hero__copy">
-            <p class="hero__brand" data-hero-brand aria-label="LINK">LINK</p>
+            <div class="hero__brand" data-hero-brand data-brand-mark="hero" data-brand-mark-lockup role="img" aria-label="LINK"></div>
             <p class="hero__eyebrow" data-hero-copy>One family. Five loyalty programs. One shared goal.</p>
             <h1 id="hero-title" class="hero__title" data-hero-title>Your points are worth more together.</h1>
             <p class="hero__support" data-hero-copy>Five small balances can become one real family trip.</p>
@@ -73,7 +77,7 @@
               </g>
               <g transform="rotate(-4 240 240)">
                 <ellipse data-orbit-arc cx="240" cy="240" rx="146" ry="196" />
-                <ellipse data-orbit-flow="gold" cx="240" cy="240" rx="146" ry="196" />
+                <ellipse data-orbit-flow="amber" cx="240" cy="240" rx="146" ry="196" />
                 <circle data-orbit-node="0.18" r="4" />
                 <circle data-orbit-node="0.72" r="5" />
               </g>
@@ -121,11 +125,21 @@
         <div class="shell partner-strip__inner">
           <p class="partner-strip__label" id="partner-strip-title">Earn where life already happens.</p>
           <ul class="partner-strip__list">
-            <li><span class="partner-badge">BTS</span></li>
-            <li><span class="partner-badge">Lotus’s</span></li>
-            <li><span class="partner-badge">AIS</span></li>
-            <li><span class="partner-badge">iBerry</span></li>
-            <li><span class="partner-badge">IHG</span></li>
+            <li class="partner-mark" style="--logo-scale: 1.5">
+              <img src="/assets/brand/partners/bts.svg" alt="BTS Skytrain" width="190" height="231" loading="lazy" decoding="async" />
+            </li>
+            <li class="partner-mark" style="--logo-scale: 1">
+              <img src="/assets/brand/partners/lotuss.svg" alt="Lotus’s" width="278" height="60" loading="lazy" decoding="async" />
+            </li>
+            <li class="partner-mark" style="--logo-scale: 0.98">
+              <img src="/assets/brand/partners/ais.svg" alt="AIS" width="309" height="111" loading="lazy" decoding="async" />
+            </li>
+            <li class="partner-mark" style="--logo-scale: 0.95">
+              <img src="/assets/brand/partners/iberry.png" alt="iBerry Group" width="176" height="50" loading="lazy" decoding="async" />
+            </li>
+            <li class="partner-mark" style="--logo-scale: 0.86">
+              <img src="/assets/brand/partners/ihg.svg" alt="IHG Hotels &amp; Resorts" width="243" height="40" loading="lazy" decoding="async" />
+            </li>
           </ul>
           <p class="partner-strip__note">Illustrative Year-1 pilot partners.</p>
         </div>

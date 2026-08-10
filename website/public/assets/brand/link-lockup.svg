@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LINK primary lockup: mobius mark over the wordmark.
+
+  Both are vector redraws of the supplied raster logo
+  (assets/brand/link-logo.png). The wordmark's four glyphs are entirely
+  straight-edged in the original, so they are reproduced as exact polygons
+  measured from that file rather than set in a substitute typeface: 34-unit
+  cap height, 10-unit stems, N diagonal at 0.56 run per rise, K arms meeting
+  in a point 6 units clear of the stem.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278 136" role="img" aria-label="LINK">
+  <defs>
+    <linearGradient id="linkLockupWarm" gradientUnits="userSpaceOnUse" x1="6.5" y1="0" x2="271.3" y2="0">
+      <stop offset="0" stop-color="#83757F" />
+      <stop offset="0.145" stop-color="#96786A" />
+      <stop offset="0.296" stop-color="#A47C5A" />
+      <stop offset="0.447" stop-color="#BA8344" />
+      <stop offset="0.56" stop-color="#CB8634" />
+      <stop offset="0.711" stop-color="#DC8B24" />
+      <stop offset="0.862" stop-color="#EC8F12" />
+      <stop offset="1" stop-color="#FB9304" />
+    </linearGradient>
+    <linearGradient id="linkLockupCool" gradientUnits="userSpaceOnUse" x1="6.5" y1="0" x2="271.3" y2="0">
+      <stop offset="0" stop-color="#83757F" />
+      <stop offset="0.069" stop-color="#74708B" />
+      <stop offset="0.221" stop-color="#626B9D" />
+      <stop offset="0.372" stop-color="#5267AD" />
+      <stop offset="0.447" stop-color="#4A64B5" />
+      <stop offset="0.56" stop-color="#3B61C4" />
+      <stop offset="0.711" stop-color="#235ADD" />
+      <stop offset="0.862" stop-color="#1357EB" />
+      <stop offset="1" stop-color="#0854F4" />
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke-width="13" stroke-linecap="butt">
+    <path
+      stroke="url(#linkLockupWarm)"
+      d="M6.5 44.5C6.5 37 15.4 6.5 57.9 6.5c30.8 0 51 15.5 81 38 30 22.5 50.3 38 81 38 42.5 0 51.4-30.5 51.4-38s-8.9-38-51.4-38c-30.7 0-51 15.5-81 38-30 22.5-50.2 38-81 38C15.4 82.5 6.5 52 6.5 44.5Z"
+    />
+    <path
+      stroke="url(#linkLockupCool)"
+      d="M271.3 44.5c0-7.5-8.9-38-51.4-38-30.7 0-51 15.5-81 38-30 22.5-50.2 38-81 38C15.4 82.5 6.5 52 6.5 44.5"
+    />
+    <circle cx="138.9" cy="44.5" r="9.5" fill="#0A53F6" stroke="none" />
+  </g>
+  <circle cx="258.5" cy="44.5" r="3.4" fill="#F0900F" />
+
+  <g fill="#0F1B26">
+    <path d="M79.9 101.5h10v27h15v7h-25Z" />
+    <path d="M108.9 101.5h10v34h-10Z" />
+    <path d="M125.9 101.5h9l12 21.4v-21.4h10v34h-11.6l-10.4-18.5v18.5h-9Z" />
+    <path d="M162.9 101.5h10v11l11-11h11l-16 16.5 17.5 17.5h-11.5l-12-13v13h-10Z" />
+  </g>
+</svg>

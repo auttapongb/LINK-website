@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
+import { initFlow } from "./flow.js";
 import { initGradient } from "./gradient.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -160,12 +161,27 @@ function initHero() {
   }
 
   if (brand) {
-    tl.fromTo(
-      brand,
-      { autoAlpha: 0, yPercent: 40, letterSpacing: "0.34em" },
-      { autoAlpha: 1, yPercent: 0, letterSpacing: "0.08em", duration: 1.2, ease: "expo.out" },
-      0.1
-    );
+    // The mark draws itself: both halves of the ribbon stroke on from their
+    // own tips, then the crossing node, dot and wordmark land.
+    const ribbons = gsap.utils.toArray(brand.querySelectorAll("[data-ribbon]"));
+    const trim = gsap.utils.toArray(brand.querySelectorAll("[data-ribbon-node], [data-ribbon-dot]"));
+    const word = gsap.utils.toArray(brand.querySelectorAll('g[fill="currentColor"] path'));
+
+    tl.fromTo(brand, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.9 }, 0.05);
+
+    ribbons.forEach((ribbon) => {
+      const length = ribbon.getTotalLength?.() || 800;
+      gsap.set(ribbon, { strokeDasharray: length, strokeDashoffset: length });
+      tl.to(ribbon, { strokeDashoffset: 0, duration: 1.5, ease: "power2.inOut" }, 0.15);
+    });
+
+    if (trim.length) {
+      tl.fromTo(trim, { autoAlpha: 0, scale: 0.4, transformOrigin: "center" }, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2.4)" }, 1.25);
+    }
+
+    if (word.length) {
+      tl.fromTo(word, { autoAlpha: 0, yPercent: 45 }, { autoAlpha: 1, yPercent: 0, duration: 0.7, stagger: 0.06, ease: "expo.out" }, 1.0);
+    }
   }
 
   if (titleSplit) {
@@ -199,7 +215,7 @@ function initHero() {
   // the partner programs into the family pool.
   flows.forEach((flow, index) => {
     const length = flow.getTotalLength?.() || 600;
-    gsap.set(flow, { strokeDasharray: `14 ${length}`, strokeDashoffset: length });
+    gsap.set(flow, { strokeDasharray: `14 ${length}`, strokeDashoffset: length, strokeOpacity: 1 });
     gsap.to(flow, {
       strokeDashoffset: -14,
       duration: 2.8,
@@ -466,6 +482,7 @@ export function initMotion() {
   initSectionTransitions();
   initPointerInteractions();
   initScrollProgress();
+  initFlow();
 
   // Late-loading imagery changes document height; keep triggers honest.
   window.addEventListener("load", () => ScrollTrigger.refresh());

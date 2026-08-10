@@ -11,6 +11,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         howItWorks: resolve(__dirname, "how-it-works.html"),
+        earnToBurn: resolve(__dirname, "earn-to-burn.html"),
         forFamilies: resolve(__dirname, "for-families.html"),
         useCases: resolve(__dirname, "use-cases.html"),
         partners: resolve(__dirname, "partners.html"),

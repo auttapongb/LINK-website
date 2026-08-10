@@ -1,0 +1,612 @@
+/* ------------------------------------------------------------------ *
+ * Earn-to-burn page: full-bleed opening, the scrubbed loop diagram,
+ * and the reference blocks that back the narrative up in plain text.
+ * ------------------------------------------------------------------ */
+
+.flow-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 92svh;
+  display: grid;
+  align-items: center;
+  /* Extra room at the foot so the scroll cue clears the composition. */
+  padding: var(--space-8) 0 var(--space-9);
+  border-bottom: 1px solid var(--color-line);
+}
+
+/* Atmosphere carries both halves of the mark: bronze low-left, blue high-right. */
+.flow-hero::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse 46% 42% at 78% 16%, rgba(35, 96, 232, 0.2), transparent 66%),
+    radial-gradient(ellipse 44% 40% at 14% 82%, rgba(164, 124, 90, 0.22), transparent 64%),
+    radial-gradient(ellipse 52% 48% at 52% 54%, rgba(31, 168, 138, 0.14), transparent 70%),
+    linear-gradient(172deg, #ffffff, var(--color-canvas) 62%);
+  animation: atmos-drift 30s var(--ease-in-out) infinite alternate;
+}
+
+.flow-hero__inner {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.flow-hero__mark {
+  width: min(100%, 30rem);
+  justify-self: center;
+  color: var(--color-ink);
+}
+
+.flow-hero__mark svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.flow-hero__title {
+  max-width: 18ch;
+}
+
+.flow-hero__lead {
+  max-width: 52ch;
+}
+
+/* ---- Waste statistics ------------------------------------------- */
+
+.stat-row {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--color-line);
+}
+
+.stat {
+  padding-top: var(--space-5);
+  border-top: 3px solid var(--color-amber);
+}
+
+.stat:first-child {
+  border-top-color: var(--color-brand);
+}
+
+.stat:last-child {
+  border-top-color: var(--color-teal);
+}
+
+.stat__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.stat__value::after {
+  content: "%";
+  font-size: 0.55em;
+  vertical-align: 0.35em;
+  margin-left: 0.06em;
+  color: var(--color-muted);
+}
+
+.stat__label {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.stat p {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+}
+
+/* ---- The scrubbed loop ------------------------------------------ */
+
+.flow {
+  position: relative;
+  padding-block: var(--space-8) var(--space-9);
+}
+
+.flow__inner {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.flow__intro {
+  max-width: 46ch;
+}
+
+/* Stacked, the diagram reads as an overview of what follows rather than a
+   footnote to it, so it comes first until the sticky layout takes over. */
+.flow__stage-col {
+  order: -1;
+}
+
+.flow-stage {
+  position: relative;
+  width: min(100%, 520px);
+  margin-inline: auto;
+  aspect-ratio: 520 / 620;
+}
+
+.flow-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.flow-scene [data-flow-stream] {
+  fill: none;
+  stroke: var(--color-line-strong);
+  stroke-width: 1.25;
+}
+
+/* Travelling dashes stay invisible until the timeline gives them a real dash
+   pattern, so nothing paints a stripe when motion is switched off. Hidden via
+   stroke-opacity: a round cap on a zero-length dash still paints a dot. */
+.flow-scene [data-flow-pulse],
+[data-ribbon-flow] {
+  stroke-opacity: 0;
+}
+
+.flow-scene [data-flow-pulse] {
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.flow-scene [data-flow-pulse="1"] { stroke: var(--color-amber); }
+.flow-scene [data-flow-pulse="2"] { stroke: var(--color-bronze); }
+.flow-scene [data-flow-pulse="3"] { stroke: var(--color-brand); }
+.flow-scene [data-flow-pulse="4"] { stroke: var(--color-teal); }
+.flow-scene [data-flow-pulse="5"] { stroke: var(--color-brand-vivid); }
+
+.flow-scene [data-flow-vessel] {
+  fill: rgba(255, 255, 255, 0.62);
+  stroke: var(--color-line-strong);
+  stroke-width: 1.5;
+}
+
+.flow-scene [data-flow-level] {
+  stroke: var(--color-teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.flow-scene [data-flow-fence] {
+  fill: none;
+  stroke: var(--color-teal);
+  stroke-width: 1.5;
+  stroke-dasharray: 7 6;
+}
+
+.flow-scene [data-flow-rule] {
+  fill: var(--color-surface);
+  stroke: var(--color-teal);
+  stroke-width: 2;
+}
+
+/* Drawn in their spent state so the static page reads "window closed"; the
+   timeline resets them to empty and burns them down again on scroll. */
+.flow-scene [data-flow-month] {
+  fill: var(--color-amber);
+  stroke: var(--color-amber-deep);
+  stroke-width: 1;
+}
+
+.flow-scene [data-flow-burn] {
+  fill: none;
+  stroke: var(--color-amber-deep);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Outlined while it waits, solid once the pool converts — the same
+   empty-then-filled language the pool vessel uses. */
+.flow-scene [data-flow-plate] {
+  fill: var(--color-navy);
+  stroke: var(--color-line-strong);
+  stroke-width: 1.5;
+}
+
+.flow-scene [data-flow-loop] {
+  fill: none;
+  stroke: var(--color-brand);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* HTML sits over the diagram so the two numbers that carry the story stay
+   real text: readable by a screen reader, and correct with motion off. */
+.flow-readout,
+.flow-plate-label {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin: 0;
+}
+
+.flow-readout {
+  top: 61.5%;
+  width: 34%;
+}
+
+.flow-readout__value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5.5vw, 2.5rem);
+  font-weight: 650;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.flow-readout__label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: var(--text-xs);
+  color: var(--color-ink-2);
+}
+
+.flow-readout__window {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber-deep);
+}
+
+.flow-plate-label {
+  /* Centre of the navy plate: y 538 + half of 72, over a 620-unit viewBox. */
+  top: 92.6%;
+  width: 48%;
+  color: var(--color-navy-ink);
+}
+
+.flow-plate-label strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #fff;
+}
+
+.flow-plate-label span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: var(--text-xs);
+  color: rgba(232, 240, 238, 0.76);
+}
+
+/* ---- Acts -------------------------------------------------------- */
+
+.flow-acts {
+  display: grid;
+}
+
+.flow-act {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-line);
+}
+
+.flow-act:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Only dim once the scrubbed timeline is driving the page; without JS or with
+   motion switched off every act stays at full strength. */
+.flow--motion .flow-act {
+  opacity: 0.4;
+  transition: opacity var(--dur-long) var(--ease-out);
+}
+
+.flow--motion .flow-act.is-active {
+  opacity: 1;
+}
+
+.flow-act__num {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+  margin-bottom: var(--space-2);
+}
+
+.flow-act h3 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-3);
+}
+
+.flow-act p {
+  max-width: 44ch;
+}
+
+.flow-act__facts {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  list-style: none;
+}
+
+.flow-act__facts li {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: var(--space-3);
+  align-items: baseline;
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.flow-act__facts b {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 650;
+  color: var(--color-amber-deep);
+}
+
+/* ---- Partner logo lockups --------------------------------------- */
+
+.partner-logos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+  align-items: center;
+  list-style: none;
+  margin-top: var(--space-6);
+}
+
+.partner-logo {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+  text-align: center;
+}
+
+/*
+ * Neutral at rest so five unrelated brand palettes don't fight the page; the
+ * real colours come back on hover and on keyboard focus.
+ *
+ * The neutral pass *darkens* rather than fades, because two of these marks
+ * (Lotus's yellow apostrophe-s, the AIS lime swoosh) sit at barely 1.5:1
+ * against the pearl canvas and vanish entirely under a plain opacity knock-back.
+ *
+ * `--logo-scale` is per-brand optical sizing: a portrait rail device and a
+ * six-wide horizontal lockup need different heights to carry the same weight.
+ */
+.partner-logo__mark {
+  height: 3.1rem;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.partner-logo__mark img {
+  display: block;
+  height: calc(1.9rem * var(--logo-scale, 1));
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.8);
+  transition: filter var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+}
+
+.partner-logo:hover .partner-logo__mark img,
+.partner-logo:focus-within .partner-logo__mark img {
+  filter: none;
+  transform: scale(1.04);
+}
+
+.partner-logo__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.partner-logo__meta {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+/* A brand whose mark could not be licensed keeps a typographic lockup. */
+.partner-logo__mark--type {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: var(--color-ink-2);
+}
+
+/* ---- Rules and burn reference ----------------------------------- */
+
+.rule-list {
+  display: grid;
+  gap: 0;
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.rule-list > div {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.rule-list dt {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 650;
+  color: var(--color-ink);
+}
+
+.rule-list dd {
+  margin: 0;
+  color: var(--color-ink-2);
+  max-width: 56ch;
+}
+
+.burn-list {
+  display: grid;
+  gap: var(--space-2) var(--space-4);
+  margin-top: var(--space-5);
+  list-style: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.burn-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.band .burn-list li {
+  color: rgba(232, 240, 238, 0.86);
+  border-bottom-color: rgba(232, 240, 238, 0.18);
+}
+
+.burn-list li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  transform: translateY(-2px);
+}
+
+/* ---- Partners page rows ----------------------------------------- */
+
+.partner-block__brand {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
+.partner-block__brand .partner-logo__mark {
+  justify-items: start;
+  place-items: center start;
+  margin-bottom: var(--space-1);
+}
+
+/* Same darkening pass as the logo row, so a partner reads the same way
+   wherever it appears. */
+.partner-block__brand img {
+  filter: grayscale(1) brightness(0.5) contrast(1.1) opacity(0.8);
+  transition: filter var(--dur-long) var(--ease-out);
+}
+
+.partner-block:hover .partner-block__brand img {
+  filter: none;
+}
+
+.partner-block__mult {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber-deep);
+}
+
+/* ---- Touchpoints (partners page) -------------------------------- */
+
+.touchpoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  list-style: none;
+  margin-top: var(--space-3);
+}
+
+.touchpoints li {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.touchpoints li + li::before {
+  content: "·";
+  margin-right: var(--space-3);
+  color: var(--color-line-strong);
+}
+
+@media (min-width: 700px) {
+  .stat-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .partner-logos {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .burn-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .rule-list > div {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: var(--space-5);
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 900px) {
+  .flow-hero__inner {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  .flow-hero__mark {
+    justify-self: end;
+  }
+
+  .flow__inner {
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .flow__stage-col {
+    order: 0;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .flow-act {
+    padding-block: clamp(3.5rem, 11vh, 6.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-hero::before {
+    animation: none;
+  }
+
+  .partner-logo__mark img {
+    transition: none;
+  }
+}

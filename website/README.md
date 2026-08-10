@@ -21,12 +21,27 @@ every GSAP timeline, and renders the page in its final state — nothing is left
 waiting on a scroll to become visible. Smooth scrolling is also skipped on
 coarse pointers so native touch scrolling is untouched.
 
+The earn-to-burn loop takes this one step further: its diagram is authored in
+markup in its *finished* state (pool full, window spent, boundary drawn, loop
+closed), and `src/js/flow.js` rewinds that to zero only when the sticky desktop
+layout is in play and reduced motion is off. With JavaScript disabled, on a
+narrow screen, or with reduced motion, the page is a complete static explanation.
+
+### Brand assets
+
+`node scripts/brand-assets.mjs` regenerates the favicons and the social card from
+the SVG sources in `public/assets/brand/`. Run it by hand after editing any of
+those SVGs and commit the results; it is not part of `npm run build`. The LINK
+mark's path data is shared between the SVG files and `src/js/brand.js`, which is
+what the header, footer and animated marks render from.
+
 ## Pages
 
 | Page | Path |
 | --- | --- |
 | Home | `/` |
 | How it works | `/how-it-works.html` |
+| Earn to burn | `/earn-to-burn.html` |
 | For families | `/for-families.html` |
 | Use cases | `/use-cases.html` |
 | Partners | `/partners.html` |

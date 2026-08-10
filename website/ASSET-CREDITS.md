@@ -1,10 +1,41 @@
 # Asset credits & licences
 
-Every third-party asset used by this site is free for commercial use with no
-attribution requirement. Credits are recorded here anyway, as good practice.
+Almost every third-party asset used by this site is free for commercial use with
+no attribution requirement. There is one flagged exception — the iBerry mark,
+recorded under [Partner brand marks](#partner-brand-marks) below.
 
-Nothing is hot-linked: all imagery is downloaded into `public/assets/photos/`
-so the site works offline and does not depend on an external CDN at runtime.
+Nothing is hot-linked: all imagery is downloaded into `public/assets/` so the
+site works offline and does not depend on an external CDN at runtime.
+
+## The LINK logo
+
+The LINK mobius mark and wordmark were supplied by the brand owner as a raster
+PNG, kept verbatim at `public/assets/brand/link-logo.png` as the source of truth.
+Everything the site renders is a vector redraw of that file, measured off it
+pixel by pixel rather than traced by eye.
+
+| File | What it is |
+| --- | --- |
+| `link-logo.png` | The supplied original. Reference only; never rendered. |
+| `link-mark.svg` | The ribbon alone. |
+| `link-lockup.svg` | Ribbon over wordmark — the primary lockup, used in header, drawer and footer. |
+| `favicon.svg` | Square icon cut, ribbon boldened so it survives 16 px. |
+| `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `og-image.jpg` | Generated from the SVGs by `scripts/brand-assets.mjs`. |
+
+The ribbon is one closed curve of uniform 13-unit width, mirror symmetric about
+both axes through (138.9, 44.5), painted twice so colour travels *along* the
+ribbon rather than straight across the box: a warm pass over the whole loop, then
+a cool pass over the half running from the right tip through the crossing to the
+left tip. The wordmark's four glyphs are entirely straight-edged in the original,
+so they are reproduced as measured polygons instead of being set in a substitute
+typeface. The same path data is shared with the site's JavaScript in
+`src/js/brand.js`, so the chrome, the home hero and the earn-to-burn loop animate
+one definition rather than three copies that drift.
+
+Palette tokens in `src/styles/tokens.css` were resampled from the supplied PNG:
+`--color-brand` moved off a generic blue onto the mark's blue, and the mark's
+bronze/orange half replaced the site's previously unrelated gold as the warm
+accent family.
 
 ## Photography — Unsplash
 
@@ -38,6 +69,85 @@ display dimensions (`?fm=webp&w=…&h=…&fit=crop&q=…`), so no local
 re-encoding step is needed. Every `<img>` carries explicit `width`/`height`
 and, apart from the hero, `loading="lazy"`.
 
+## Partner brand marks
+
+All partner marks below are third-party trademarks reproduced at small size solely
+for nominative identification within a non-commercial academic pilot concept. No
+endorsement, sponsorship, or affiliation with any of these companies is implied or
+claimed. Each mark remains the property of its respective owner. Files were
+downloaded and are served locally rather than hot-linked, and none of the artwork
+has been recoloured or redrawn — the site's neutral grey rendering is a CSS filter
+applied at display time, reversed on hover.
+
+Machine-readable details (intrinsic aspect ratio, optical scale, format) live in
+`public/assets/brand/partners/manifest.json`.
+
+### Lotus's
+
+- **File:** `public/assets/brand/partners/lotuss.svg`
+- **Source:** <https://upload.wikimedia.org/wikipedia/commons/c/c6/Lotus%27s_Logo.svg>
+- **File description page:** <https://commons.wikimedia.org/wiki/File:Lotus%27s_Logo.svg>
+- **Licence:** Public domain — Wikimedia Commons tags this file `{{PD-textlogo}}`:
+  the logo consists only of simple geometric shapes and text and is below the
+  threshold of originality required for copyright protection. The file also carries
+  `{{Trademarked}}`.
+- **Trademark holder:** Ek-Chai Distribution System Co., Ltd. (Lotus's), Charoen
+  Pokphand Group.
+
+### BTS
+
+- **File:** `public/assets/brand/partners/bts.svg`
+- **Source:** <https://upload.wikimedia.org/wikipedia/commons/e/ee/BTS-Logo.svg>
+- **File description page:** <https://commons.wikimedia.org/wiki/File:BTS-Logo.svg>
+- **Licence:** Public domain — tagged `{{PD-TextLogo}}` on Commons (simple
+  geometric shapes and text, below the threshold of originality), plus
+  `{{Trademark}}`.
+- **Trademark holder:** Bangkok Mass Transit System Public Company Limited
+  (BTS Skytrain), BTS Group Holdings PCL.
+
+### AIS
+
+- **File:** `public/assets/brand/partners/ais.svg`
+- **Source:** <https://upload.wikimedia.org/wikipedia/commons/3/3b/Advanced_Info_Service_logo.svg>
+- **File description page:** <https://commons.wikimedia.org/wiki/File:Advanced_Info_Service_logo.svg>
+- **Licence:** Public domain — tagged `{{PD-textlogo}}` on Commons, plus
+  `{{trademarked}}`. Credited on the file page to Advanced Info Service (AIS) PCL.
+- **Trademark holder:** Advanced Info Service Public Company Limited (AIS).
+
+### iBerry
+
+- **File:** `public/assets/brand/partners/iberry.png`
+- **Source:** iBerry's own website, retrieved from the Internet Archive because the
+  original host no longer serves the site:
+  <https://web.archive.org/web/20201206121509if_/http://www.iberryhomemade.com/assets/imgs/logo.png>
+  (original URL `http://www.iberryhomemade.com/assets/imgs/logo.png`)
+- **Licence:** **Trademark, used for identification. This is _not_ a free
+  licence.** iBerry Group has no logo file on Wikimedia Commons, no Simple Icons
+  entry, and no public press or brand-resources page, so the mark was taken from
+  the company's own site and is reproduced here under nominative fair use only.
+  Unlike the other four marks, no public-domain or free-licence tag applies to this
+  file. It is the only asset on the site in that position, and it should be the
+  first thing removed if this concept were ever used commercially.
+- **Trademark holder:** iBerry Group (iBerry Homemade Co., Ltd.), Thailand.
+- **Note:** This is the pre-2026 lowercase `iberry` logotype, and the only
+  raster-only mark in the set (176 × 50 transparent PNG). The group announced a new
+  identity in 2026 but has not published a downloadable version of it.
+
+### IHG
+
+- **File:** `public/assets/brand/partners/ihg.svg`
+- **Source:** IHG's own corporate site:
+  <https://www.ihgplc.com/~/media/Images/I/Ihg-Plc/logo/ihg_secondary_horizontal_logo_black_rgb_5.svg>
+- **Licence:** Public domain as to copyright — the identical lockup is hosted on
+  Wikimedia Commons as
+  [File:IHG Hotels & Resorts logo.svg](https://commons.wikimedia.org/wiki/File:IHG_Hotels_%26_Resorts_logo.svg),
+  tagged `{{PD-textlogo}}` (simple geometric shapes and text, below the threshold
+  of originality) plus `{{Trademarked}}`. The first-party file from ihgplc.com was
+  used instead of the Commons copy because it is the same artwork exported with
+  simpler path geometry.
+- **Trademark holder:** Six Continents Limited / InterContinental Hotels Group PLC
+  (IHG Hotels & Resorts).
+
 ## Icons — Lucide
 
 [Lucide](https://lucide.dev) v1, [ISC licence](https://github.com/lucide-icons/lucide/blob/main/LICENSE).
@@ -59,11 +169,15 @@ Google Fonts CSS API (unchanged from v1).
 
 ## Generated in-house
 
-- `public/assets/logo.svg` — the LINK mark (unchanged from v1).
 - The hero's animated gradient is a hand-written WebGL shader in
   `src/js/gradient.js`, not a third-party asset.
 - The paper grain overlay is an inline SVG `feTurbulence` filter in
   `src/styles/atmosphere.css`, not an image file.
+- The earn-to-burn loop diagram in `earn-to-burn.html` is hand-authored SVG.
+- `og-image.jpg` is rendered from the site's own SVG lockup and web fonts by
+  `scripts/brand-assets.mjs`.
+- `public/assets/logo.svg` (the v1 placeholder mark) was removed once the real
+  lockup landed.
 
 ## Considered and skipped
 

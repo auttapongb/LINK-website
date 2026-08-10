@@ -21,23 +21,33 @@
   --color-line: rgba(16, 46, 58, 0.12);
   --color-line-strong: rgba(16, 46, 58, 0.22);
 
-  /* Brand */
-  --color-brand: #2f80ed;
-  --color-brand-deep: #1f63c4;
+  /*
+   * Brand — sampled from the official LINK mark (assets/brand/link-logo.png).
+   * The mark runs mauve → bronze → orange along one strand and mauve → vivid
+   * blue along the other, so the site's blue moved off the old generic #2f80ed
+   * onto the logo's blue, and the warm half became the accent family that
+   * replaces the earlier unrelated gold. The `-deep` variants are the
+   * text-safe versions; the raw logo hues only ever paint graphics.
+   */
+  --color-brand: #2360e8;
+  --color-brand-deep: #1a48be;
+  --color-brand-vivid: #0a53f6;
   --color-teal: #1fa88a;
   --color-mint: #d4f0e6;
-  --color-gold: #c9972e;
+  --color-amber: #f0900f;
+  --color-amber-deep: #8f5105;
+  --color-bronze: #a47c5a;
+  --color-bronze-deep: #7a5535;
   --color-coral: #e05648;
-  --color-plum: #6e4a56;
+  --color-plum: #6b5a68;
   --color-rose: #f3e4e7;
   --color-navy: #0e2731;
   --color-navy-ink: #e8f0ee;
-  --color-focus: #1f63c4;
+  --color-focus: #1a48be;
 
   /* Typography */
   --font-display: "Fraunces", "Noto Serif Thai", Georgia, serif;
   --font-body: "IBM Plex Sans", "Noto Sans Thai", ui-sans-serif, sans-serif;
-  --font-wordmark: "Fraunces", Georgia, serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;

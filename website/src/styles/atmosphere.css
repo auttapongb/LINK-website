@@ -82,7 +82,8 @@
   /* Static fallback that stays visible if WebGL is unavailable. */
   background:
     radial-gradient(ellipse 62% 52% at 74% 30%, rgba(31, 168, 138, 0.2), transparent 70%),
-    radial-gradient(ellipse 48% 44% at 16% 68%, rgba(47, 128, 237, 0.16), transparent 66%),
+    radial-gradient(ellipse 48% 44% at 16% 68%, rgba(35, 96, 232, 0.16), transparent 66%),
+    radial-gradient(ellipse 40% 38% at 92% 84%, rgba(240, 144, 15, 0.12), transparent 68%),
     linear-gradient(168deg, #ffffff 0%, var(--color-canvas) 55%);
 }
 
@@ -124,7 +125,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(200deg, rgba(31, 168, 138, 0.22), transparent 46%, rgba(47, 128, 237, 0.18));
+  background: linear-gradient(200deg, rgba(31, 168, 138, 0.22), transparent 46%, rgba(35, 96, 232, 0.18));
   mix-blend-mode: soft-light;
 }
 
@@ -136,14 +137,19 @@
   margin-inline: auto;
 }
 
+/* The hero leads with the real lockup rather than the word set in a
+   substitute face, so the first thing in the viewport is the actual mark. */
 .hero__brand {
-  font-family: var(--font-wordmark);
-  font-size: clamp(3.4rem, 11vw, 7rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 0.92;
-  margin: 0 0 var(--space-4);
-  color: var(--color-teal);
+  width: clamp(9.5rem, 22vw, 15rem);
+  margin: 0 0 var(--space-5);
+  color: var(--color-ink);
+}
+
+.hero__brand svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
 }
 
 .hero__title {
@@ -214,17 +220,19 @@
   stroke: var(--color-teal);
   stroke-width: 3.5;
   stroke-linecap: round;
-  /* Hidden until the timeline replaces this with a travelling dash, so the
-     full ellipse never flashes on load or when motion is switched off. */
-  stroke-dasharray: 0 9999;
+  /* Hidden until the timeline gives it a real dash, so the full ellipse never
+     flashes on load or when motion is switched off. Hiding via stroke-opacity
+     rather than a zero-length dash, because a round cap on a zero-length dash
+     still paints a dot. */
+  stroke-opacity: 0;
 }
 
 .orbit-field [data-orbit-flow="brand"] {
   stroke: var(--color-brand);
 }
 
-.orbit-field [data-orbit-flow="gold"] {
-  stroke: var(--color-gold);
+.orbit-field [data-orbit-flow="amber"] {
+  stroke: var(--color-amber);
 }
 
 .orbit-field [data-orbit-node] {
@@ -503,21 +511,8 @@ li:hover > .media img {
  * ------------------------------------------------------------------ */
 
 .partner-block h3 {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.partner-block__icon {
-  display: inline-flex;
-  width: 2.1rem;
-  height: 2.1rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  background: var(--color-mint);
-  color: #14705d;
-  font-size: 1.05rem;
+  font-size: var(--text-lg);
+  line-height: 1.25;
 }
 
 /* ------------------------------------------------------------------ *
@@ -544,7 +539,8 @@ li:hover > .media img {
   pointer-events: none;
   background:
     radial-gradient(ellipse 55% 60% at 82% 18%, rgba(31, 168, 138, 0.24), transparent 68%),
-    radial-gradient(ellipse 48% 52% at 8% 52%, rgba(47, 128, 237, 0.18), transparent 64%);
+    radial-gradient(ellipse 48% 52% at 8% 52%, rgba(35, 96, 232, 0.18), transparent 64%),
+    radial-gradient(ellipse 42% 46% at 62% 96%, rgba(164, 124, 90, 0.14), transparent 66%);
   animation: atmos-drift 26s var(--ease-in-out) infinite alternate;
 }
 

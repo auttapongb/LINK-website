@@ -332,14 +332,19 @@
   border-bottom: 1px solid var(--color-line);
 }
 
+/* Ink on the leaf green, not white: white on #7EC466 is 2.1:1 and this is the
+   most prominent control in the hero. Dark ink on the same green is 7.2:1. */
 .device__action {
   width: 100%;
-  min-height: 42px;
-  border-radius: var(--radius-sm);
+  min-height: 44px;
+  border-radius: var(--radius-md);
   background: var(--color-green);
-  color: #fff;
-  font-size: 0.8rem;
+  color: var(--color-cocoa);
+  font-size: 0.85rem;
   font-weight: 600;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -3px 0 rgba(64, 49, 42, 0.12);
 }
 
 .device-state {
@@ -438,9 +443,12 @@
   display: block;
 }
 
+/* auto-fit rather than a hard five columns: five fixed tracks at this width gave
+   each card about 63px, which broke every label into two- and three-word
+   fragments. */
 .frag-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
   gap: var(--space-3);
 }
 
@@ -462,7 +470,59 @@
   color: var(--color-muted);
 }
 
+/* The balance itself. Naming the number is what turns "scattered" from an
+   adjective into something the reader can add up. */
+.frag__num {
+  display: block;
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-size: var(--text-lg);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+  color: var(--color-ink);
+}
+
+.compare__verdict {
+  margin: var(--space-4) 0 0;
+  font-family: var(--font-display);
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-size: var(--text-md);
+  color: var(--color-ink);
+}
+
+/* In the "after" state the four contributions step back so the total is
+   obviously the answer and not just a fifth item in a row. */
+.frag--muted {
+  border-style: solid;
+  border-color: var(--color-line);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.frag--muted .frag__num {
+  font-size: var(--text-md);
+  color: var(--color-ink-2);
+}
+
+.frag--total {
+  border: 0;
+  background: var(--color-coral-soft);
+  box-shadow: var(--clay-shadow);
+}
+
+.frag--total .frag__num {
+  font-size: var(--text-xl);
+  color: var(--color-coral-deep);
+}
+
+.frag--total span {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
 .pooled {
+  margin-top: var(--space-4);
   padding: var(--space-5);
   border-radius: var(--radius-lg);
   background: linear-gradient(145deg, rgba(35, 96, 232, 0.08), rgba(126, 196, 102, 0.12));
@@ -470,7 +530,12 @@
 }
 
 .pooled h3 {
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.pooled p {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-sm);
 }
 
 /* Steps */
@@ -861,6 +926,69 @@
   color: var(--color-muted);
 }
 
+/* The panel used to promise "the full pilot concept" and deliver three labels.
+   The strongest thing it can show is the arithmetic itself: three balances that
+   are individually useless, and the one number they add up to. */
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  text-align: left;
+}
+
+.concept-table caption {
+  padding-bottom: var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-align: left;
+}
+
+.concept-table th,
+.concept-table td {
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--color-line);
+  font-weight: 400;
+  color: var(--color-ink-2);
+  vertical-align: baseline;
+}
+
+.concept-table th {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.concept-table td:nth-child(2) {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.concept-table td:last-child {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+}
+
+.concept-table__total th,
+.concept-table__total td {
+  border-bottom: 0;
+  padding-top: var(--space-3);
+  color: var(--color-ink);
+}
+
+.concept-table__total td:nth-child(2) {
+  font-size: var(--text-lg);
+  color: var(--color-coral-deep);
+}
+
+.concept-table__total td:last-child {
+  color: var(--color-ink-2);
+  font-weight: 500;
+}
+
 @media (min-width: 700px) {
   .journey {
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -886,9 +1014,6 @@
 }
 
 @media (min-width: 960px) {
-  .frag-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

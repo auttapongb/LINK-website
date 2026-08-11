@@ -110,20 +110,34 @@ export function initInteractions() {
     }
   });
 
+  const demoModal = document.querySelector("[data-demo-modal]");
+  // Remembered so closing can hand focus back to whatever opened the modal,
+  // instead of dropping the keyboard user at the top of the document.
+  let demoOpener = null;
+
+  const closeDemoModal = () => {
+    if (!demoModal || demoModal.hidden) return;
+    demoModal.hidden = true;
+    demoOpener?.focus();
+    demoOpener = null;
+  };
+
   document.querySelectorAll("[data-demo-modal-open]").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const modal = document.querySelector("[data-demo-modal]");
-      if (!modal) return;
-      modal.hidden = false;
-      modal.querySelector("button")?.focus();
+      if (!demoModal) return;
+      demoOpener = btn;
+      demoModal.hidden = false;
+      demoModal.querySelector("button")?.focus();
     });
   });
 
   document.querySelectorAll("[data-demo-modal-close]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const modal = document.querySelector("[data-demo-modal]");
-      if (!modal) return;
-      modal.hidden = true;
-    });
+    btn.addEventListener("click", closeDemoModal);
+  });
+
+  // Escape is how everyone expects to leave a modal, and without it a keyboard
+  // user was stuck inside this one.
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeDemoModal();
   });
 }

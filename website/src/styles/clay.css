@@ -140,6 +140,54 @@
 }
 
 /* ------------------------------------------------------------------ *
+ * Everything else that can be clicked
+ * ------------------------------------------------------------------ */
+
+/*
+ * Roughly half the clickable surfaces on the site had no hover response at all,
+ * which in a design language built on give reads as unfinished. Nav links,
+ * footer links and stepper tabs now all answer to a pointer, and the same pass
+ * takes every one of them to a 44px target: the header and footer links were
+ * rendering 18px tall.
+ */
+.nav__links a,
+.footer-nav a,
+.nav-drawer__links a,
+.sitemap-list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 0.55rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition:
+    background var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out),
+    transform var(--dur-short) var(--ease-squish);
+}
+
+.nav__links a:hover,
+.footer-nav a:hover,
+.nav-drawer__links a:hover,
+.sitemap-list a:hover {
+  background: rgba(64, 49, 42, 0.07);
+  transform: translateY(-1px);
+}
+
+.footer-nav a:hover,
+.nav-drawer__links a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* An unselected tab should look like it wants to be pressed. */
+.step-tabs button:hover[aria-selected="false"],
+.compare__toggle button:hover[aria-pressed="false"] {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-ink);
+}
+
+/* ------------------------------------------------------------------ *
  * Matte surfaces: things that hold content but are not pressable
  * ------------------------------------------------------------------ */
 
@@ -169,6 +217,34 @@
 .goal-figure {
   border-radius: var(--clay-radius);
   overflow: hidden;
+}
+
+/*
+ * One grade for every photograph on the site.
+ *
+ * The stock library is moody documentary work — a dim train depot, an unsmiling
+ * grey-wall headshot, a wet market at full saturation — and photography covers
+ * more page area than anything else, so left alone it was quietly overruling the
+ * whole warm pastel direction. Lifting the blacks, warming the mid-tones and
+ * pulling a little saturation out brings all of it into one family and lets the
+ * clay surfaces set the mood instead of fighting for it. Sepia at 12% is doing
+ * the warming: it is the cheapest way to tint toward the ink brown without
+ * touching the files.
+ */
+.media img,
+.band__media img,
+.journey__media img,
+.persona__portrait img,
+.goal-figure img,
+.hero__photo img {
+  filter: brightness(1.06) saturate(0.86) contrast(0.96) sepia(0.12);
+}
+
+/* The persona portraits get the most correction, because they are the three
+   images most obviously shot in three different rooms by three different
+   people, and they sit side by side. */
+.persona__portrait img {
+  filter: brightness(1.1) saturate(0.78) contrast(0.94) sepia(0.18);
 }
 
 .media {

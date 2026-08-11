@@ -83,6 +83,8 @@ const AUDIT = `(() => {
     const carriesContent = el.textContent.trim() || el.tagName === 'IMG' || el.querySelector('img');
     if (offscreen || !carriesContent) return;
     if (el.closest('[hidden]') || el.hasAttribute('hidden')) return;
+    // Decorative / layout-only nodes (duplicate tile labels kept for row height).
+    if (el.closest('[aria-hidden="true"]') || el.getAttribute('aria-hidden') === 'true') return;
 
     // A clip-path wipe that never ran leaves the element fully clipped away.
     const clip = cs.clipPath;

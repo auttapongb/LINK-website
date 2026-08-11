@@ -50,22 +50,48 @@ function initReveals() {
   // The CSS `.reveal` rule is the no-JS fallback. Once GSAP owns these nodes
   // we neutralise it and drive the hidden state from the timeline instead.
   nodes.forEach((node) => node.classList.add("is-in"));
-  gsap.set(nodes, { autoAlpha: 0, y: 26 });
+
+  /*
+   * Opacity only — deliberately not autoAlpha.
+   *
+   * autoAlpha adds `visibility: hidden` at zero, and a hidden subtree cannot take
+   * focus. That turned every un-revealed block into a keyboard dead zone: the
+   * homepage's Connect/Pool/Use together tabs sit below the fold, so they were
+   * unfocusable, and because they were unfocusable a keyboard user could never
+   * scroll to them by tabbing, which was the only thing that would have revealed
+   * them. Steps 2 and 3 were simply unreachable without a mouse. Plain opacity
+   * keeps the element in the focus order, and the focusin handler below reveals
+   * it the instant it is reached.
+   */
+  gsap.set(nodes, { opacity: 0, y: 26 });
+
+  const show = (batch) =>
+    // "auto" so this only resolves conflicts on opacity/transform; a plain
+    // `true` would kill unrelated tweens such as the clip-path wipes.
+    gsap.to(batch, {
+      opacity: 1,
+      y: 0,
+      // Shorter than it was: a reader who stops scrolling mid-fade should not
+      // have to wait most of a second to be able to read the paragraph.
+      duration: 0.5,
+      ease: "power3.out",
+      stagger: 0.05,
+      overwrite: "auto",
+    });
 
   ScrollTrigger.batch(nodes, {
-    start: "top 92%",
+    // Earlier than "top 92%", which let a block sit half-faded at a natural
+    // resting scroll position.
+    start: "top 96%",
     once: true,
-    onEnter: (batch) =>
-      // "auto" so this only resolves conflicts on opacity/transform; a plain
-      // `true` would kill unrelated tweens such as the clip-path wipes.
-      gsap.to(batch, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.85,
-        ease: "power3.out",
-        stagger: 0.08,
-        overwrite: "auto",
-      }),
+    onEnter: show,
+  });
+
+  // Tabbing into anything inside a block that has not revealed yet reveals it
+  // immediately, rather than leaving the focus ring on invisible content.
+  document.addEventListener("focusin", (event) => {
+    const node = event.target.closest?.(".reveal, [data-reveal]");
+    if (node && gsap.getProperty(node, "opacity") < 1) show([node]);
   });
 }
 
@@ -257,10 +283,16 @@ function initHero() {
     });
   }
 
-  // Hero drifts away as the page scrolls past it.
+  /*
+   * The hero drifts up slightly as the page scrolls past it, but it no longer
+   * fades. Fading the copy meant the headline, the CTAs and the product mock all
+   * dissolved to a quarter opacity while the decorative family photograph behind
+   * them stayed at full strength — so for several hundred pixels of scroll the
+   * last legible thing in the hero was stock photography, and the phone UI showed
+   * a face through it. Movement is fine; dissolving the value proposition is not.
+   */
   gsap.to(hero.querySelector("[data-hero-inner]"), {
-    y: -60,
-    autoAlpha: 0.25,
+    y: -40,
     ease: "none",
     scrollTrigger: { trigger: hero, start: "bottom 92%", end: "bottom 30%", scrub: 0.6 },
   });

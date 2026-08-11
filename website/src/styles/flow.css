@@ -89,13 +89,8 @@
   color: var(--color-ink);
 }
 
-.stat__value::after {
-  content: "%";
-  font-size: 0.55em;
-  vertical-align: 0.35em;
-  margin-left: 0.06em;
-  color: var(--color-muted);
-}
+/* The "%" that used to be pinned here is gone: the stats are counts now, not
+   percentages, because the percentages were unverifiable. */
 
 .stat__label {
   display: block;

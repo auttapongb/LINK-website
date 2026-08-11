@@ -15,8 +15,10 @@ const args = process.argv.slice(2);
 const targets = args.length
   ? args.map((a) => {
       const [name, rest] = a.split("=");
-      const [path, selector] = rest.split("@");
-      return { name, path, selector };
+      // name=/path@scroll-to-selector!click-selector
+      const [before, click] = rest.split("!");
+      const [path, selector] = before.split("@");
+      return { name, path, selector, click };
     })
   : [
       { name: "home-hero", path: "/" },
@@ -73,6 +75,18 @@ for (const vp of [
       if (!found) console.log(`  (no ${t.selector} on ${t.path})`);
     }
     await new Promise((r) => setTimeout(r, 1400));
+    if (t.click) {
+      // Dispatched in-page rather than with page.click so the scroll position set
+      // above survives: a real click scrolls the target into view first.
+      const hit = await page.evaluate((s) => {
+        const el = document.querySelector(s);
+        if (!el) return false;
+        el.click();
+        return true;
+      }, t.click);
+      if (!hit) console.log(`  (no ${t.click} to click on ${t.path})`);
+      await new Promise((r) => setTimeout(r, 900));
+    }
     await page.screenshot({ path: `${OUT}/look-${vp.key}-${t.name}.png` });
     console.log(`look-${vp.key}-${t.name}.png`);
   }

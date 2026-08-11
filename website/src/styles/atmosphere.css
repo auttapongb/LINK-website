@@ -142,10 +142,25 @@
 
 /* The hero leads with the real lockup rather than the word set in a
    substitute face, so the first thing in the viewport is the actual mark. */
+/*
+ * The hero draws the mark itself so the composition still says LINK with the nav
+ * removed. It used to be large enough to be a second header logo, though, and on
+ * a phone the two together ate the first 220px of an 844px viewport before the
+ * eyebrow started — so the value proposition sat below the fold to make room for
+ * the same logo twice. It is smaller now, and hidden entirely on narrow screens
+ * where the header lockup is only a thumb's width above it.
+ */
 .hero__brand {
-  width: clamp(9.5rem, 22vw, 15rem);
-  margin: 0 0 var(--space-5);
+  display: none;
+  width: clamp(7rem, 13vw, 10.5rem);
+  margin: 0 0 var(--space-4);
   color: var(--color-ink);
+}
+
+@media (min-width: 860px) {
+  .hero__brand {
+    display: block;
+  }
 }
 
 .hero__brand svg {

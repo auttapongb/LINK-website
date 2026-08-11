@@ -3,6 +3,19 @@
   margin-inline: auto;
 }
 
+/*
+ * The header is injected into a `<div data-chrome-header>` placeholder, and that
+ * div was the bug: a sticky element can only travel within its containing block,
+ * and this containing block was a wrapper sized to the header itself. So the
+ * header had nowhere to stick to and slid away at the first scroll — on all ten
+ * pages, in both motion modes, for the whole life of the site. `display: contents`
+ * removes the wrapper's box so the header's containing block becomes the body.
+ */
+[data-chrome-header],
+[data-chrome-footer] {
+  display: contents;
+}
+
 .site-header {
   position: sticky;
   top: 0;

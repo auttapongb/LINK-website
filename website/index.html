@@ -162,18 +162,55 @@
             </div>
             <div class="compare-panel is-active" data-compare-panel="before">
               <div class="frag-grid">
-                <div class="frag"><strong>Dad · Lotus’s</strong><span>Feels too small alone</span></div>
-                <div class="frag"><strong>Mom · AIS</strong><span>Easy to forget</span></div>
-                <div class="frag"><strong>Daughter · BTS</strong><span>Separate expiry</span></div>
-                <div class="frag"><strong>iBerry nights</strong><span>Unused leftovers</span></div>
-                <div class="frag"><strong>IHG stays</strong><span>Always “someday”</span></div>
+                <div class="frag">
+                  <strong>Nan · Lotus’s</strong><b class="frag__num">12,400</b
+                  ><span>Too small to redeem</span>
+                </div>
+                <div class="frag">
+                  <strong>Wit · AIS</strong><b class="frag__num">18,100</b><span>Easy to forget</span>
+                </div>
+                <div class="frag">
+                  <strong>Ploy · BTS</strong><b class="frag__num">9,900</b
+                  ><span>Expires on its own clock</span>
+                </div>
+                <div class="frag">
+                  <strong>iBerry nights</strong><b class="frag__num">7,860</b
+                  ><span>Unused leftovers</span>
+                </div>
+                <div class="frag">
+                  <strong>IHG stays</strong><b class="frag__num">—</b><span>Always “someday”</span>
+                </div>
               </div>
+              <p class="compare__verdict">
+                Five balances. Not one of them reaches a redemption on its own.
+              </p>
             </div>
             <div class="compare-panel" data-compare-panel="after">
+              <!-- The same five numbers, added up. This is the whole argument, so it is
+                   shown as arithmetic rather than asserted in a sentence. -->
+              <div class="frag-grid frag-grid--sum">
+                <div class="frag frag--muted">
+                  <strong>Nan · Lotus’s</strong><b class="frag__num">12,400</b>
+                </div>
+                <div class="frag frag--muted"><strong>Wit · AIS</strong><b class="frag__num">18,100</b></div>
+                <div class="frag frag--muted"><strong>Ploy · BTS</strong><b class="frag__num">9,900</b></div>
+                <div class="frag frag--muted">
+                  <strong>iBerry nights</strong><b class="frag__num">7,860</b>
+                </div>
+                <div class="frag frag--total">
+                  <strong>One family pool</strong><b class="frag__num">48,260</b
+                  ><span>Enough to book the stay</span>
+                </div>
+              </div>
               <div class="pooled">
-                <h3>One shared goal</h3>
-                <p>Scattered balances become clear progress toward a family getaway — with every member still in control of their own points.</p>
-                <div class="progress" aria-hidden="true"><div class="progress__bar" style="--progress: 68%"></div></div>
+                <h3>68% of the way to an IHG family stay</h3>
+                <div class="progress" aria-hidden="true">
+                  <div class="progress__bar" style="--progress: 68%"></div>
+                </div>
+                <p>
+                  Nothing extra earned and nothing extra spent — and every member still approves
+                  their own contribution.
+                </p>
               </div>
             </div>
           </div>
@@ -556,14 +593,44 @@
           </div>
           <button class="lightbox__close" type="button" data-lightbox-close aria-label="Close">✕</button>
         </div>
-        <div class="concept-art" aria-label="Concept illustration of everyday earning into a shared getaway">
+        <div class="concept-art">
           <p style="margin:0;font-family:var(--font-display);font-size:var(--text-lg);color:var(--color-ink)">Everyday life → Shared pool → Family getaway</p>
           <div class="concept-flow">
             <div>Commute · groceries · bills · dining</div>
             <div>Family pool with consent</div>
             <div>IHG stay as Year-1 hero goal</div>
           </div>
-          <p class="concept-caption">Rebuilt as readable service UI. Source concept art was unavailable in the workspace, so this panel keeps the idea without relying on a missing image file.</p>
+          <table class="concept-table">
+            <caption>
+              The demo household, illustrative figures
+            </caption>
+            <tbody>
+              <tr>
+                <th scope="row">Nan · Lotus’s</th>
+                <td>12,400</td>
+                <td>short of a redemption on its own</td>
+              </tr>
+              <tr>
+                <th scope="row">Wit · AIS</th>
+                <td>18,100</td>
+                <td>short of a redemption on its own</td>
+              </tr>
+              <tr>
+                <th scope="row">Ploy · BTS and iBerry</th>
+                <td>17,760</td>
+                <td>short of a redemption on its own</td>
+              </tr>
+              <tr class="concept-table__total">
+                <th scope="row">Pooled with consent</th>
+                <td>48,260</td>
+                <td>68% of the way to a family stay</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="concept-caption">
+            Nothing extra earned and nothing extra spent — the same points, counted once. Pilot
+            mechanics shown for academic illustration; final partner terms may vary.
+          </p>
         </div>
       </div>
       <div data-lightbox-close style="position:absolute;inset:0;z-index:-1"></div>

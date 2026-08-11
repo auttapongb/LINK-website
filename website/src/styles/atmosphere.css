@@ -653,6 +653,11 @@ li:hover > .media img {
  * ------------------------------------------------------------------ */
 
 @media (max-width: 899px) {
+  .hero {
+    min-height: auto;
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2rem, 5vw, 3rem);
+  }
+
   .hero__photo {
     inset: auto 0 0 0;
     width: 100%;
@@ -673,8 +678,21 @@ li:hover > .media img {
     display: none;
   }
 
+  .hero__inner {
+    gap: 1.25rem;
+  }
+
+  .hero__support {
+    margin-bottom: var(--space-3);
+  }
+
   .hero-stage {
-    min-height: 400px;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  .hero-stage .device {
+    width: min(100%, 270px);
   }
 }
 

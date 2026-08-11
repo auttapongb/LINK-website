@@ -59,6 +59,16 @@ export function mountChrome() {
     .map((p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`)
     .join("");
 
+  // On the demo page, the primary CTA should not re-sell "Explore the demo".
+  const primaryCta =
+    key === "demo"
+      ? `<a class="btn btn--primary nav__cta" href="/how-it-works.html">How it works<span data-icon="arrow-right"></span></a>`
+      : `<a class="btn btn--primary nav__cta" href="/demo.html">Explore the demo<span data-icon="arrow-right"></span></a>`;
+  const drawerCta =
+    key === "demo"
+      ? `<a class="btn btn--primary" href="/how-it-works.html" data-nav-close>How it works</a>`
+      : `<a class="btn btn--primary" href="/demo.html" data-nav-close>Explore the demo</a>`;
+
   headerHost.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header" data-site-header>
@@ -67,7 +77,7 @@ export function mountChrome() {
         <nav aria-label="Primary">
           <ul class="nav__links">${navLinks}</ul>
         </nav>
-        <a class="btn btn--primary nav__cta" href="/demo.html">Explore the demo<span data-icon="arrow-right"></span></a>
+        ${primaryCta}
         <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
@@ -79,7 +89,7 @@ export function mountChrome() {
       <div class="nav-drawer__panel" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu">
         ${BRAND_LOCKUP}
         <ul class="nav-drawer__links">${navLinks}</ul>
-        <a class="btn btn--primary" href="/demo.html" data-nav-close>Explore the demo</a>
+        ${drawerCta}
         <button class="btn btn--secondary" type="button" data-nav-close>Close</button>
       </div>
     </div>

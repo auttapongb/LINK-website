@@ -9,6 +9,7 @@ export function initInteractions() {
     drawer.hidden = !open;
     drawer.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     document.body.style.overflow = open ? "hidden" : "";
     if (open) {
       const firstLink = drawer.querySelector("a, button");

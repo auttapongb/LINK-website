@@ -920,12 +920,32 @@
 
 .demo-banner {
   padding: var(--space-3) var(--space-4);
-  background: rgba(240, 144, 15, 0.1);
-  border: 1px solid rgba(240, 144, 15, 0.34);
+  background: rgba(255, 201, 60, 0.28);
+  border: 1px solid rgba(64, 49, 42, 0.18);
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
-  color: var(--color-ink);
+  font-weight: 600;
+  color: #40312a;
   margin-bottom: var(--space-5);
+}
+
+@media (max-width: 520px) {
+  .step-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .step-tabs button {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .step-tabs .num {
+    margin-bottom: 0;
+  }
 }
 
 .lightbox {

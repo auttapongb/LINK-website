@@ -79,6 +79,13 @@
   color: var(--color-coral-deep);
 }
 
+/* Burn destination is not "partner card #5" — pull it forward as the payoff. */
+.partner-block--burn {
+  border: 0;
+  background: linear-gradient(155deg, rgba(255, 138, 91, 0.16), rgba(174, 226, 246, 0.28));
+  box-shadow: var(--clay-shadow);
+}
+
 .partner-block__where {
   margin: 0;
   max-width: 62ch;

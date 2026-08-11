@@ -1,13 +1,14 @@
 import { brandSprite } from "./brand.js";
 
 const PAGES = [
-  { href: "/how-it-works.html", label: "How it works", key: "how" },
-  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn" },
-  { href: "/for-families.html", label: "For families", key: "families" },
-  { href: "/use-cases.html", label: "Use cases", key: "usecases" },
-  { href: "/partners.html", label: "Partners", key: "partners" },
-  { href: "/privacy.html", label: "Privacy", key: "privacy" },
-  { href: "/faq.html", label: "FAQ", key: "faq" },
+  { href: "/how-it-works.html", label: "How it works", key: "how", nav: true },
+  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: true },
+  { href: "/for-families.html", label: "For families", key: "families", nav: true },
+  { href: "/partners.html", label: "Partners", key: "partners", nav: true },
+  { href: "/faq.html", label: "FAQ", key: "faq", nav: true },
+  // Footer-only: keeps the primary bar to five links and Year-1 focus sharper.
+  { href: "/use-cases.html", label: "Use cases", key: "usecases", nav: false },
+  { href: "/privacy.html", label: "Privacy", key: "privacy", nav: false },
 ];
 
 // Thai campaign line, "ruam kan khum kwa" — the support line for
@@ -54,9 +55,9 @@ export function mountChrome() {
     document.body.insertAdjacentHTML("afterbegin", brandSprite());
   }
 
-  const navLinks = PAGES.map(
-    (p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`
-  ).join("");
+  const navLinks = PAGES.filter((p) => p.nav)
+    .map((p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`)
+    .join("");
 
   headerHost.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
@@ -66,7 +67,7 @@ export function mountChrome() {
         <nav aria-label="Primary">
           <ul class="nav__links">${navLinks}</ul>
         </nav>
-        <a class="btn btn--primary nav__cta" href="/demo.html">Explore LINK<span data-icon="arrow-right"></span></a>
+        <a class="btn btn--primary nav__cta" href="/demo.html">Explore the demo<span data-icon="arrow-right"></span></a>
         <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
@@ -78,7 +79,7 @@ export function mountChrome() {
       <div class="nav-drawer__panel" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu">
         ${BRAND_LOCKUP}
         <ul class="nav-drawer__links">${navLinks}</ul>
-        <a class="btn btn--primary" href="/demo.html" data-nav-close>Explore LINK</a>
+        <a class="btn btn--primary" href="/demo.html" data-nav-close>Explore the demo</a>
         <button class="btn btn--secondary" type="button" data-nav-close>Close</button>
       </div>
     </div>

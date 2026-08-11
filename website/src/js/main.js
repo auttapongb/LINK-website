@@ -88,32 +88,18 @@ export function initInteractions() {
   const lightbox = document.querySelector("[data-lightbox]");
   const openLightbox = document.querySelector("[data-lightbox-open]");
   const closeLightbox = document.querySelectorAll("[data-lightbox-close]");
-
-  openLightbox?.addEventListener("click", () => {
-    if (!lightbox) return;
-    lightbox.hidden = false;
-    lightbox.querySelector("button")?.focus();
-  });
-
-  closeLightbox.forEach((el) => {
-    el.addEventListener("click", () => {
-      if (!lightbox) return;
-      lightbox.hidden = true;
-      openLightbox?.focus();
-    });
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && lightbox && !lightbox.hidden) {
-      lightbox.hidden = true;
-      openLightbox?.focus();
-    }
-  });
-
   const demoModal = document.querySelector("[data-demo-modal]");
   // Remembered so closing can hand focus back to whatever opened the modal,
   // instead of dropping the keyboard user at the top of the document.
   let demoOpener = null;
+  let lightboxOpener = null;
+
+  const closeLightboxModal = () => {
+    if (!lightbox || lightbox.hidden) return;
+    lightbox.hidden = true;
+    lightboxOpener?.focus();
+    lightboxOpener = null;
+  };
 
   const closeDemoModal = () => {
     if (!demoModal || demoModal.hidden) return;
@@ -122,9 +108,23 @@ export function initInteractions() {
     demoOpener = null;
   };
 
+  // Only one dialog at a time — stacking two lightboxes looked unfinished.
+  openLightbox?.addEventListener("click", () => {
+    if (!lightbox) return;
+    closeDemoModal();
+    lightboxOpener = openLightbox;
+    lightbox.hidden = false;
+    lightbox.querySelector("button")?.focus();
+  });
+
+  closeLightbox.forEach((el) => {
+    el.addEventListener("click", closeLightboxModal);
+  });
+
   document.querySelectorAll("[data-demo-modal-open]").forEach((btn) => {
     btn.addEventListener("click", () => {
       if (!demoModal) return;
+      closeLightboxModal();
       demoOpener = btn;
       demoModal.hidden = false;
       demoModal.querySelector("button")?.focus();
@@ -135,9 +135,12 @@ export function initInteractions() {
     btn.addEventListener("click", closeDemoModal);
   });
 
-  // Escape is how everyone expects to leave a modal, and without it a keyboard
-  // user was stuck inside this one.
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeDemoModal();
+    if (event.key !== "Escape") return;
+    if (demoModal && !demoModal.hidden) {
+      closeDemoModal();
+      return;
+    }
+    if (lightbox && !lightbox.hidden) closeLightboxModal();
   });
 }

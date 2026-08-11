@@ -538,6 +538,78 @@
   font-size: var(--text-sm);
 }
 
+/* After LINK should feel like a win, not a quieter restatement of Before. */
+.pooled--win {
+  border: 0;
+  background: linear-gradient(155deg, rgba(126, 196, 102, 0.22), rgba(174, 226, 246, 0.35));
+  box-shadow: var(--clay-shadow);
+}
+
+.pooled__eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-green-deep, #2f6b28);
+  font-weight: 600;
+}
+
+.pooled__wins {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.pooled__wins li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+}
+
+.pooled__wins li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--color-green);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.section--compact {
+  padding-block: var(--space-8);
+}
+
+.trust-points {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: var(--clay-shadow);
+}
+
+.trust-points li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 550;
+  color: var(--color-ink);
+}
+
+.trust-points .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--color-brand-deep, var(--color-ink));
+}
+
 /* Steps */
 .steps {
   display: grid;

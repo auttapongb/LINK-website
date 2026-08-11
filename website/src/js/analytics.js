@@ -3,17 +3,24 @@
  *
  * Default: no third-party scripts load. Nothing phones home.
  *
+ * Gating (all must be true before gtag loads):
+ *   1. A real GA4 measurement ID is configured
+ *   2. The visitor has granted Analytics consent (cookie banner)
+ *
  * To enable Google Analytics 4 (gtag.js):
  *   1. Replace GA_MEASUREMENT_ID below with your real ID (G-XXXXXXXXXX), OR
  *   2. Set window.LINK_GA_ID = "G-XXXXXXXXXX" before this module runs
- *      (e.g. a small inline script in HTML for staging/prod only).
  *
- * Until a real ID is configured, initAnalytics() is a no-op.
- * See README.md → “Analytics”.
+ * Placeholder values such as G-XXXXXXXXXX are ignored on purpose.
+ * See README.md → “Analytics & heatmaps”.
  */
+
+import { hasAnalyticsConsent, onConsentChange } from "./consent.js";
 
 /** @type {string} Placeholder — leave empty, or replace with a real GA4 ID. */
 export const GA_MEASUREMENT_ID = "";
+
+let loadedId = "";
 
 function resolveId() {
   if (typeof window !== "undefined" && typeof window.LINK_GA_ID === "string") {
@@ -29,16 +36,13 @@ function resolveId() {
   return "";
 }
 
-/**
- * Load gtag only when a real measurement ID is configured.
- * Safe to call on every page; no-ops when unset.
- */
-export function initAnalytics() {
-  const id = resolveId();
-  if (!id || typeof document === "undefined") return;
+function loadGtag(id) {
+  if (!id || typeof document === "undefined" || loadedId === id) return;
+  loadedId = id;
 
   window.dataLayer = window.dataLayer || [];
   function gtag() {
+    // eslint-disable-next-line prefer-rest-params
     window.dataLayer.push(arguments);
   }
   window.gtag = window.gtag || gtag;
@@ -56,4 +60,32 @@ export function initAnalytics() {
   script.async = true;
   script.src = src;
   document.head.appendChild(script);
+}
+
+/**
+ * Attempt to load GA when ID + analytics consent are both present.
+ * Safe to call on every page; no-ops when gated.
+ */
+export function initAnalytics() {
+  const tryLoad = () => {
+    if (!hasAnalyticsConsent()) return;
+    const id = resolveId();
+    if (id) loadGtag(id);
+  };
+
+  tryLoad();
+  onConsentChange(tryLoad);
+}
+
+/**
+ * Consent-gated custom event helper for CTA / conversion hooks.
+ * No-ops unless analytics consent is granted and gtag is available.
+ *
+ * @param {string} name
+ * @param {Record<string, unknown>} [params]
+ */
+export function trackEvent(name, params = {}) {
+  if (!hasAnalyticsConsent()) return;
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
 }

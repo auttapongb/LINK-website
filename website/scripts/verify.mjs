@@ -26,6 +26,9 @@ const PAGES = [
   ["faq", "/faq.html"],
   ["demo", "/demo.html"],
   ["data-strategy", "/data-strategy.html"],
+  ["marketing-plan", "/marketing-plan.html"],
+  ["brand-platform", "/brand-platform.html"],
+  ["consumer-insight", "/consumer-insight.html"],
   ["sitemap", "/sitemap.html"],
 ];
 

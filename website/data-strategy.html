@@ -391,6 +391,38 @@
             </article>
           </div>
 
+          <table class="ac-table reveal" style="--i: 1">
+            <thead>
+              <tr>
+                <th>Data type</th>
+                <th>LINK examples</th>
+                <th>Year-1 honesty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Zero-party</td>
+                <td>Goal declared (IHG getaway), role chosen, transfer preferences</td>
+                <td>Primary trust layer — asked, not inferred</td>
+              </tr>
+              <tr>
+                <td>First-party</td>
+                <td>App opens, pool progress, consent events, invite accepts</td>
+                <td>Owned; on-device bias where possible</td>
+              </tr>
+              <tr>
+                <td>Second-party</td>
+                <td>Tokenised partner earn/burn events via MoU</td>
+                <td>Staged: 1–2 partners in months 1–4; not “all five APIs day one”</td>
+              </tr>
+              <tr>
+                <td>Third-party</td>
+                <td>Site GA / Clarity (optional), paid media pixels</td>
+                <td>Consent + real ID gated; never required for product use</td>
+              </tr>
+            </tbody>
+          </table>
+
           <div class="ds-layers reveal" style="--i: 2">
             <article class="ds-layer">
               <span class="ds-layer__badge">1st party</span>
@@ -440,39 +472,39 @@
 
           <div class="ds-phase reveal" style="--i: 4">
             <table>
-              <caption class="sr-only">Illustrative partner integration phases</caption>
+              <caption class="sr-only">Staged partner MoU phases with kill criteria</caption>
               <thead>
                 <tr>
                   <th scope="col">Phase</th>
-                  <th scope="col">Partners</th>
-                  <th scope="col">Data richness</th>
-                  <th scope="col">CDP capability</th>
+                  <th scope="col">Partner scope</th>
+                  <th scope="col">What is actually live</th>
+                  <th scope="col">Kill / hold criteria</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Month 1</td>
-                  <td>AIS + Lotus’s</td>
-                  <td>Telco + grocery baskets</td>
-                  <td>Identity foundation · family graph</td>
+                  <td>Q1</td>
+                  <td>MoU #1 — Lotus’s <em>or</em> AIS</td>
+                  <td>Tokenised balance + earn events (query-in-place). Manual ops OK.</td>
+                  <td>Hold if legal cannot approve token export within 90 days.</td>
                 </tr>
                 <tr>
-                  <td>Month 2</td>
-                  <td>BTS + iBerry</td>
-                  <td>Commute + dining frequency</td>
-                  <td>Cross-category patterns</td>
+                  <td>Q2</td>
+                  <td>MoU #2 — second earn rail + IHG burn intent</td>
+                  <td>Cross-rail pool math; IHG goal catalogue (not full stay API).</td>
+                  <td>Kill second rail if consent rate &lt;60% on first rail.</td>
                 </tr>
                 <tr>
-                  <td>Month 3</td>
-                  <td>IHG</td>
-                  <td>Stay / redemption goals</td>
-                  <td>Earn-to-burn attribution</td>
+                  <td>Q3–Q4</td>
+                  <td>BTS / iBerry only if Q2 KPIs hit</td>
+                  <td>Additional earn signals; still not a data warehouse dump.</td>
+                  <td>Do not force “all five live” — coalition completeness is a prize, not a promise.</td>
                 </tr>
                 <tr>
-                  <td>Month 6+</td>
-                  <td>All five live</td>
-                  <td>Full Year-1 coalition</td>
-                  <td>Dashboards · segments · CRM triggers</td>
+                  <td>Y2</td>
+                  <td>Full coalition where MoUs allow</td>
+                  <td>Aggregate lift packs · partner dashboards · CRM triggers</td>
+                  <td>No raw household ledger resale — ever.</td>
                 </tr>
               </tbody>
             </table>
@@ -534,28 +566,33 @@
           <div class="ds-touch">
             <article class="ds-touch__item reveal" style="--i: 0">
               <h3>Positioning</h3>
-              <p>Worth More Together — family as buying unit; free consumer, partner-side economics.</p>
+              <p>Worth More Together — family as buying unit; free consumer, partner-side economics. Full argument on <a href="/marketing-plan.html">Marketing plan</a> + <a href="/brand-platform.html">Brand platform</a>.</p>
             </article>
             <article class="ds-touch__item reveal" style="--i: 1">
               <h3>Journey &amp; PESO</h3>
-              <p>Owned site + demo; partner ecosystems as earned/shared reach; paid acquisition called out as 3rd-party only.</p>
+              <p>Owned site + demo; partner ecosystems as earned/shared reach; paid acquisition light in Year 1. Mapped on the plan page.</p>
             </article>
             <article class="ds-touch__item reveal" style="--i: 2">
               <h3>Loyalty loop</h3>
               <p>Earn → pool → burn across five partners; see earn-to-burn and the interactive demo.</p>
             </article>
             <article class="ds-touch__item reveal" style="--i: 3">
-              <h3>Personas</h3>
-              <p>Nan / Wit / Ploy — decision, value, activator — on for-families and in this data map.</p>
+              <h3>Personas &amp; JTBD</h3>
+              <p>Nan / Wit / Ploy — decision, value, activator — plus jobs and loyalty bonds on <a href="/consumer-insight.html">Consumer insight</a>.</p>
             </article>
             <article class="ds-touch__item reveal" style="--i: 4">
               <h3>CDP narrative</h3>
-              <p>Unify, segment, activate, measure — with consent as a first-class event type.</p>
+              <p>Unify, segment, activate, measure — with consent as a first-class event type. Zero/first-party bias; tokenised identity.</p>
             </article>
             <article class="ds-touch__item reveal" style="--i: 5">
               <h3>Measurement</h3>
-              <p>GA ready but dormant until configured; SEO meta + sitemaps shipped; interest stub for evaluators.</p>
+              <p>GA + Clarity stubs are consent-gated and ID-gated; CTA events via <code>data-track</code>; interest stub for evaluators.</p>
             </article>
+          </div>
+          <div class="btn-row" style="margin-top: var(--space-5)">
+            <a class="btn btn--secondary" href="/marketing-plan.html" data-track="data_cta" data-track-label="marketing_plan">Open marketing plan</a>
+            <a class="btn btn--secondary" href="/brand-platform.html" data-track="data_cta" data-track-label="brand">Brand platform</a>
+            <a class="btn btn--secondary" href="/consumer-insight.html" data-track="data_cta" data-track-label="consumer">Consumer insight</a>
           </div>
         </div>
       </section>

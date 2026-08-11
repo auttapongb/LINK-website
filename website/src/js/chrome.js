@@ -2,12 +2,15 @@ import { brandSprite } from "./brand.js";
 
 const PAGES = [
   { href: "/how-it-works.html", label: "How it works", key: "how", nav: true },
-  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: true },
-  { href: "/for-families.html", label: "For families", key: "families", nav: true },
-  { href: "/partners.html", label: "Partners", key: "partners", nav: true },
-  { href: "/data-strategy.html", label: "Data strategy", key: "data", nav: true },
+  { href: "/marketing-plan.html", label: "Marketing plan", key: "plan", nav: true },
+  { href: "/brand-platform.html", label: "Brand", key: "brand", nav: true },
+  { href: "/consumer-insight.html", label: "Consumers", key: "consumer", nav: true },
+  { href: "/data-strategy.html", label: "Data", key: "data", nav: true },
+  // Footer / secondary — keeps the primary bar usable on mobile.
+  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: false },
+  { href: "/for-families.html", label: "For families", key: "families", nav: false },
+  { href: "/partners.html", label: "Partners", key: "partners", nav: false },
   { href: "/faq.html", label: "FAQ", key: "faq", nav: false },
-  // Footer-only: keeps the primary bar focused; FAQ stays discoverable in footer.
   { href: "/use-cases.html", label: "Use cases", key: "usecases", nav: false },
   { href: "/privacy.html", label: "Privacy", key: "privacy", nav: false },
 ];
@@ -29,6 +32,9 @@ function currentKey() {
   if (path.endsWith("/use-cases.html")) return "usecases";
   if (path.endsWith("/partners.html")) return "partners";
   if (path.endsWith("/data-strategy.html")) return "data";
+  if (path.endsWith("/marketing-plan.html")) return "plan";
+  if (path.endsWith("/brand-platform.html")) return "brand";
+  if (path.endsWith("/consumer-insight.html")) return "consumer";
   if (path.endsWith("/privacy.html")) return "privacy";
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";
@@ -64,12 +70,12 @@ export function mountChrome() {
   // On the demo page, the primary CTA should not re-sell "Explore the demo".
   const primaryCta =
     key === "demo"
-      ? `<a class="btn btn--primary nav__cta" href="/how-it-works.html">How it works<span data-icon="arrow-right"></span></a>`
-      : `<a class="btn btn--primary nav__cta" href="/demo.html">Explore the demo<span data-icon="arrow-right"></span></a>`;
+      ? `<a class="btn btn--primary nav__cta" href="/how-it-works.html" data-track="nav_cta" data-track-label="how_it_works">How it works<span data-icon="arrow-right"></span></a>`
+      : `<a class="btn btn--primary nav__cta" href="/demo.html" data-track="nav_cta" data-track-label="explore_demo">Explore the demo<span data-icon="arrow-right"></span></a>`;
   const drawerCta =
     key === "demo"
-      ? `<a class="btn btn--primary" href="/how-it-works.html" data-nav-close>How it works</a>`
-      : `<a class="btn btn--primary" href="/demo.html" data-nav-close>Explore the demo</a>`;
+      ? `<a class="btn btn--primary" href="/how-it-works.html" data-nav-close data-track="nav_cta" data-track-label="how_it_works_drawer">How it works</a>`
+      : `<a class="btn btn--primary" href="/demo.html" data-nav-close data-track="nav_cta" data-track-label="explore_demo_drawer">Explore the demo</a>`;
 
   headerHost.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>

@@ -5,8 +5,9 @@ const PAGES = [
   { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: true },
   { href: "/for-families.html", label: "For families", key: "families", nav: true },
   { href: "/partners.html", label: "Partners", key: "partners", nav: true },
-  { href: "/faq.html", label: "FAQ", key: "faq", nav: true },
-  // Footer-only: keeps the primary bar to five links and Year-1 focus sharper.
+  { href: "/data-strategy.html", label: "Data strategy", key: "data", nav: true },
+  { href: "/faq.html", label: "FAQ", key: "faq", nav: false },
+  // Footer-only: keeps the primary bar focused; FAQ stays discoverable in footer.
   { href: "/use-cases.html", label: "Use cases", key: "usecases", nav: false },
   { href: "/privacy.html", label: "Privacy", key: "privacy", nav: false },
 ];
@@ -27,6 +28,7 @@ function currentKey() {
   if (path.endsWith("/for-families.html")) return "families";
   if (path.endsWith("/use-cases.html")) return "usecases";
   if (path.endsWith("/partners.html")) return "partners";
+  if (path.endsWith("/data-strategy.html")) return "data";
   if (path.endsWith("/privacy.html")) return "privacy";
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";

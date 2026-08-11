@@ -25,6 +25,7 @@ const PAGES = [
   ["privacy", "/privacy.html"],
   ["faq", "/faq.html"],
   ["demo", "/demo.html"],
+  ["data-strategy", "/data-strategy.html"],
   ["sitemap", "/sitemap.html"],
 ];
 

@@ -144,4 +144,30 @@ export function initInteractions() {
     }
     if (lightbox && !lightbox.hidden) closeLightboxModal();
   });
+
+  document.querySelectorAll("[data-interest-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const status = form.querySelector("[data-interest-status]");
+      const email = form.querySelector("#interest-email")?.value?.trim() || "";
+      const name = form.querySelector("#interest-name")?.value?.trim() || "";
+      const note = form.querySelector("#interest-note")?.value?.trim() || "";
+
+      if (status) {
+        status.hidden = false;
+        status.textContent = email
+          ? "Interest noted locally — opening your mail client (optional)."
+          : "Interest noted locally — no account created.";
+      }
+
+      if (email) {
+        const subject = encodeURIComponent("LINK pilot interest");
+        const body = encodeURIComponent(
+          [`Name: ${name || "(not given)"}`, `Email: ${email}`, "", note || ""].join("\n")
+        );
+        // Optional mailto — still no backend. User can cancel the mail client.
+        window.location.href = `mailto:hello@link.example?subject=${subject}&body=${body}`;
+      }
+    });
+  });
 }

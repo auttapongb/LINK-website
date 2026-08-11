@@ -239,6 +239,8 @@ lockup stays in Noto.
 - The paper grain overlay is an inline SVG `feTurbulence` filter in
   `src/styles/atmosphere.css`, not an image file.
 - The earn-to-burn loop diagram in `earn-to-burn.html` is hand-authored SVG.
+- The data-strategy architecture diagram in `data-strategy.html` is hand-authored
+  SVG/CSS (no stock photography required for the CDP teaching visuals).
 - `og-image.jpg` is rendered from the site's own SVG lockup and web fonts by
   `scripts/brand-assets.mjs`.
 - `public/assets/logo.svg` (the v1 placeholder mark) was removed once the real

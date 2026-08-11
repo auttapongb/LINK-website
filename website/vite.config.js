@@ -19,6 +19,7 @@ export default defineConfig({
         faq: resolve(__dirname, "faq.html"),
         sitemap: resolve(__dirname, "sitemap.html"),
         demo: resolve(__dirname, "demo.html"),
+        dataStrategy: resolve(__dirname, "data-strategy.html"),
       },
     },
   },

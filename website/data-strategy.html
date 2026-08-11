@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data strategy — LINK CDP journey</title>
+    <meta
+      name="description"
+      content="How LINK starts collecting household loyalty signals at partner touchpoints, resolves identity into family pools, and builds toward a privacy-first Customer Data Platform — academic pilot framing."
+    />
+    <meta name="theme-color" content="#2360e8" />
+    <meta property="og:site_name" content="LINK" />
+    <meta property="og:title" content="Data strategy — LINK CDP journey" />
+    <meta
+      property="og:description"
+      content="From partner touchpoints to personas, identity resolution, and a composable CDP — the academic data journey behind LINK."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/brand/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/assets/brand/og-image.jpg" />
+    <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div data-chrome-header></div>
+    <main id="main">
+      <section class="page-hero">
+        <div class="page-hero__atmos" aria-hidden="true"></div>
+        <div class="shell reveal" style="--i: 0">
+          <p class="section__eyebrow">Data strategy</p>
+          <hr class="rule" data-rule />
+          <h1 class="page-hero__title" data-split>From everyday touchpoints to a family CDP.</h1>
+          <p class="section__lead">
+            LINK does not invent a new loyalty currency. It unifies signals the household already creates —
+            then structures them into consent-aware profiles a Customer Data Platform can activate.
+            This page is written for academic evaluation: clear journey, no live PII claims.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#touchpoints">Follow the journey<span data-icon="arrow-right"></span></a>
+            <a class="btn btn--secondary" href="/demo.html">Explore the demo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. Two-year arc -->
+      <section class="section" id="arc" aria-labelledby="arc-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">The arc</p>
+          <h2 id="arc-title" data-split>Freemium accumulation → CDP activation.</h2>
+          <p class="section__lead">
+            Year 1 builds the dataset by being useful to families. Year 2 turns structured household
+            behaviour into partner-facing insight — still anonymised and consent-bound.
+          </p>
+          <div class="ds-arc reveal" style="--i: 1">
+            <article class="ds-arc__card ds-arc__card--y1">
+              <span class="ds-arc__label">Year 1 · Now</span>
+              <h3>Data accumulation</h3>
+              <p>
+                Free visibility, pooling, and expiry alerts. Every linked program and consented transfer
+                teaches LINK who earns where, who contributes, and what goals families actually finish.
+              </p>
+            </article>
+            <div class="ds-arc__arrow" aria-hidden="true">→</div>
+            <article class="ds-arc__card ds-arc__card--y2">
+              <span class="ds-arc__label">Year 2 · Build</span>
+              <h3>CDP activation</h3>
+              <p>
+                Unify · segment · activate · measure. Partners see aggregate cross-brand patterns —
+                not raw household ledgers. The Year-1 flywheel becomes the product surface.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Touchpoints -->
+      <section class="section section--compact" id="touchpoints" aria-labelledby="touch-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">1 · Touchpoints</p>
+          <h2 id="touch-title" data-split>Where collection starts.</h2>
+          <p class="section__lead">
+            Five partner ecosystems plus LINK’s own app behaviours. Illustrative signals only —
+            partner APIs stay at source; LINK queries tokenised events rather than warehousing raw PII.
+          </p>
+          <div class="ds-touch">
+            <article class="ds-touch__item reveal" style="--i: 0">
+              <span class="ds-touch__icon" data-icon="shopping-basket"></span>
+              <h3>Lotus’s</h3>
+              <p>Grocery baskets, category mix, visit cadence.</p>
+              <span class="ds-touch__meta">Earn · everyday spend</span>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 1">
+              <span class="ds-touch__icon" data-icon="train-front"></span>
+              <h3>BTS</h3>
+              <p>Commute frequency, corridor patterns, peak windows.</p>
+              <span class="ds-touch__meta">Earn · mobility</span>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 2">
+              <span class="ds-touch__icon" data-icon="smartphone"></span>
+              <h3>AIS</h3>
+              <p>Bill rhythm, plan type, household connectivity.</p>
+              <span class="ds-touch__meta">Earn · telco</span>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 3">
+              <span class="ds-touch__icon" data-icon="utensils-crossed"></span>
+              <h3>iBerry</h3>
+              <p>Dining frequency across the multi-brand group.</p>
+              <span class="ds-touch__meta">Earn · food</span>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 4">
+              <span class="ds-touch__icon" data-icon="hotel"></span>
+              <h3>IHG</h3>
+              <p>Stay intent, redemption goals, getaway progress.</p>
+              <span class="ds-touch__meta">Burn · destination</span>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 5">
+              <span class="ds-touch__icon" data-icon="layers"></span>
+              <h3>LINK app</h3>
+              <p>Pool structure, consent events, goal completion, demo behaviours.</p>
+              <span class="ds-touch__meta">1st-party · orchestration</span>
+            </article>
+          </div>
+          <div class="ds-hub reveal" style="--i: 2">
+            <strong>LINK composable core</strong>
+            <p>
+              Tokenised profiles · family graphs · behavioural scores · consent registry —
+              designed to query partners in place, not centralise raw identity stores.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture SVG -->
+      <section class="section" id="architecture" aria-labelledby="arch-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">System view</p>
+          <h2 id="arch-title" data-split>Composable, not a PII warehouse.</h2>
+          <p class="section__lead">
+            Partners remain systems of record. LINK sits in the middle as an orchestration and
+            insight layer — tokenise, resolve household identity, then activate with consent.
+          </p>
+          <svg
+            class="ds-diagram reveal"
+            style="--i: 1"
+            viewBox="0 0 960 420"
+            role="img"
+            aria-labelledby="arch-svg-title arch-svg-desc"
+          >
+            <title id="arch-svg-title">LINK composable CDP architecture</title>
+            <desc id="arch-svg-desc">
+              Five partner sources flow through a tokenisation layer into LINK CDP core,
+              then out to partner dashboards, CRM triggers, and measurement.
+            </desc>
+            <defs>
+              <linearGradient id="dsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#aee2f6" />
+                <stop offset="50%" stop-color="#ddf1d4" />
+                <stop offset="100%" stop-color="#ffdccf" />
+              </linearGradient>
+            </defs>
+            <rect x="24" y="24" width="912" height="372" rx="28" fill="url(#dsGrad)" opacity="0.35" />
+
+            <!-- Partners -->
+            <g font-size="13" font-weight="700">
+              <rect x="48" y="56" width="140" height="48" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="118" y="85" text-anchor="middle">Lotus’s</text>
+              <rect x="48" y="120" width="140" height="48" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="118" y="149" text-anchor="middle">BTS</text>
+              <rect x="48" y="184" width="140" height="48" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="118" y="213" text-anchor="middle">AIS</text>
+              <rect x="48" y="248" width="140" height="48" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="118" y="277" text-anchor="middle">iBerry</text>
+              <rect x="48" y="312" width="140" height="48" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="118" y="341" text-anchor="middle">IHG</text>
+            </g>
+
+            <!-- Arrows to token layer -->
+            <g stroke="#2360e8" stroke-width="2" fill="none" opacity="0.55">
+              <path d="M188 80 H250" marker-end="url(#dsArrow)" />
+              <path d="M188 144 H250" />
+              <path d="M188 208 H250" />
+              <path d="M188 272 H250" />
+              <path d="M188 336 H250" />
+            </g>
+
+            <!-- Token layer -->
+            <rect x="250" y="120" width="150" height="180" rx="20" fill="#fff" stroke="#2360e8" stroke-width="2" />
+            <text x="325" y="175" text-anchor="middle" font-size="14" font-weight="800">Tokenise</text>
+            <text x="325" y="200" text-anchor="middle" font-size="12" fill="#635045">Hash · map IDs</text>
+            <text x="325" y="222" text-anchor="middle" font-size="12" fill="#635045">No raw PII store</text>
+            <text x="325" y="244" text-anchor="middle" font-size="12" fill="#635045">Consent check</text>
+
+            <path d="M400 210 H470" stroke="#ff8a5b" stroke-width="2.5" fill="none" />
+
+            <!-- CDP core -->
+            <rect x="470" y="100" width="200" height="220" rx="24" fill="#2360e8" />
+            <text x="570" y="150" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">LINK CDP</text>
+            <text x="570" y="178" text-anchor="middle" font-size="12" fill="#dcf0fa">Family graphs</text>
+            <text x="570" y="200" text-anchor="middle" font-size="12" fill="#dcf0fa">Segments</text>
+            <text x="570" y="222" text-anchor="middle" font-size="12" fill="#dcf0fa">Goals &amp; transfers</text>
+            <text x="570" y="244" text-anchor="middle" font-size="12" fill="#dcf0fa">Consent registry</text>
+            <text x="570" y="266" text-anchor="middle" font-size="12" fill="#dcf0fa">Aggregate scores</text>
+
+            <path d="M670 160 H720" stroke="#7ec466" stroke-width="2.5" fill="none" />
+            <path d="M670 210 H720" stroke="#7ec466" stroke-width="2.5" fill="none" />
+            <path d="M670 260 H720" stroke="#7ec466" stroke-width="2.5" fill="none" />
+
+            <!-- Outputs -->
+            <g font-size="12" font-weight="700">
+              <rect x="720" y="128" width="196" height="52" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="818" y="159" text-anchor="middle">Partner dashboards</text>
+              <rect x="720" y="188" width="196" height="52" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="818" y="219" text-anchor="middle">CRM / expiry triggers</text>
+              <rect x="720" y="248" width="196" height="52" rx="14" fill="#fff" stroke="rgba(64,49,42,0.2)" />
+              <text x="818" y="279" text-anchor="middle">Measure &amp; learn</text>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 3. Personas -->
+      <section class="section section--compact" id="personas" aria-labelledby="persona-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">2 · Personas</p>
+          <h2 id="persona-title" data-split>Who generates which signals.</h2>
+          <p class="section__lead">
+            Same household, different data jobs. Gen Y/X hold value; Gen Z runs admin. The CDP must
+            model roles — not just “users.”
+          </p>
+          <div class="ds-personas">
+            <article class="ds-persona reveal" style="--i: 0">
+              <div class="ds-persona__img">
+                <img
+                  src="/assets/photos/persona-nan.webp"
+                  alt="Portrait representing Nan, household decision-maker."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="ds-persona__body">
+                <span class="ds-persona__tag">Decision · Gen Y</span>
+                <h3>Nan, 42</h3>
+                <p>Approves transfers, sets the getaway goal, watches household value.</p>
+                <p class="ds-persona__signal">
+                  Signals: consent events, goal selection, spend-category gravity (Lotus’s).
+                </p>
+              </div>
+            </article>
+            <article class="ds-persona reveal" style="--i: 1">
+              <div class="ds-persona__img">
+                <img
+                  src="/assets/photos/persona-wit.webp"
+                  alt="Portrait representing Wit, primary value contributor."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="ds-persona__body">
+                <span class="ds-persona__tag">Value · Gen X</span>
+                <h3>Wit, 54</h3>
+                <p>Earns consistently across commute, bills, and travel — tracks less actively.</p>
+                <p class="ds-persona__signal">
+                  Signals: earn volume, partner mix, low open-frequency / high contribution when asked.
+                </p>
+              </div>
+            </article>
+            <article class="ds-persona reveal" style="--i: 2">
+              <div class="ds-persona__img">
+                <img
+                  src="/assets/photos/persona-ploy.webp"
+                  alt="Portrait representing Ploy, Gen Z activator."
+                  width="900"
+                  height="1100"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="ds-persona__body">
+                <span class="ds-persona__tag">Activator · Gen Z</span>
+                <h3>Ploy, 24</h3>
+                <p>Installs LINK, links cards, nudges expiry, keeps the pool alive.</p>
+                <p class="ds-persona__signal">
+                  Signals: onboarding funnel, invite graph, alert engagement, admin actions.
+                </p>
+              </div>
+            </article>
+          </div>
+          <p class="reveal" style="--i: 3; margin-top: var(--space-5)">
+            <a href="/for-families.html">Meet the full family roles →</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Identity resolution -->
+      <section class="section" id="identity" aria-labelledby="id-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">3 · Identity &amp; pooling</p>
+          <h2 id="id-title" data-split>Resolve people into a household graph.</h2>
+          <p class="section__lead">
+            Scattered loyalty IDs become one family pool — only after each member consents to
+            contribute. Identity resolution is the bridge between touchpoints and CDP segments.
+          </p>
+          <div class="ds-id reveal" style="--i: 1">
+            <div class="ds-id__row" aria-label="Fragmented partner identities">
+              <div class="ds-id__chip">Lotus’s ID</div>
+              <div class="ds-id__chip">BTS Rabbit</div>
+              <div class="ds-id__chip">AIS member</div>
+              <div class="ds-id__chip">iBerry stamp</div>
+              <div class="ds-id__chip">IHG One Rewards</div>
+            </div>
+            <div class="ds-id__merge">
+              <span class="ds-id__merge-icon" data-icon="git-merge"></span>
+              <p style="margin: 0; font-weight: 700">Tokenised match → household edge</p>
+              <p style="margin: 0; font-size: var(--text-sm); color: var(--color-muted)">
+                Phone hash · loyalty tokens · explicit pool membership — never “guess and merge.”
+              </p>
+            </div>
+            <div class="ds-id__pool">
+              <div class="ds-id__pool-card">
+                <h3>Somsri family pool</h3>
+                <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-2)">
+                  One shared goal graph. Individual ledgers stay owned by each member until a
+                  consented transfer moves value into the pool.
+                </p>
+                <div class="ds-id__members">
+                  <span>Nan — decide</span>
+                  <span>Wit — earn</span>
+                  <span>Ploy — admin</span>
+                </div>
+              </div>
+              <div>
+                <ul class="trust-points">
+                  <li><span data-icon="key-round"></span>Consent before every transfer</li>
+                  <li><span data-icon="users"></span>Roles encoded in the graph</li>
+                  <li><span data-icon="shield-check"></span>Tokens, not raw card numbers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. CDP -->
+      <section class="section section--compact" id="cdp" aria-labelledby="cdp-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">4 · Toward a CDP</p>
+          <h2 id="cdp-title" data-split>Unify · Segment · Activate · Measure.</h2>
+          <p class="section__lead">
+            The classic CDP loop, mapped onto LINK’s household loyalty context. Year 1 practices the
+            loop with freemium product data; Year 2 exposes partner-safe outputs.
+          </p>
+          <div class="ds-cdp">
+            <article class="ds-cdp__step reveal" style="--i: 0">
+              <span class="ds-cdp__n">01</span>
+              <span class="ds-touch__icon" data-icon="database"></span>
+              <h3>Unify</h3>
+              <p>Pull tokenised events across partners + 1st-party app behaviour into one household view.</p>
+            </article>
+            <article class="ds-cdp__step reveal" style="--i: 1">
+              <span class="ds-cdp__n">02</span>
+              <span class="ds-touch__icon" data-icon="users"></span>
+              <h3>Segment</h3>
+              <p>Family roles, earn-heavy vs burn-ready pools, expiry-risk clusters, goal stage.</p>
+            </article>
+            <article class="ds-cdp__step reveal" style="--i: 2">
+              <span class="ds-cdp__n">03</span>
+              <span class="ds-touch__icon" data-icon="sparkles"></span>
+              <h3>Activate</h3>
+              <p>Expiry nudges, double-point days, partner offers tied to shared goals — with toggles.</p>
+            </article>
+            <article class="ds-cdp__step reveal" style="--i: 3">
+              <span class="ds-cdp__n">04</span>
+              <span class="ds-touch__icon" data-icon="bar-chart-3"></span>
+              <h3>Measure</h3>
+              <p>Pool completion rate, transfer consent rate, earn→burn conversion, partner lift.</p>
+            </article>
+          </div>
+
+          <div class="ds-layers reveal" style="--i: 2">
+            <article class="ds-layer">
+              <span class="ds-layer__badge">1st party</span>
+              <div>
+                <h3>LINK app behaviour</h3>
+                <p>Pool membership, consent logs, goal progress, open frequency — on-device by default.</p>
+              </div>
+            </article>
+            <article class="ds-layer">
+              <span class="ds-layer__badge">2nd party</span>
+              <div>
+                <h3>Partner loyalty APIs</h3>
+                <p>Tokenised earn/redeem events queried in place — grocery, transit, telco, dining, stays.</p>
+              </div>
+            </article>
+            <article class="ds-layer">
+              <span class="ds-layer__badge">3rd party</span>
+              <div>
+                <h3>Acquisition audiences</h3>
+                <p>Ad-platform segments for reach only — not merged into the household CDP core.</p>
+              </div>
+            </article>
+            <article class="ds-layer">
+              <span class="ds-layer__badge">Promo</span>
+              <div>
+                <h3>Incentive responses</h3>
+                <p>Which households react to pool bonuses or partner double-days — labelled as campaign data.</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="ds-flywheel reveal" style="--i: 3" aria-label="Freemium data flywheel">
+            <span class="ds-flywheel__node">Free app</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">Card linking</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">1st-party data</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">Family pooling</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">2nd-party signals</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">Segments</span>
+            <span class="ds-flywheel__sep" aria-hidden="true">→</span>
+            <span class="ds-flywheel__node">Partner value</span>
+          </div>
+
+          <div class="ds-phase reveal" style="--i: 4">
+            <table>
+              <caption class="sr-only">Illustrative partner integration phases</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Phase</th>
+                  <th scope="col">Partners</th>
+                  <th scope="col">Data richness</th>
+                  <th scope="col">CDP capability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Month 1</td>
+                  <td>AIS + Lotus’s</td>
+                  <td>Telco + grocery baskets</td>
+                  <td>Identity foundation · family graph</td>
+                </tr>
+                <tr>
+                  <td>Month 2</td>
+                  <td>BTS + iBerry</td>
+                  <td>Commute + dining frequency</td>
+                  <td>Cross-category patterns</td>
+                </tr>
+                <tr>
+                  <td>Month 3</td>
+                  <td>IHG</td>
+                  <td>Stay / redemption goals</td>
+                  <td>Earn-to-burn attribution</td>
+                </tr>
+                <tr>
+                  <td>Month 6+</td>
+                  <td>All five live</td>
+                  <td>Full Year-1 coalition</td>
+                  <td>Dashboards · segments · CRM triggers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Privacy -->
+      <section class="section" id="governance" aria-labelledby="gov-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">5 · Privacy &amp; governance</p>
+          <h2 id="gov-title" data-split>Academic pilot. No real PII harvest.</h2>
+          <p class="section__lead">
+            This website is a fictional / academic Year-1 concept. Numbers and flows are illustrative.
+            Privacy is the brand platform — not a legal guarantee of PDPA compliance.
+          </p>
+          <div class="ds-gov">
+            <article class="ds-gov__card reveal" style="--i: 0">
+              <span class="ds-touch__icon" data-icon="lock"></span>
+              <h3>Granular consent</h3>
+              <p>
+                Per-partner sharing toggles. One-click revoke for future data. Historical ledger
+                integrity does not require keeping marketing permissions forever.
+              </p>
+            </article>
+            <article class="ds-gov__card reveal" style="--i: 1">
+              <span class="ds-touch__icon" data-icon="eye"></span>
+              <h3>Minimisation</h3>
+              <p>
+                Collect only what the shared goal needs. Prefer tokens over identifiers. Prefer
+                aggregate partner insight over household-level exports.
+              </p>
+            </article>
+            <article class="ds-gov__card reveal" style="--i: 2">
+              <span class="ds-touch__icon" data-icon="shield-check"></span>
+              <h3>Composable stance</h3>
+              <p>
+                Query in place where possible. Thailand-context PDPA awareness. Site analytics stay
+                off until a real measurement ID is configured.
+              </p>
+            </article>
+          </div>
+          <p class="reveal" style="--i: 3; margin-top: var(--space-5)">
+            <a href="/privacy.html">Read the consumer privacy approach →</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--compact" id="toolkit" aria-labelledby="toolkit-title">
+        <div class="shell">
+          <hr class="rule" data-rule />
+          <p class="section__eyebrow">Marketing for a digital age</p>
+          <h2 id="toolkit-title" data-split>Where this site maps the course toolkit.</h2>
+          <p class="section__lead">
+            LINK’s public narrative is built so an evaluator can see positioning, journey, loyalty,
+            partnerships, CDP thinking, and measurement readiness in one place — without fake backends.
+          </p>
+          <div class="ds-touch">
+            <article class="ds-touch__item reveal" style="--i: 0">
+              <h3>Positioning</h3>
+              <p>Worth More Together — family as buying unit; free consumer, partner-side economics.</p>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 1">
+              <h3>Journey &amp; PESO</h3>
+              <p>Owned site + demo; partner ecosystems as earned/shared reach; paid acquisition called out as 3rd-party only.</p>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 2">
+              <h3>Loyalty loop</h3>
+              <p>Earn → pool → burn across five partners; see earn-to-burn and the interactive demo.</p>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 3">
+              <h3>Personas</h3>
+              <p>Nan / Wit / Ploy — decision, value, activator — on for-families and in this data map.</p>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 4">
+              <h3>CDP narrative</h3>
+              <p>Unify, segment, activate, measure — with consent as a first-class event type.</p>
+            </article>
+            <article class="ds-touch__item reveal" style="--i: 5">
+              <h3>Measurement</h3>
+              <p>GA ready but dormant until configured; SEO meta + sitemaps shipped; interest stub for evaluators.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interest + CTAs -->
+      <section class="final-cta" data-spotlight aria-labelledby="ds-cta-title">
+        <div class="shell">
+          <div class="reveal" style="--i: 0">
+            <h2 id="ds-cta-title" data-split>See the product that generates the data.</h2>
+            <p>
+              The demo walks Connect → Pool → Use. For academic reviewers: the interest form below
+              is a non-submitting stub — it opens your mail client or confirms locally, with no backend.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="/demo.html">Explore the demo<span data-icon="arrow-right"></span></a>
+              <a class="btn btn--secondary" href="/how-it-works.html">How LINK works</a>
+            </div>
+          </div>
+
+          <form class="ds-interest reveal" style="--i: 1" data-interest-form novalidate>
+            <p class="ds-interest__note">
+              Pilot interest capture — academic / evaluator use. Nothing is stored on a server.
+            </p>
+            <label for="interest-name">Name</label>
+            <input id="interest-name" name="name" type="text" autocomplete="name" placeholder="Your name" />
+            <label for="interest-email">Email</label>
+            <input id="interest-email" name="email" type="email" autocomplete="email" placeholder="you@university.edu" />
+            <label for="interest-note">Note (optional)</label>
+            <textarea id="interest-note" name="note" placeholder="What you’d like to discuss about the data strategy"></textarea>
+            <button class="btn btn--primary" type="submit">Express interest</button>
+            <p class="ds-interest__status" data-interest-status hidden>Interest noted locally — no account created.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+    <div data-chrome-footer></div>
+    <script type="module" src="/src/js/app.js"></script>
+  </body>
+</html>

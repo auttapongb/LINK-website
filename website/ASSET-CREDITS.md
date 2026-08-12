@@ -64,6 +64,14 @@ The persona portraits are stock photography standing in for the fictional
 personas Nan, Wit and Ploy. They are illustrative and do not depict real
 LINK users.
 
+## Device mockup — Pngtree
+
+| File | What it is | Source |
+| --- | --- | --- |
+| `public/assets/device/iphone-14-pro-max-frame.webp` (plus PNG fallback) | iPhone 14 Pro Max frame with Dynamic Island. Used on the home hero to contain the Family Pool UI. | [Pngtree — iPhone 14 Pro Max green screen](https://pngtree.com/) asset id `8630217`. Black studio backdrop and chroma-green display were keyed to transparency locally; bezel, side buttons, and Dynamic Island retained. Cropped to subject bounds (492×1002). |
+
+**Licence note:** Pngtree free-tier assets generally require attribution and may restrict commercial use; paid Individual/Enterprise plans change those terms. This site is a non-commercial academic EMBA pilot. Attribution is recorded here. Confirm the download-time licence (or upgrade) before any commercial redeployment of the frame.
+
 ## Team-supplied illustrations
 
 | File | What it is | Source |

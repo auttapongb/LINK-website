@@ -702,6 +702,10 @@ li:hover > .media img {
   .hero-stage .device {
     width: min(100%, 270px);
   }
+
+  .hero-stage .device--iphone {
+    width: min(68vw, 248px);
+  }
 }
 
 @media (min-width: 700px) {

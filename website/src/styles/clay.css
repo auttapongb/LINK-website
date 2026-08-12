@@ -210,6 +210,14 @@
   border: 0;
 }
 
+/* Real phone shell: clay card chrome fights the frame image. */
+.device.device--iphone {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0;
+  background: transparent;
+}
+
 .media,
 .band__media,
 .journey__media,

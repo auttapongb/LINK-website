@@ -188,6 +188,144 @@
   z-index: 1;
 }
 
+/*
+ * Hero family-pool: real iPhone 14 Pro Max frame (Pngtree green-screen
+ * keyed). Screen insets measured from the cropped frame asset
+ * (492×1002): top/bottom 3.5928%, left/right 7.3171%.
+ * Frame image sits above the UI; green was keyed transparent so the
+ * HTML UI shows through. Dynamic Island is part of the frame layer.
+ */
+.device--iphone {
+  /* Measured from cropped frame (492×1002); nudged 0.15–0.2pp inward so
+     white UI stays under the glass and does not flash through corner gaps. */
+  --device-screen-top: 3.75%;
+  --device-screen-right: 7.5%;
+  --device-screen-bottom: 3.75%;
+  --device-screen-left: 7.5%;
+  --device-screen-radius: 10.2% / 5.2%;
+  --device-island-safe: 5.6%;
+  width: min(100%, 310px);
+  aspect-ratio: 492 / 1002;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.device--iphone .device__screen {
+  position: absolute;
+  top: var(--device-screen-top);
+  right: var(--device-screen-right);
+  bottom: var(--device-screen-bottom);
+  left: var(--device-screen-left);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--device-screen-radius);
+}
+
+.device--iphone .device__body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0.05rem 0.78rem 1.05rem;
+  overflow: hidden;
+}
+
+.device--iphone .device__bar {
+  flex: 0 0 auto;
+  /* Clear Dynamic Island; status text sits in the side safe areas. */
+  padding: var(--device-island-safe) 0.78rem 0.2rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.device--iphone .device__label {
+  margin-bottom: 0.1rem;
+}
+
+.device--iphone .device__title {
+  font-size: 0.98rem;
+  margin-bottom: 0.5rem;
+}
+
+.device--iphone .avatar-row {
+  margin-bottom: 0.55rem;
+}
+
+.device--iphone .avatar {
+  width: 1.55rem;
+  height: 1.55rem;
+  font-size: 0.55rem;
+}
+
+.device--iphone .balance,
+.device--iphone .goal {
+  padding: 0.55rem 0.65rem;
+  margin-bottom: 0.45rem;
+}
+
+.device--iphone .balance__value {
+  font-size: 1.25rem;
+}
+
+.device--iphone .goal__top {
+  font-size: 0.72rem;
+  margin-bottom: 0.4rem;
+}
+
+.device--iphone .alert-soft {
+  margin-bottom: 0.4rem;
+  font-size: 0.64rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.device--iphone .contrib {
+  gap: 0.28rem;
+  margin-bottom: 0.45rem;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.device--iphone .contrib li {
+  font-size: 0.66rem;
+  padding-bottom: 0.22rem;
+}
+
+.device--iphone .device__action {
+  flex: 0 0 auto;
+  margin-top: auto;
+  min-height: 40px;
+  font-size: 0.8rem;
+}
+
+.device__frame {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.device__frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 22px 48px rgba(40, 30, 24, 0.32));
+}
+
 .device__bar {
   display: flex;
   align-items: center;

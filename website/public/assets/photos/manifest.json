@@ -151,5 +151,38 @@
     "license": "User-supplied demo photo for academic mock — not a production CDP likeness claim",
     "subject": "Illustrative headshot for the simulated Kent OldKiwi CDP identity-graph example on cdp-admin.html.",
     "note": "Cropped square headshot from classroom demo photo; Sasin watermark/footer cropped out. Lossless companion: demo-kent-oldkiwi.png. Always shown with Illustrative / simulated labeling."
+  },
+  {
+    "file": "cdp-propensity-travel.webp",
+    "width": 1400,
+    "height": 900,
+    "bytes": 274790,
+    "source": "Unsplash",
+    "photographer": "Alonso Reyes",
+    "pageUrl": "https://unsplash.com/photos/white-cruise-ship-Ca4XZM3xABg",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "White cruise ship on open water at sunset — used as travel / Q4 getaway atmosphere on the CDP AI propensity panel."
+  },
+  {
+    "file": "cdp-propensity-shop.webp",
+    "width": 1400,
+    "height": 900,
+    "bytes": 341090,
+    "source": "Unsplash",
+    "photographer": "nrd",
+    "pageUrl": "https://unsplash.com/photos/a-produce-section-of-a-grocery-store-filled-with-fruits-and-veggies-aGPmZCQDQeU",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "Produce section of a grocery store with fruit and vegetables — grocery uplift card on the CDP AI propensity panel."
+  },
+  {
+    "file": "cdp-propensity-mobile.webp",
+    "width": 1400,
+    "height": 900,
+    "bytes": 112632,
+    "source": "Unsplash",
+    "photographer": "William Iven",
+    "pageUrl": "https://unsplash.com/photos/person-holding-iphone-showing-apps-WZKUTsNQ9nE",
+    "license": "Unsplash License — free for commercial use, no attribution required",
+    "subject": "Hands holding a smartphone showing app icons — LINE / mobile channel preference card on the CDP AI propensity panel."
   }
 ]

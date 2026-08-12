@@ -59,10 +59,15 @@ Machine-readable details (dimensions, byte sizes, verified subject) live in
 | `persona-nan.webp` | Vitaly Gariev | [Unsplash](https://unsplash.com/photos/smiling-woman-in-white-shirt-against-colorful-wall-TE-hl5u8qkA) |
 | `persona-wit.webp` | Vitaly Gariev | [Unsplash](https://unsplash.com/photos/an-older-asian-man-in-a-plaid-shirt-dN-32CEr_O4) |
 | `persona-ploy.webp` | Ereng hu | [Unsplash](https://unsplash.com/photos/a-smiling-young-woman-in-a-white-dress-outdoors-HOvnm0KYp7M) |
+| `cdp-propensity-travel.webp` | Alonso Reyes | [Unsplash](https://unsplash.com/photos/white-cruise-ship-Ca4XZM3xABg) |
+| `cdp-propensity-shop.webp` | nrd | [Unsplash](https://unsplash.com/photos/a-produce-section-of-a-grocery-store-filled-with-fruits-and-veggies-aGPmZCQDQeU) |
+| `cdp-propensity-mobile.webp` | William Iven | [Unsplash](https://unsplash.com/photos/person-holding-iphone-showing-apps-WZKUTsNQ9nE) |
 
 The persona portraits are stock photography standing in for the fictional
 personas Nan, Wit and Ploy. They are illustrative and do not depict real
-LINK users.
+LINK users. The `cdp-propensity-*.webp` set is used only on the LINK Admin CDP
+AI propensity panel for the illustrative Kent OldKiwi demo (always labeled
+**Illustrative / simulated**).
 
 ## Demo CDP portrait — user-supplied
 

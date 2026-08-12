@@ -39,6 +39,13 @@
             </p>
 
             <p class="auth-mode" data-auth-mode>Checking auth…</p>
+            <p class="auth-demo-note">
+              Course demo (no register): <code>kent</code> or <code>kent@link.demo</code> /
+              <code>2026</code>.
+              Same credentials gate
+              <a href="/cdp-login.html">CDP Admin</a>
+              (separate session).
+            </p>
 
             <div class="auth-tabs" role="tablist" aria-label="Account">
               <button type="button" role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true" tabindex="0">
@@ -51,10 +58,17 @@
 
             <div id="panel-login" role="tabpanel" data-auth-panel aria-labelledby="tab-login">
               <form class="auth-form" data-login-form novalidate>
-                <label for="login-email">Email</label>
-                <input id="login-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+                <label for="login-email">Email or username</label>
+                <input
+                  id="login-email"
+                  name="email"
+                  type="text"
+                  autocomplete="username"
+                  required
+                  placeholder="kent or you@example.com"
+                />
                 <label for="login-password">Password</label>
-                <input id="login-password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="At least 6 characters" />
+                <input id="login-password" name="password" type="password" autocomplete="current-password" required minlength="4" placeholder="Password" />
                 <button class="btn btn--primary" type="submit">Log in</button>
               </form>
             </div>

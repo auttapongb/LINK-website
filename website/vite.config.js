@@ -26,6 +26,7 @@ export default defineConfig({
         marketEvidence: resolve(__dirname, "market-evidence.html"),
         forEvaluators: resolve(__dirname, "for-evaluators.html"),
         cdpAdmin: resolve(__dirname, "cdp-admin.html"),
+        cdpLogin: resolve(__dirname, "cdp-login.html"),
         login: resolve(__dirname, "login.html"),
         dashboard: resolve(__dirname, "dashboard.html"),
       },

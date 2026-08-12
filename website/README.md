@@ -54,6 +54,8 @@ what the header, footer and animated marks render from.
 | Demo | `/demo.html` |
 | Log in | `/login.html` |
 | Family Admin dashboard | `/dashboard.html` (auth required) |
+| CDP Admin login | `/cdp-login.html` |
+| CDP Admin dashboard | `/cdp-admin.html` (CDP session required) |
 | Sitemap (HTML) | `/sitemap.html` |
 | Sitemap (XML) | `/sitemap.xml` |
 
@@ -63,6 +65,10 @@ The marketing site is still static (Vite). Auth is client-side:
 
 1. **Firebase Auth** (preferred) — email/password + Google, when env vars are set
 2. **Local demo auth** (fallback) — register/login stored in `localStorage`; the Google button becomes **Continue with demo Google account** and does **not** call Google’s servers
+
+**Seeded course demo (no register):** username `kent` or `kent@link.demo`, password `2026` (session key `LINK_AUTH_SESSION_V1`).
+
+**CDP Admin** uses the same credentials on `/cdp-login.html`, with a separate session key (`link_cdp_admin_session`).
 
 ### Enable Firebase
 

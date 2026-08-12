@@ -13,6 +13,7 @@ import { initLoginPage } from "./login-page.js";
 import { initDashboardPage } from "./dashboard-page.js";
 import { mountCourseRail } from "./course-rail.js";
 import { initCdpAdminPage } from "./cdp-admin.js";
+import { initCdpLoginPage } from "./cdp-login-page.js";
 
 async function boot() {
   await initAuth();
@@ -28,6 +29,7 @@ async function boot() {
   initMotion();
   await initLoginPage();
   await initDashboardPage();
+  initCdpLoginPage();
   initCdpAdminPage();
 }
 

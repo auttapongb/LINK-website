@@ -33,6 +33,7 @@ const PAGES = [
   ["consumer-insight", "/consumer-insight.html"],
   ["market-evidence", "/market-evidence.html"],
   ["for-evaluators", "/for-evaluators.html"],
+  ["cdp-login", "/cdp-login.html"],
   ["cdp-admin", "/cdp-admin.html"],
   ["sitemap", "/sitemap.html"],
 ];
@@ -246,6 +247,17 @@ for (const [vpName, viewport] of VIEWPORTS) {
             provider: "password",
             mode: "demo",
           })
+        );
+      });
+    }
+
+    // CDP Admin redirects when logged out — seed a separate sessionStorage gate.
+    if (name === "cdp-admin") {
+      await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 45000 });
+      await page.evaluate(() => {
+        sessionStorage.setItem(
+          "link_cdp_admin_session",
+          JSON.stringify({ user: "kent", at: Date.now() })
         );
       });
     }

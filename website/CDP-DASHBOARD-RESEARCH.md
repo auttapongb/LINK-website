@@ -70,3 +70,5 @@ Admin UIs almost always expose:
 | Ops | Source health for Lotus’s, BTS, AIS, iBerry, IHG, web |
 
 All figures on `cdp-admin.html` are **illustrative / simulated pilot data** for professor demo — not live production telemetry.
+
+Professor access: `cdp-login.html` (course demo credentials `kent` / `2026`); session key `link_cdp_admin_session` — separate from Family Admin.

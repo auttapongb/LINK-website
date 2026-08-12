@@ -26,6 +26,15 @@
     <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
     <link rel="stylesheet" href="/src/styles/main.css" />
+    <script>
+      /* Early gate — avoid flashing dashboard before the module bundle loads. */
+      try {
+        if (!sessionStorage.getItem("link_cdp_admin_session")) {
+          var next = encodeURIComponent(location.pathname + location.search + location.hash);
+          location.replace("/cdp-login.html?next=" + next);
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div data-chrome-header></div>

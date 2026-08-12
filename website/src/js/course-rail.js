@@ -42,8 +42,14 @@ export function mountCourseRail() {
     return `<li><a href="${link.href}"${current}>${link.label}</a></li>`;
   }).join("");
 
+  const logout =
+    key === "cdp"
+      ? `<button type="button" class="course-rail__logout" data-cdp-logout>Log out of CDP</button>`
+      : "";
+
   host.innerHTML = `
     <p class="course-rail__label">Course pack</p>
     <ul class="course-rail__nav">${items}</ul>
+    ${logout}
   `;
 }

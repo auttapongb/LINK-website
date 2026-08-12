@@ -3,7 +3,27 @@
  * No real ad, CRM, or partner APIs are called.
  */
 
+import { logoutCdpAdmin, requireCdpAuth } from "./cdp-auth.js";
+
+function wireLogout() {
+  document.querySelectorAll("[data-cdp-logout]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      logoutCdpAdmin();
+      window.location.replace("/cdp-login.html");
+    });
+  });
+}
+
 export function initCdpAdminPage() {
+  const isCdpPage =
+    Boolean(document.querySelector("[data-cdp-activate]")) ||
+    Boolean(document.querySelector(".cdp-banner"));
+  if (!isCdpPage) return;
+
+  if (!requireCdpAuth("/cdp-login.html")) return;
+
+  wireLogout();
+
   const root = document.querySelector("[data-cdp-activate]");
   if (!root) return;
 

@@ -20,6 +20,14 @@ const SESSION_KEY = "LINK_AUTH_SESSION_V1";
 const USERS_KEY = "LINK_DEMO_USERS_V1";
 const AUTH_EVENT = "link:authchange";
 
+/** Seeded course demo — no Register required. Separate from CDP session key. */
+const SEEDED_DEMO = {
+  ids: new Set(["kent", "kent@link.demo"]),
+  email: "kent@link.demo",
+  password: "2026",
+  displayName: "Kent",
+};
+
 /** @typedef {{ uid: string, email: string, displayName: string, photoURL?: string|null, provider: 'password'|'google'|'demo-google', mode: 'firebase'|'demo' }} LinkUser */
 
 let firebaseAuth = null;
@@ -182,13 +190,34 @@ export async function registerWithEmail(email, password, displayName) {
   return currentUser;
 }
 
+function normalizeDemoLoginId(value) {
+  const v = String(value || "").trim().toLowerCase();
+  if (v === "kent") return SEEDED_DEMO.email;
+  return v;
+}
+
 export async function loginWithEmail(email, password) {
-  const cleanEmail = String(email || "").trim().toLowerCase();
-  if (!cleanEmail || !password) throw new Error("Enter your email and password.");
+  const raw = String(email || "").trim().toLowerCase();
+  const cleanEmail = normalizeDemoLoginId(raw);
+  if (!raw || !password) throw new Error("Enter your email and password.");
 
   if (mode === "firebase" && firebaseAuth) {
     const cred = await signInWithEmailAndPassword(firebaseAuth, cleanEmail, password);
     setUser(mapFirebaseUser(cred.user));
+    return currentUser;
+  }
+
+  // Seeded course credentials (kent / 2026) — works without Register.
+  if (SEEDED_DEMO.ids.has(raw) || SEEDED_DEMO.ids.has(cleanEmail)) {
+    if (password !== SEEDED_DEMO.password) throw new Error("Incorrect password.");
+    setUser({
+      uid: uidFromEmail(SEEDED_DEMO.email),
+      email: SEEDED_DEMO.email,
+      displayName: SEEDED_DEMO.displayName,
+      photoURL: null,
+      provider: "password",
+      mode: "demo",
+    });
     return currentUser;
   }
 

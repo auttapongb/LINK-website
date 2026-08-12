@@ -11,10 +11,12 @@ import { initTracking } from "./tracking.js";
 import { initAuth } from "./auth.js";
 import { initLoginPage } from "./login-page.js";
 import { initDashboardPage } from "./dashboard-page.js";
+import { mountCourseRail } from "./course-rail.js";
 
 async function boot() {
   await initAuth();
   mountChrome();
+  mountCourseRail();
   initConsent();
   initAnalytics();
   initHeatmap();

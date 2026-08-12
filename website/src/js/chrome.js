@@ -44,6 +44,7 @@ function currentKey() {
   if (path.endsWith("/consumer-insight.html")) return "consumer";
   if (path.endsWith("/market-evidence.html")) return "evidence";
   if (path.endsWith("/for-evaluators.html")) return "evaluators";
+  if (path.endsWith("/cdp-admin.html")) return "cdp";
   if (path.endsWith("/privacy.html")) return "privacy";
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";

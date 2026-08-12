@@ -33,6 +33,7 @@ const PAGES = [
   ["consumer-insight", "/consumer-insight.html"],
   ["market-evidence", "/market-evidence.html"],
   ["for-evaluators", "/for-evaluators.html"],
+  ["cdp-admin", "/cdp-admin.html"],
   ["sitemap", "/sitemap.html"],
 ];
 

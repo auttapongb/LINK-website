@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LINK Admin CDP — simulated pilot dashboard</title>
+    <meta
+      name="description"
+      content="Illustrative LINK Admin Customer Data Platform dashboard: unify household identity, segment, activate partners, and measure the earn-to-burn funnel. Simulated pilot data for professor review."
+    />
+    <meta name="theme-color" content="#2360e8" />
+    <meta name="robots" content="noindex" />
+    <meta property="og:site_name" content="LINK" />
+    <meta property="og:title" content="LINK Admin CDP — simulated pilot dashboard" />
+    <meta
+      property="og:description"
+      content="Professor demo of a post-traffic CDP admin: unify → segment → activate → measure."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/brand/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/assets/brand/og-image.jpg" />
+    <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div data-chrome-header></div>
+    <div class="shell course-shell course-shell--wide-rail">
+      <aside class="course-rail" data-course-rail aria-label="Course materials"></aside>
+      <main id="main" class="course-main">
+        <div class="cdp-banner" role="status">
+          <span class="cdp-banner__dot" aria-hidden="true"></span>
+          Illustrative / simulated pilot data — not live production telemetry.
+        </div>
+
+        <header class="cdp-hero reveal" style="--i: 0">
+          <p class="cdp-hero__eyebrow">LINK Admin · CDP</p>
+          <h1>Household data ops after traffic.</h1>
+          <p class="cdp-hero__lead">
+            Unify partner signals → segment pools → activate destinations → measure the earn-to-burn funnel.
+            Distinct from the consumer Family Admin dashboard.
+          </p>
+        </header>
+
+        <nav class="cdp-pipeline reveal" style="--i: 1" aria-label="CDP stages">
+          <a class="cdp-pipeline__step" href="#unify">
+            <span class="cdp-pipeline__n">01</span>
+            <strong>Unify</strong>
+          </a>
+          <a class="cdp-pipeline__step" href="#segment">
+            <span class="cdp-pipeline__n">02</span>
+            <strong>Segment</strong>
+          </a>
+          <a class="cdp-pipeline__step" href="#activate">
+            <span class="cdp-pipeline__n">03</span>
+            <strong>Activate</strong>
+          </a>
+          <a class="cdp-pipeline__step" href="#measure">
+            <span class="cdp-pipeline__n">04</span>
+            <strong>Measure</strong>
+          </a>
+        </nav>
+
+        <section class="cdp-kpis reveal" style="--i: 2" aria-label="Pilot KPIs">
+          <article class="cdp-kpi">
+            <p class="cdp-kpi__label">Unified profiles</p>
+            <p class="cdp-kpi__value">12,480</p>
+            <p class="cdp-kpi__meta">↑ 18% vs prior week</p>
+          </article>
+          <article class="cdp-kpi">
+            <p class="cdp-kpi__label">Household pools</p>
+            <p class="cdp-kpi__value">4,210</p>
+            <p class="cdp-kpi__meta">Avg 2.9 members</p>
+          </article>
+          <article class="cdp-kpi">
+            <p class="cdp-kpi__label">Active audiences</p>
+            <p class="cdp-kpi__value">14</p>
+            <p class="cdp-kpi__meta">6 synced live</p>
+          </article>
+          <article class="cdp-kpi">
+            <p class="cdp-kpi__label">Events / 24h</p>
+            <p class="cdp-kpi__value">186k</p>
+            <p class="cdp-kpi__meta cdp-kpi__meta--warn">2 sources lagging</p>
+          </article>
+        </section>
+
+        <div class="cdp-grid cdp-grid--2">
+          <section class="cdp-panel reveal" style="--i: 0" id="unify" aria-labelledby="unify-title">
+            <div class="cdp-panel__head">
+              <h2 id="unify-title">Identity graph · Somsri</h2>
+              <span class="cdp-panel__tag">Unify</span>
+            </div>
+            <p class="cdp-panel__note">Household pool resolves Nan, Wit, and Ploy to partner tokens — not raw partner IDs.</p>
+            <svg class="cdp-id-svg" viewBox="0 0 520 280" role="img" aria-label="Somsri household identity graph">
+              <title>Somsri household identity graph</title>
+              <path class="edge" d="M260 70 L140 150" />
+              <path class="edge" d="M260 70 L260 150" />
+              <path class="edge" d="M260 70 L380 150" />
+              <path class="edge" d="M140 150 L70 230" />
+              <path class="edge" d="M140 150 L170 230" />
+              <path class="edge" d="M260 150 L230 230" />
+              <path class="edge" d="M260 150 L290 230" />
+              <path class="edge" d="M380 150 L350 230" />
+              <path class="edge" d="M380 150 L450 230" />
+              <circle class="node-pool" cx="260" cy="70" r="36" />
+              <text class="label-pool" x="260" y="66" text-anchor="middle">Somsri</text>
+              <text class="label-pool" x="260" y="82" text-anchor="middle" style="font-size: 10px; font-weight: 500">pool</text>
+              <circle class="node-member" cx="140" cy="150" r="28" />
+              <circle class="node-member" cx="260" cy="150" r="28" />
+              <circle class="node-member" cx="380" cy="150" r="28" />
+              <text x="140" y="154" text-anchor="middle" font-weight="700">Nan</text>
+              <text x="260" y="154" text-anchor="middle" font-weight="700">Wit</text>
+              <text x="380" y="154" text-anchor="middle" font-weight="700">Ploy</text>
+              <rect class="node-token" x="30" y="214" width="80" height="36" rx="10" />
+              <rect class="node-token" x="130" y="214" width="80" height="36" rx="10" />
+              <rect class="node-token" x="190" y="214" width="80" height="36" rx="10" />
+              <rect class="node-token" x="250" y="214" width="80" height="36" rx="10" />
+              <rect class="node-token" x="310" y="214" width="80" height="36" rx="10" />
+              <rect class="node-token" x="410" y="214" width="80" height="36" rx="10" />
+              <text x="70" y="236" text-anchor="middle">Lotus’s</text>
+              <text x="170" y="236" text-anchor="middle">AIS</text>
+              <text x="230" y="236" text-anchor="middle">BTS</text>
+              <text x="290" y="236" text-anchor="middle">Web</text>
+              <text x="350" y="236" text-anchor="middle">iBerry</text>
+              <text x="450" y="236" text-anchor="middle">IHG</text>
+            </svg>
+            <div class="cdp-id-legend">
+              <span><i class="pool" aria-hidden="true"></i> Household pool</span>
+              <span><i class="member" aria-hidden="true"></i> Member profile</span>
+              <span><i class="token" aria-hidden="true"></i> Partner token</span>
+            </div>
+          </section>
+
+          <section class="cdp-panel reveal" style="--i: 1" id="segment" aria-labelledby="seg-title">
+            <div class="cdp-panel__head">
+              <h2 id="seg-title">Pilot audiences</h2>
+              <span class="cdp-panel__tag">Segment</span>
+            </div>
+            <ul class="cdp-seg">
+              <li>
+                <span class="cdp-seg__name">Goal closers · 7d</span>
+                <span class="cdp-seg__size">1,842</span>
+                <span class="cdp-seg__rule">Pool balance ≥ 80% of goal · burn window open</span>
+                <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 92%"></span></div>
+              </li>
+              <li>
+                <span class="cdp-seg__name">Weekend burners</span>
+                <span class="cdp-seg__size">3,106</span>
+                <span class="cdp-seg__rule">Earn Thu–Sat · IHG or dining intent</span>
+                <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 78%"></span></div>
+              </li>
+              <li>
+                <span class="cdp-seg__name">Quiet earners</span>
+                <span class="cdp-seg__size">2,440</span>
+                <span class="cdp-seg__rule">Earn events · no pool contribution 14d</span>
+                <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 61%"></span></div>
+              </li>
+              <li>
+                <span class="cdp-seg__name">Activator Gen Z</span>
+                <span class="cdp-seg__size">5,920</span>
+                <span class="cdp-seg__rule">Ploy-role signals · share / invite events</span>
+                <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 100%"></span></div>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="cdp-grid cdp-grid--2">
+          <section class="cdp-panel reveal" style="--i: 0" id="funnel" aria-labelledby="funnel-title">
+            <div class="cdp-panel__head">
+              <h2 id="funnel-title">Conversion funnel</h2>
+              <span class="cdp-panel__tag">Join → Burn</span>
+            </div>
+            <p class="cdp-panel__note">Simulated pilot cohort · last 30 days · household-level.</p>
+            <div class="cdp-funnel">
+              <div class="cdp-funnel__row">
+                <span class="cdp-funnel__label">Join</span>
+                <div class="cdp-funnel__track">
+                  <div class="cdp-funnel__fill" style="width: 100%">12.5k</div>
+                </div>
+                <span class="cdp-funnel__pct">100%</span>
+              </div>
+              <div class="cdp-funnel__row">
+                <span class="cdp-funnel__label">Earn</span>
+                <div class="cdp-funnel__track">
+                  <div class="cdp-funnel__fill" style="width: 78%">9.7k</div>
+                </div>
+                <span class="cdp-funnel__pct">78%</span>
+              </div>
+              <div class="cdp-funnel__row">
+                <span class="cdp-funnel__label">Pool</span>
+                <div class="cdp-funnel__track">
+                  <div class="cdp-funnel__fill" style="width: 61%">7.6k</div>
+                </div>
+                <span class="cdp-funnel__pct">61%</span>
+              </div>
+              <div class="cdp-funnel__row">
+                <span class="cdp-funnel__label">Goal</span>
+                <div class="cdp-funnel__track">
+                  <div class="cdp-funnel__fill" style="width: 34%">4.3k</div>
+                </div>
+                <span class="cdp-funnel__pct">34%</span>
+              </div>
+              <div class="cdp-funnel__row">
+                <span class="cdp-funnel__label">Burn</span>
+                <div class="cdp-funnel__track">
+                  <div class="cdp-funnel__fill" style="width: 22%">2.8k</div>
+                </div>
+                <span class="cdp-funnel__pct">22%</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="cdp-panel reveal" style="--i: 1" aria-labelledby="journey-title">
+            <div class="cdp-panel__head">
+              <h2 id="journey-title">Journey · Somsri sample</h2>
+              <span class="cdp-panel__tag">Timeline</span>
+            </div>
+            <ol class="cdp-timeline">
+              <li>
+                <span class="cdp-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <span class="cdp-timeline__time">Day 0 · 09:12</span>
+                  <p class="cdp-timeline__body"><strong>Join</strong> — Nan creates household; Wit + Ploy invited.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cdp-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <span class="cdp-timeline__time">Day 1 · 18:40</span>
+                  <p class="cdp-timeline__body"><strong>Earn</strong> — Lotus’s basket + BTS commute linked.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cdp-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <span class="cdp-timeline__time">Day 3 · 12:05</span>
+                  <p class="cdp-timeline__body"><strong>Pool</strong> — Ploy contributes AIS top-up points.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cdp-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <span class="cdp-timeline__time">Day 12 · 21:18</span>
+                  <p class="cdp-timeline__body"><strong>Goal</strong> — Weekend getaway hits 100% funded.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cdp-timeline__dot" aria-hidden="true"></span>
+                <div>
+                  <span class="cdp-timeline__time">Day 14 · 16:02</span>
+                  <p class="cdp-timeline__body"><strong>Burn</strong> — IHG night reserved; activation ping to CRM.</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+        </div>
+
+        <div class="cdp-grid cdp-grid--equal">
+          <section class="cdp-panel reveal" style="--i: 0" id="activate" aria-labelledby="act-title">
+            <div class="cdp-panel__head">
+              <h2 id="act-title">Activation destinations</h2>
+              <span class="cdp-panel__tag">Activate</span>
+            </div>
+            <ul class="cdp-dest">
+              <li>
+                <span class="cdp-dest__name">Partner ops · Lotus’s</span>
+                <span class="cdp-status cdp-status--ok">Live</span>
+                <span class="cdp-dest__meta">Aggregate earn cohorts · hourly</span>
+              </li>
+              <li>
+                <span class="cdp-dest__name">IHG burn readiness</span>
+                <span class="cdp-status cdp-status--ok">Live</span>
+                <span class="cdp-dest__meta">Goal closers audience · 15 min</span>
+              </li>
+              <li>
+                <span class="cdp-dest__name">CRM trigger · LINE</span>
+                <span class="cdp-status cdp-status--sync">Syncing</span>
+                <span class="cdp-dest__meta">Quiet earners nudge · batch 4h</span>
+              </li>
+              <li>
+                <span class="cdp-dest__name">Paid social · Meta</span>
+                <span class="cdp-status cdp-status--lag">Lag</span>
+                <span class="cdp-dest__meta">Activator Gen Z · daily (token hash)</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="cdp-panel reveal" style="--i: 1" aria-labelledby="src-title">
+            <div class="cdp-panel__head">
+              <h2 id="src-title">Source health</h2>
+              <span class="cdp-panel__tag">Ingest</span>
+            </div>
+            <ul class="cdp-src">
+              <li>
+                <span class="cdp-src__name">Lotus’s earn feed</span>
+                <span class="cdp-status cdp-status--ok">Healthy</span>
+                <span class="cdp-src__meta">p95 latency 1.2s · 0.1% drop</span>
+              </li>
+              <li>
+                <span class="cdp-src__name">BTS mobility</span>
+                <span class="cdp-status cdp-status--ok">Healthy</span>
+                <span class="cdp-src__meta">p95 latency 0.8s · streaming</span>
+              </li>
+              <li>
+                <span class="cdp-src__name">AIS top-up</span>
+                <span class="cdp-status cdp-status--lag">Lag</span>
+                <span class="cdp-src__meta">Batch delayed 42 min</span>
+              </li>
+              <li>
+                <span class="cdp-src__name">Web / demo SDK</span>
+                <span class="cdp-status cdp-status--ok">Healthy</span>
+                <span class="cdp-src__meta">Consent-gated page events</span>
+              </li>
+              <li>
+                <span class="cdp-src__name">IHG burn confirm</span>
+                <span class="cdp-status cdp-status--sync">Catch-up</span>
+                <span class="cdp-src__meta">Webhook replay overnight</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="cdp-panel reveal" style="--i: 0" id="measure" aria-labelledby="measure-title">
+          <div class="cdp-panel__head">
+            <h2 id="measure-title">Measurement · weekly burn completions</h2>
+            <span class="cdp-panel__tag">Measure</span>
+          </div>
+          <div class="cdp-measure">
+            <svg class="cdp-measure__chart" viewBox="0 0 640 200" role="img" aria-label="Weekly burn completions chart">
+              <title>Weekly burn completions — simulated</title>
+              <defs>
+                <linearGradient id="cdpAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#aee2f6" stop-opacity="0.85" />
+                  <stop offset="100%" stop-color="#aee2f6" stop-opacity="0.05" />
+                </linearGradient>
+              </defs>
+              <line class="grid-line" x1="40" y1="40" x2="620" y2="40" />
+              <line class="grid-line" x1="40" y1="90" x2="620" y2="90" />
+              <line class="grid-line" x1="40" y1="140" x2="620" y2="140" />
+              <path
+                class="area"
+                d="M40 150 L120 132 L200 118 L280 108 L360 92 L440 78 L520 70 L600 58 L600 170 L40 170 Z"
+              />
+              <path
+                class="line"
+                d="M40 150 L120 132 L200 118 L280 108 L360 92 L440 78 L520 70 L600 58"
+              />
+              <text x="40" y="188">W1</text>
+              <text x="200" y="188">W3</text>
+              <text x="360" y="188">W5</text>
+              <text x="520" y="188">W7</text>
+              <text x="600" y="188">W8</text>
+              <text x="8" y="44">800</text>
+              <text x="8" y="144">200</text>
+            </svg>
+            <div class="cdp-measure__stats">
+              <div class="cdp-measure__stat">
+                <span>Burn rate</span>
+                <strong>22%</strong>
+              </div>
+              <div class="cdp-measure__stat">
+                <span>Median days to burn</span>
+                <strong>14</strong>
+              </div>
+              <div class="cdp-measure__stat">
+                <span>Partner lift (sim.)</span>
+                <strong>+9%</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <p class="cdp-foot reveal" style="--i: 1">
+          Strategy narrative:
+          <a href="/data-strategy.html">Data strategy</a>
+          · Research notes:
+          <a href="/CDP-DASHBOARD-RESEARCH.md">CDP-DASHBOARD-RESEARCH.md</a>
+          · Consumer pool UI:
+          <a href="/dashboard.html">Family Admin</a>
+          ·
+          <a href="/for-evaluators.html">Course hub</a>
+        </p>
+      </main>
+    </div>
+    <div data-chrome-footer></div>
+    <script type="module" src="/src/js/app.js"></script>
+  </body>
+</html>

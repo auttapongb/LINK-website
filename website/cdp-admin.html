@@ -39,10 +39,10 @@
 
         <header class="cdp-hero reveal" style="--i: 0">
           <p class="cdp-hero__eyebrow">LINK Admin · CDP</p>
-          <h1>Household data ops after traffic.</h1>
+          <h1>Profile ops after traffic.</h1>
           <p class="cdp-hero__lead">
-            Unify partner signals → segment pools → activate destinations → measure the earn-to-burn funnel.
-            Distinct from the consumer Family Admin dashboard.
+            Unify partner signals → segment → activate destinations → measure the earn-to-burn funnel.
+            Demo profile: Kent OldKiwi. Distinct from the consumer Family Admin dashboard.
           </p>
         </header>
 
@@ -89,49 +89,152 @@
         </section>
 
         <div class="cdp-grid cdp-grid--2">
-          <section class="cdp-panel reveal" style="--i: 0" id="unify" aria-labelledby="unify-title">
+          <section class="cdp-panel cdp-panel--id reveal" style="--i: 0" id="unify" aria-labelledby="unify-title">
             <div class="cdp-panel__head">
-              <h2 id="unify-title">Identity graph · Somsri</h2>
+              <h2 id="unify-title">Identity graph · Kent OldKiwi</h2>
               <span class="cdp-panel__tag">Unify</span>
             </div>
-            <p class="cdp-panel__note">Household pool resolves Nan, Wit, and Ploy to partner tokens — not raw partner IDs.</p>
-            <svg class="cdp-id-svg" viewBox="0 0 520 280" role="img" aria-label="Somsri household identity graph">
-              <title>Somsri household identity graph</title>
-              <path class="edge" d="M260 70 L140 150" />
-              <path class="edge" d="M260 70 L260 150" />
-              <path class="edge" d="M260 70 L380 150" />
-              <path class="edge" d="M140 150 L70 230" />
-              <path class="edge" d="M140 150 L170 230" />
-              <path class="edge" d="M260 150 L230 230" />
-              <path class="edge" d="M260 150 L290 230" />
-              <path class="edge" d="M380 150 L350 230" />
-              <path class="edge" d="M380 150 L450 230" />
-              <circle class="node-pool" cx="260" cy="70" r="36" />
-              <text class="label-pool" x="260" y="66" text-anchor="middle">Somsri</text>
-              <text class="label-pool" x="260" y="82" text-anchor="middle" style="font-size: 10px; font-weight: 500">pool</text>
-              <circle class="node-member" cx="140" cy="150" r="28" />
-              <circle class="node-member" cx="260" cy="150" r="28" />
-              <circle class="node-member" cx="380" cy="150" r="28" />
-              <text x="140" y="154" text-anchor="middle" font-weight="700">Nan</text>
-              <text x="260" y="154" text-anchor="middle" font-weight="700">Wit</text>
-              <text x="380" y="154" text-anchor="middle" font-weight="700">Ploy</text>
-              <rect class="node-token" x="30" y="214" width="80" height="36" rx="10" />
-              <rect class="node-token" x="130" y="214" width="80" height="36" rx="10" />
-              <rect class="node-token" x="190" y="214" width="80" height="36" rx="10" />
-              <rect class="node-token" x="250" y="214" width="80" height="36" rx="10" />
-              <rect class="node-token" x="310" y="214" width="80" height="36" rx="10" />
-              <rect class="node-token" x="410" y="214" width="80" height="36" rx="10" />
-              <text x="70" y="236" text-anchor="middle">Lotus’s</text>
-              <text x="170" y="236" text-anchor="middle">AIS</text>
-              <text x="230" y="236" text-anchor="middle">BTS</text>
-              <text x="290" y="236" text-anchor="middle">Web</text>
-              <text x="350" y="236" text-anchor="middle">iBerry</text>
-              <text x="450" y="236" text-anchor="middle">IHG</text>
-            </svg>
-            <div class="cdp-id-legend">
-              <span><i class="pool" aria-hidden="true"></i> Household pool</span>
-              <span><i class="member" aria-hidden="true"></i> Member profile</span>
-              <span><i class="token" aria-hidden="true"></i> Partner token</span>
+            <p class="cdp-panel__note">
+              Illustrative / simulated professor demo profile — not a live CDP record of a real person.
+            </p>
+
+            <div class="cdp-id">
+              <header class="cdp-id__hero">
+                <div class="cdp-id__avatar">
+                  <img
+                    src="/assets/photos/demo-kent-oldkiwi.webp"
+                    width="512"
+                    height="512"
+                    alt="Illustrative demo portrait for Kent OldKiwi"
+                    decoding="async"
+                  />
+                </div>
+                <div class="cdp-id__hero-copy">
+                  <p class="cdp-id__sim">Illustrative / simulated</p>
+                  <h3 class="cdp-id__name">Kent OldKiwi</h3>
+                  <p class="cdp-id__meta">
+                    <span>Age 25</span>
+                    <span aria-hidden="true">·</span>
+                    <span>LINE Login</span>
+                    <span aria-hidden="true">·</span>
+                    <span>iPhone 15 · iOS</span>
+                  </p>
+                  <div class="cdp-id__chips" aria-label="Segment and traits">
+                    <span class="cdp-chip cdp-chip--brand">Affluent</span>
+                    <span class="cdp-chip cdp-chip--brand">Shopping lover</span>
+                    <span class="cdp-chip">High grocery frequency</span>
+                    <span class="cdp-chip">IHG stay intent</span>
+                    <span class="cdp-chip">Weekend burner</span>
+                  </div>
+                </div>
+              </header>
+
+              <div class="cdp-id__sight" aria-label="Last seen and location">
+                <div>
+                  <span class="cdp-id__k">Last login</span>
+                  <strong>Today, 14:32 ICT</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">Geolocation</span>
+                  <strong>Sasin University</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">Lifetime points</span>
+                  <strong>48,620 pooled</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">Preferred burn</span>
+                  <strong>IHG stay</strong>
+                </div>
+              </div>
+
+              <div class="cdp-id__consent" aria-label="Consent state">
+                <span class="cdp-id__k">Consent</span>
+                <span class="cdp-chip cdp-chip--muted">Necessary</span>
+                <span class="cdp-chip cdp-chip--ok">Analytics</span>
+                <span class="cdp-chip cdp-chip--ok">Marketing</span>
+                <span class="cdp-chip cdp-chip--soft">Risk · none</span>
+              </div>
+
+              <div class="cdp-id__fields" aria-label="Resolved identifiers">
+                <div>
+                  <span class="cdp-id__k">Mobile</span>
+                  <strong>096-969-xxxx</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">Email</span>
+                  <strong>k***@sasin.edu</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">LINE user ID</span>
+                  <strong>U·a8f2…c91e</strong>
+                </div>
+                <div>
+                  <span class="cdp-id__k">Household</span>
+                  <strong>OldKiwi pool · solo</strong>
+                </div>
+              </div>
+
+              <div class="cdp-id-graph" role="img" aria-label="Resolved identity graph linking Kent to partner tokens">
+                <p class="cdp-id-graph__label">Resolved ID graph</p>
+                <div class="cdp-id-graph__hub">
+                  <span class="cdp-id-graph__person">Kent</span>
+                  <span class="cdp-id-graph__hub-sub">golden record</span>
+                </div>
+                <ul class="cdp-id-graph__nodes">
+                  <li><span class="cdp-id-graph__src">LINE</span><code>U·a8f2…c91e</code></li>
+                  <li><span class="cdp-id-graph__src">Mobile</span><code>096-969-xxxx</code></li>
+                  <li><span class="cdp-id-graph__src">Lotus’s</span><code>LS·7k2…91</code></li>
+                  <li><span class="cdp-id-graph__src">BTS</span><code>RB·44c…0a</code></li>
+                  <li><span class="cdp-id-graph__src">AIS</span><code>AIS·9e…b3</code></li>
+                  <li><span class="cdp-id-graph__src">iBerry</span><code>IB·12f…88</code></li>
+                  <li><span class="cdp-id-graph__src">IHG</span><code>IHG·6d…c4</code></li>
+                </ul>
+              </div>
+
+              <div class="cdp-id__events">
+                <p class="cdp-id__k">Last events</p>
+                <ul>
+                  <li><time>14:32</time> LINE Login · Sasin campus Wi‑Fi</li>
+                  <li><time>13:08</time> Lotus’s basket · +420 pts</li>
+                  <li><time>Yesterday</time> IHG browse · Holiday Inn Express</li>
+                  <li><time>Mon</time> BTS commute · Asok → Siam</li>
+                </ul>
+              </div>
+
+              <div class="cdp-id__activate" data-cdp-activate>
+                <div class="cdp-id__activate-row">
+                  <button type="button" class="btn btn--primary cdp-id__activate-btn" data-cdp-activate-btn>
+                    Flag for ads
+                  </button>
+                  <span class="cdp-chip cdp-chip--queue" data-cdp-queue-chip hidden>
+                    Ad audience · 1 profile
+                  </span>
+                </div>
+                <p class="cdp-id__activate-hint">
+                  Illustrative / simulated activation — queues Kent to demo destinations (LINE, Meta, IHG offer). No real ad API.
+                </p>
+                <div class="cdp-id__queue" data-cdp-queue hidden aria-live="polite">
+                  <p class="cdp-id__k">Activation queue</p>
+                  <ul>
+                    <li>
+                      <span class="cdp-status cdp-status--sync">Queued</span>
+                      <strong>LINE CRM</strong>
+                      <span>IHG stay intent · consent OK</span>
+                    </li>
+                    <li>
+                      <span class="cdp-status cdp-status--sync">Queued</span>
+                      <strong>Meta (hashed)</strong>
+                      <span>Shopping lover lookalike seed</span>
+                    </li>
+                    <li>
+                      <span class="cdp-status cdp-status--ok">Ready</span>
+                      <strong>Partner offer · IHG</strong>
+                      <span>Burn nudge · Holiday Inn Express</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -160,9 +263,9 @@
                 <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 61%"></span></div>
               </li>
               <li>
-                <span class="cdp-seg__name">Activator Gen Z</span>
-                <span class="cdp-seg__size">5,920</span>
-                <span class="cdp-seg__rule">Ploy-role signals · share / invite events</span>
+                <span class="cdp-seg__name">Affluent shoppers</span>
+                <span class="cdp-seg__size">1,280</span>
+                <span class="cdp-seg__rule">Kent-like traits · grocery + IHG intent</span>
                 <div class="cdp-seg__bar" aria-hidden="true"><span style="width: 100%"></span></div>
               </li>
             </ul>
@@ -175,7 +278,7 @@
               <h2 id="funnel-title">Conversion funnel</h2>
               <span class="cdp-panel__tag">Join → Burn</span>
             </div>
-            <p class="cdp-panel__note">Simulated pilot cohort · last 30 days · household-level.</p>
+            <p class="cdp-panel__note">Simulated pilot cohort · last 30 days · includes OldKiwi-pool profiles.</p>
             <div class="cdp-funnel">
               <div class="cdp-funnel__row">
                 <span class="cdp-funnel__label">Join</span>
@@ -217,7 +320,7 @@
 
           <section class="cdp-panel reveal" style="--i: 1" aria-labelledby="journey-title">
             <div class="cdp-panel__head">
-              <h2 id="journey-title">Journey · Somsri sample</h2>
+              <h2 id="journey-title">Journey · Kent OldKiwi</h2>
               <span class="cdp-panel__tag">Timeline</span>
             </div>
             <ol class="cdp-timeline">
@@ -225,35 +328,35 @@
                 <span class="cdp-timeline__dot" aria-hidden="true"></span>
                 <div>
                   <span class="cdp-timeline__time">Day 0 · 09:12</span>
-                  <p class="cdp-timeline__body"><strong>Join</strong> — Nan creates household; Wit + Ploy invited.</p>
+                  <p class="cdp-timeline__body"><strong>Join</strong> — Kent creates OldKiwi pool via LINE Login at Sasin.</p>
                 </div>
               </li>
               <li>
                 <span class="cdp-timeline__dot" aria-hidden="true"></span>
                 <div>
                   <span class="cdp-timeline__time">Day 1 · 18:40</span>
-                  <p class="cdp-timeline__body"><strong>Earn</strong> — Lotus’s basket + BTS commute linked.</p>
+                  <p class="cdp-timeline__body"><strong>Earn</strong> — Lotus’s basket + BTS commute tokens linked.</p>
                 </div>
               </li>
               <li>
                 <span class="cdp-timeline__dot" aria-hidden="true"></span>
                 <div>
                   <span class="cdp-timeline__time">Day 3 · 12:05</span>
-                  <p class="cdp-timeline__body"><strong>Pool</strong> — Ploy contributes AIS top-up points.</p>
+                  <p class="cdp-timeline__body"><strong>Pool</strong> — AIS top-up + iBerry visit add to lifetime points.</p>
                 </div>
               </li>
               <li>
                 <span class="cdp-timeline__dot" aria-hidden="true"></span>
                 <div>
                   <span class="cdp-timeline__time">Day 12 · 21:18</span>
-                  <p class="cdp-timeline__body"><strong>Goal</strong> — Weekend getaway hits 100% funded.</p>
+                  <p class="cdp-timeline__body"><strong>Goal</strong> — IHG weekend stay hits 100% funded.</p>
                 </div>
               </li>
               <li>
                 <span class="cdp-timeline__dot" aria-hidden="true"></span>
                 <div>
                   <span class="cdp-timeline__time">Day 14 · 16:02</span>
-                  <p class="cdp-timeline__body"><strong>Burn</strong> — IHG night reserved; activation ping to CRM.</p>
+                  <p class="cdp-timeline__body"><strong>Burn</strong> — Holiday Inn Express reserved; CRM activation ready.</p>
                 </div>
               </li>
             </ol>
@@ -285,7 +388,7 @@
               <li>
                 <span class="cdp-dest__name">Paid social · Meta</span>
                 <span class="cdp-status cdp-status--lag">Lag</span>
-                <span class="cdp-dest__meta">Activator Gen Z · daily (token hash)</span>
+                <span class="cdp-dest__meta">Affluent shoppers · daily (token hash)</span>
               </li>
             </ul>
           </section>
@@ -388,6 +491,7 @@
       </main>
     </div>
     <div data-chrome-footer></div>
+    <div class="cdp-toast" data-cdp-toast role="status" aria-live="polite" hidden></div>
     <script type="module" src="/src/js/app.js"></script>
   </body>
 </html>

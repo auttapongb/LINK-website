@@ -64,6 +64,12 @@ The persona portraits are stock photography standing in for the fictional
 personas Nan, Wit and Ploy. They are illustrative and do not depict real
 LINK users.
 
+## Demo CDP portrait — user-supplied
+
+| File | What it is | Source |
+| --- | --- | --- |
+| `demo-kent-oldkiwi.webp` (plus lossless `demo-kent-oldkiwi.png`) | Headshot used on the LINK Admin CDP identity-graph panel for the illustrative “Kent OldKiwi” simulated profile. Cropped to a clean square focusing on face/shoulders (Sasin watermark and footer disclaimer removed from the frame). | User-supplied demo photo for an academic classroom mock. Not a live CDP record of a real person; the page labels the profile **Illustrative / simulated**. |
+
 ## Device mockup — Pngtree
 
 | File | What it is | Source |

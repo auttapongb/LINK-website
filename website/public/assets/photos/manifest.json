@@ -141,5 +141,15 @@
     "license": "Supplied by the brand/team for this academic pilot concept",
     "subject": "A glossy pink piggy bank wearing a small gold crown, standing over scattered gold coins engraved with BTS, AIS, IHG, iBerry, and Lotus’s marks.",
     "note": "Cursor-ingested source arrived as JPEG with a baked checkerboard (no alpha). Backdrop removed, alpha restored, trimmed to subject bounds. Lossless companion: piggy-pool.png."
+  },
+  {
+    "file": "demo-kent-oldkiwi.webp",
+    "width": 512,
+    "height": 512,
+    "bytes": 14808,
+    "source": "User-supplied",
+    "license": "User-supplied demo photo for academic mock — not a production CDP likeness claim",
+    "subject": "Illustrative headshot for the simulated Kent OldKiwi CDP identity-graph example on cdp-admin.html.",
+    "note": "Cropped square headshot from classroom demo photo; Sasin watermark/footer cropped out. Lossless companion: demo-kent-oldkiwi.png. Always shown with Illustrative / simulated labeling."
   }
 ]

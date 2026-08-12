@@ -557,6 +557,14 @@ li:hover > .media img {
   animation: atmos-drift 26s var(--ease-in-out) infinite alternate;
 }
 
+/* Split hero: green wash sits behind the left visual; cool wash behind copy. */
+.page-hero--split .page-hero__atmos {
+  background:
+    radial-gradient(ellipse 58% 62% at 18% 42%, rgba(126, 196, 102, 0.28), transparent 70%),
+    radial-gradient(ellipse 46% 50% at 86% 28%, rgba(35, 96, 232, 0.16), transparent 66%),
+    radial-gradient(ellipse 40% 44% at 58% 96%, rgba(164, 124, 90, 0.12), transparent 66%);
+}
+
 @keyframes atmos-drift {
   from {
     transform: translate3d(-2%, -1%, 0) scale(1);
@@ -731,7 +739,8 @@ li:hover > .media img {
 
 @media (prefers-reduced-motion: reduce) {
   .hero__cue .icon,
-  .page-hero__atmos {
+  .page-hero__atmos,
+  .page-hero--split .page-hero__visual img {
     animation: none;
   }
 

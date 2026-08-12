@@ -131,5 +131,15 @@
     "license": "Unsplash License — free for commercial use, no attribution required",
     "subject": "A young Asian woman in a casual white sundress smiling over her shoulder in a bright open-air university walkway.",
     "note": "Re-cropped tighter than the original download so the subject scale matches the other two persona portraits."
+  },
+  {
+    "file": "piggy-pool.webp",
+    "width": 812,
+    "height": 656,
+    "bytes": 78026,
+    "source": "Team-supplied",
+    "license": "Supplied by the brand/team for this academic pilot concept",
+    "subject": "A glossy pink piggy bank wearing a small gold crown, standing over scattered gold coins engraved with BTS, AIS, IHG, iBerry, and Lotus’s marks.",
+    "note": "Cursor-ingested source arrived as JPEG with a baked checkerboard (no alpha). Backdrop removed, alpha restored, trimmed to subject bounds. Lossless companion: piggy-pool.png."
   }
 ]

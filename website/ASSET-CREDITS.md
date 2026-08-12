@@ -64,6 +64,16 @@ The persona portraits are stock photography standing in for the fictional
 personas Nan, Wit and Ploy. They are illustrative and do not depict real
 LINK users.
 
+## Team-supplied illustrations
+
+| File | What it is | Source |
+| --- | --- | --- |
+| `piggy-pool.webp` (plus lossless `piggy-pool.png`) | Crowned pink piggy bank with partner-brand gold coins (BTS, AIS, IHG, iBerry, Lotus’s). Used on the How it works hero. | Supplied by the brand/team for this pilot. The workspace copy arrived as a JPEG with a baked checkerboard (no alpha channel); backdrop was removed, alpha restored, and empty padding trimmed to subject bounds before encode. |
+
+Partner logos engraved on the coins remain third-party trademarks used for
+nominative identification only — same conditions as [Partner brand marks](#partner-brand-marks)
+below.
+
 All files were requested from the Unsplash imgix CDN as WebP at the exact
 display dimensions (`?fm=webp&w=…&h=…&fit=crop&q=…`), so no local
 re-encoding step is needed. Every `<img>` carries explicit `width`/`height`

@@ -321,6 +321,59 @@
   max-width: 16ch;
 }
 
+/* How-it-works: product illustration left, copy right (stacks on narrow).
+   No card/surface behind the asset — page atmosphere shows through alpha. */
+.page-hero--split .page-hero__visual {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.page-hero--split .page-hero__visual img {
+  display: block;
+  width: min(100%, 28rem);
+  height: auto;
+  max-height: min(52vh, 26rem);
+  object-fit: contain;
+  background: transparent;
+  filter: none;
+  transform-origin: 50% 70%;
+  animation: page-hero-float 5.2s var(--ease-in-out) infinite alternate;
+}
+
+.page-hero--split .page-hero__copy {
+  min-width: 0;
+}
+
+.page-hero--split .page-hero__copy .page-hero__title {
+  max-width: 14ch;
+}
+
+@keyframes page-hero-float {
+  from {
+    transform: translate3d(0, 0.35rem, 0);
+  }
+  to {
+    transform: translate3d(0, -0.55rem, 0);
+  }
+}
+
+@media (max-width: 859px) {
+  .page-hero--split .page-hero__visual {
+    margin-inline: auto;
+    max-width: 18rem;
+  }
+
+  .page-hero--split .page-hero__visual img {
+    max-height: 15rem;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(12px);

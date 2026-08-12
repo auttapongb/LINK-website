@@ -1,19 +1,23 @@
 import { brandSprite } from "./brand.js";
 
-const PAGES = [
-  { href: "/how-it-works.html", label: "How it works", key: "how", nav: true },
-  { href: "/marketing-plan.html", label: "Marketing plan", key: "plan", nav: true },
-  { href: "/brand-platform.html", label: "Brand", key: "brand", nav: true },
-  { href: "/consumer-insight.html", label: "Consumers", key: "consumer", nav: true },
-  { href: "/market-evidence.html", label: "Evidence", key: "evidence", nav: true },
-  { href: "/data-strategy.html", label: "Data", key: "data", nav: true },
-  // Footer / secondary — keeps the primary bar usable on mobile.
-  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: false },
-  { href: "/for-families.html", label: "For families", key: "families", nav: false },
-  { href: "/partners.html", label: "Partners", key: "partners", nav: false },
-  { href: "/faq.html", label: "FAQ", key: "faq", nav: false },
-  { href: "/use-cases.html", label: "Use cases", key: "usecases", nav: false },
-  { href: "/privacy.html", label: "Privacy", key: "privacy", nav: false },
+/** Primary top nav — end-consumer marketing only. */
+const NAV = [
+  { href: "/how-it-works.html", label: "How it works", key: "how" },
+  { href: "/for-families.html", label: "For families", key: "families" },
+  { href: "/partners.html", label: "Partners", key: "partners" },
+  { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn" },
+];
+
+/** Light footer — consumer utility, no academic syllabus dump. */
+const FOOTER = [
+  { href: "/how-it-works.html", label: "How it works" },
+  { href: "/for-families.html", label: "For families" },
+  { href: "/partners.html", label: "Partners" },
+  { href: "/earn-to-burn.html", label: "Earn to burn" },
+  { href: "/demo.html", label: "Demo" },
+  { href: "/faq.html", label: "FAQ" },
+  { href: "/privacy.html", label: "Privacy" },
+  { href: "/sitemap.html", label: "Sitemap" },
 ];
 
 // Thai campaign line, "ruam kan khum kwa" — the support line for
@@ -37,6 +41,7 @@ function currentKey() {
   if (path.endsWith("/brand-platform.html")) return "brand";
   if (path.endsWith("/consumer-insight.html")) return "consumer";
   if (path.endsWith("/market-evidence.html")) return "evidence";
+  if (path.endsWith("/for-evaluators.html")) return "evaluators";
   if (path.endsWith("/privacy.html")) return "privacy";
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";
@@ -65,9 +70,9 @@ export function mountChrome() {
     document.body.insertAdjacentHTML("afterbegin", brandSprite());
   }
 
-  const navLinks = PAGES.filter((p) => p.nav)
-    .map((p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`)
-    .join("");
+  const navLinks = NAV.map(
+    (p) => `<li><a href="${p.href}"${linkAttrs(key, p.key)}>${p.label}</a></li>`
+  ).join("");
 
   // On the demo page, the primary CTA should not re-sell "Explore the demo".
   const primaryCta =
@@ -116,9 +121,7 @@ export function mountChrome() {
           </p>
         </div>
         <ul class="footer-nav">
-          ${PAGES.map((p) => `<li><a href="${p.href}">${p.label}</a></li>`).join("")}
-          <li><a href="/demo.html">Demo</a></li>
-          <li><a href="/sitemap.html">Sitemap</a></li>
+          ${FOOTER.map((p) => `<li><a href="${p.href}">${p.label}</a></li>`).join("")}
         </ul>
       </div>
       <div class="shell footer-meta">

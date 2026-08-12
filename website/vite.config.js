@@ -24,6 +24,7 @@ export default defineConfig({
         brandPlatform: resolve(__dirname, "brand-platform.html"),
         consumerInsight: resolve(__dirname, "consumer-insight.html"),
         marketEvidence: resolve(__dirname, "market-evidence.html"),
+        forEvaluators: resolve(__dirname, "for-evaluators.html"),
       },
     },
   },

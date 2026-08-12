@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Consumer marketing -->
   <url><loc>/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>/earn-to-burn.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>/for-families.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>/for-families.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>/use-cases.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>/partners.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>/privacy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>/earn-to-burn.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>/demo.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>/faq.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>/demo.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>/data-strategy.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>/marketing-plan.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>/brand-platform.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>/consumer-insight.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>/market-evidence.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>/privacy.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <!-- Course materials / evaluators (secondary discovery) -->
+  <url><loc>/for-evaluators.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>/marketing-plan.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
+  <url><loc>/brand-platform.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
+  <url><loc>/consumer-insight.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
+  <url><loc>/market-evidence.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
+  <url><loc>/data-strategy.html</loc><changefreq>monthly</changefreq><priority>0.55</priority></url>
   <url><loc>/sitemap.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

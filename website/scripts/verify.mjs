@@ -30,6 +30,7 @@ const PAGES = [
   ["brand-platform", "/brand-platform.html"],
   ["consumer-insight", "/consumer-insight.html"],
   ["market-evidence", "/market-evidence.html"],
+  ["for-evaluators", "/for-evaluators.html"],
   ["sitemap", "/sitemap.html"],
 ];
 

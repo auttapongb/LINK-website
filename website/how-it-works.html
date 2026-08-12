@@ -42,15 +42,19 @@
             </div>
           </div>
           <div class="page-hero__visual reveal" style="--i: 1">
-            <img
-              src="/assets/photos/piggy-pool.webp"
-              alt="A glossy pink piggy bank with a gold crown, standing over partner-brand gold coins for BTS, AIS, IHG, iBerry, and Lotus’s."
-              width="400"
-              height="323"
-              decoding="async"
-              fetchpriority="high"
-              style="max-width:280px;margin-top:40px;object-fit:contain;object-position:top"
-            />
+            <div class="piggy-wrapper" id="piggy-click-target" title="See partner commercials">
+              <span class="piggy-badge">📺 CLICK ME</span>
+              <img
+                src="/assets/photos/piggy-pool.webp"
+                alt="A glossy pink piggy bank with a gold crown, standing over partner-brand gold coins for BTS, AIS, IHG, iBerry, and Lotus’s."
+                class="piggy-img"
+                width="400"
+                height="323"
+                decoding="async"
+                fetchpriority="high"
+                style="max-width:280px;margin-top:40px;object-fit:contain;object-position:top"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -168,6 +172,169 @@
       </section>
     </main>
     <div data-chrome-footer></div>
+
+<style id="ad-carousel-styles">
+.piggy-wrapper{position:relative;display:inline-block;cursor:pointer}
+.piggy-wrapper:hover .piggy-badge{opacity:1;transform:translateY(0)}
+.piggy-badge{position:absolute;top:-28px;left:50%;transform:translate(-50%,4px);background:#ef4444;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;opacity:0;transition:all .25s;pointer-events:none;animation:pulse-badge 1.8s infinite}
+@keyframes pulse-badge{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.4)}50%{box-shadow:0 0 0 8px rgba(239,68,68,0)}}
+.piggy-img{animation:piggy-float 3s ease-in-out infinite;transition:transform .15s}
+.piggy-img:active{transform:scale(.92)}
+@keyframes piggy-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* Modal */
+.ad-overlay{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.ad-overlay.open{opacity:1;pointer-events:auto}
+.ad-modal{background:#11161e;border:1px solid #1e2a38;border-radius:16px;max-width:700px;width:92vw;position:relative;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.ad-close{position:absolute;top:12px;right:16px;z-index:10;background:rgba(0,0,0,.6);color:#fff;border:none;font-size:24px;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.ad-close:hover{background:rgba(239,68,68,.8)}
+.ad-header{padding:14px 20px;font-size:14px;font-weight:700;color:#1FA88A;border-bottom:1px solid #1e2a38;display:flex;align-items:center;gap:10px}
+.ad-header .dot{width:8px;height:8px;border-radius:50%;background:#ef4444;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:0}50%{opacity:1}}
+.ad-slides{position:relative;min-height:300px}
+.ad-slide{display:none;text-align:center;padding:0}
+.ad-slide.active{display:block}
+.ad-slide video{width:100%;max-height:60vh;display:block;background:#000}
+.ad-slide .slide-label{padding:8px 16px;font-size:12px;color:#7a8699;text-align:center}
+.ad-controls{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px 20px;border-top:1px solid #1e2a38}
+.ad-btn{background:#1e2a38;border:none;color:#fff;font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;transition:background .15s}
+.ad-btn:hover{background:#1FA88A}
+.ad-btn.prev{padding:8px 12px}
+.ad-dots{display:flex;gap:6px}
+.ad-dot{width:8px;height:8px;border-radius:50%;background:#1e2a38;transition:background .2s}
+.ad-dot.active{background:#1FA88A}
+.ad-reactions{display:flex;gap:8px;padding:8px 20px 16px;justify-content:center}
+.ad-react{border:1px solid #1e2a38;background:transparent;color:#7a8699;font-size:13px;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all .15s}
+.ad-react:hover{border-color:#1FA88A;color:#fff}
+.ad-react.voted{border-color:#1FA88A;background:rgba(31,168,138,.15);color:#1FA88A}
+.ad-counter{font-size:11px;color:#7a8699;margin-left:4px}
+</style>
+
+<div class="ad-overlay" id="ad-overlay">
+  <div class="ad-modal">
+    <button class="ad-close" id="ad-close">&times;</button>
+    <div class="ad-header"><span class="dot"></span> Partner Commercials — see how LINK partners talk to families</div>
+    <div class="ad-slides">
+      <div class="ad-slide active" data-index="0">
+        <video src="/assets/videos/ad1.mp4" controls playsinline preload="metadata" poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect fill='%2311161e' width='640' height='360'/><text fill='%231FA88A' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='18' font-family='sans-serif'>▶ Ad 1</text></svg>"></video>
+        <div class="slide-label">Ad 1 of 3</div>
+      </div>
+      <div class="ad-slide" data-index="1">
+        <video src="/assets/videos/ad2.mp4" controls playsinline preload="metadata" poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect fill='%2311161e' width='640' height='360'/><text fill='%231FA88A' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='18' font-family='sans-serif'>▶ Ad 2</text></svg>"></video>
+        <div class="slide-label">Ad 2 of 3</div>
+      </div>
+      <div class="ad-slide" data-index="2">
+        <video src="/assets/videos/ad3.mp4" controls playsinline preload="metadata" poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect fill='%2311161e' width='640' height='360'/><text fill='%231FA88A' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-size='18' font-family='sans-serif'>▶ Ad 3</text></svg>"></video>
+        <div class="slide-label">Ad 3 of 3</div>
+      </div>
+    </div>
+    <div class="ad-controls">
+      <button class="ad-btn prev" id="ad-prev">&larr;</button>
+      <div class="ad-dots"><span class="ad-dot active"></span><span class="ad-dot"></span><span class="ad-dot"></span></div>
+      <button class="ad-btn" id="ad-next">Next &rarr;</button>
+    </div>
+    <div class="ad-reactions">
+      <button class="ad-react" data-react="like" id="ad-like">👍 <span class="ad-counter">0</span></button>
+      <button class="ad-react" data-react="useful" id="ad-useful">💡 <span class="ad-counter">0</span></button>
+      <button class="ad-react" data-react="shared" id="ad-shared">🔗 <span class="ad-counter">0</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const STORAGE = 'link_ad_tracker_v2';
+  const ADS_TOTAL = 3;
+  
+  function getTracker(){
+    try{return JSON.parse(localStorage.getItem(STORAGE))||{seen:[],reactions:{},lastIndex:0}}catch(e){return{seen:[],reactions:{},lastIndex:0}}
+  }
+  function saveTracker(t){try{localStorage.setItem(STORAGE,JSON.stringify(t))}catch(e){}}
+  
+  let tracker = getTracker();
+  let currentSlide = tracker.lastIndex % ADS_TOTAL;
+  
+  const overlay = document.getElementById('ad-overlay');
+  const slides = document.querySelectorAll('.ad-slide');
+  const dots = document.querySelectorAll('.ad-dot');
+  const badge = document.getElementById('piggy-badge-count');
+  
+  function showSlide(n){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    currentSlide = ((n % ADS_TOTAL) + ADS_TOTAL) % ADS_TOTAL;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    // Pause other videos
+    slides.forEach((s,i)=>{const v=s.querySelector('video');if(v&&i!==currentSlide)v.pause()});
+    // Track seen
+    if(!tracker.seen.includes(currentSlide)){
+      tracker.seen.push(currentSlide);
+      tracker.lastIndex = currentSlide;
+      saveTracker(tracker);
+    }
+    updateReactions();
+  }
+  
+  function updateReactions(){
+    const id = 'ad'+currentSlide;
+    document.getElementById('ad-like').querySelector('.ad-counter').textContent = (tracker.reactions[id]?.like||0);
+    document.getElementById('ad-useful').querySelector('.ad-counter').textContent = (tracker.reactions[id]?.useful||0);
+    document.getElementById('ad-shared').querySelector('.ad-counter').textContent = (tracker.reactions[id]?.shared||0);
+  }
+  
+  function openCarousel(){
+    showSlide(tracker.lastIndex % ADS_TOTAL);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Track open
+    tracker.seen.push(currentSlide);
+    saveTracker(tracker);
+  }
+  
+  function closeCarousel(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    slides.forEach(s=>{const v=s.querySelector('video');if(v)v.pause()});
+  }
+  
+  document.getElementById('ad-close').onclick = closeCarousel;
+  overlay.onclick = function(e){if(e.target===overlay)closeCarousel()};
+  document.getElementById('ad-next').onclick = ()=>showSlide(currentSlide+1);
+  document.getElementById('ad-prev').onclick = ()=>showSlide(currentSlide-1);
+  
+  // Reactions
+  ['like','useful','shared'].forEach(type=>{
+    document.getElementById('ad-'+type).onclick = function(){
+      const id = 'ad'+currentSlide;
+      if(!tracker.reactions[id]) tracker.reactions[id]={};
+      if(this.classList.contains('voted')) return;
+      tracker.reactions[id][type] = (tracker.reactions[id][type]||0)+1;
+      this.classList.add('voted');
+      saveTracker(tracker);
+      updateReactions();
+      setTimeout(()=>this.classList.remove('voted'),800);
+    }
+  });
+  
+  // Keyboard nav
+  document.addEventListener('keydown',function(e){
+    if(!overlay.classList.contains('open')) return;
+    if(e.key==='ArrowRight') showSlide(currentSlide+1);
+    if(e.key==='ArrowLeft') showSlide(currentSlide-1);
+    if(e.key==='Escape') closeCarousel();
+  });
+  
+  // Wire piggy click
+  const piggy = document.getElementById('piggy-click-target');
+  if(piggy) piggy.onclick = function(e){e.preventDefault();openCarousel()};
+  
+  // Initial: set last seen
+  showSlide(currentSlide);
+  console.log('[LINK] Ad carousel ready. Seen:',tracker.seen.length,'/',ADS_TOTAL);
+})();
+</script>
+
     <script type="module" src="/src/js/app.js"></script>
   </body>
 </html>

@@ -23,6 +23,7 @@ export default defineConfig({
         marketingPlan: resolve(__dirname, "marketing-plan.html"),
         brandPlatform: resolve(__dirname, "brand-platform.html"),
         consumerInsight: resolve(__dirname, "consumer-insight.html"),
+        marketEvidence: resolve(__dirname, "market-evidence.html"),
       },
     },
   },

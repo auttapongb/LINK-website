@@ -245,6 +245,9 @@ lockup stays in Noto.
   (no external illustration dependency).
 - Marketing-plan / consumer-insight visual systems use CSS diagrams in
   `src/styles/academic.css` plus existing Unsplash persona photos already credited above.
+- Market-evidence charts and comparison bars in `market-evidence.html` /
+  `src/styles/market-evidence.css` are hand-authored SVG/CSS (no chart SaaS).
+  Metric sources are listed in `RESEARCH-SOURCES.md` — secondary research only.
 - `og-image.jpg` is rendered from the site's own SVG lockup and web fonts by
   `scripts/brand-assets.mjs`.
 - `public/assets/logo.svg` (the v1 placeholder mark) was removed once the real

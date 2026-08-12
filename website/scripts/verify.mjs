@@ -29,6 +29,7 @@ const PAGES = [
   ["marketing-plan", "/marketing-plan.html"],
   ["brand-platform", "/brand-platform.html"],
   ["consumer-insight", "/consumer-insight.html"],
+  ["market-evidence", "/market-evidence.html"],
   ["sitemap", "/sitemap.html"],
 ];
 

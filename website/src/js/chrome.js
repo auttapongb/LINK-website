@@ -5,6 +5,7 @@ const PAGES = [
   { href: "/marketing-plan.html", label: "Marketing plan", key: "plan", nav: true },
   { href: "/brand-platform.html", label: "Brand", key: "brand", nav: true },
   { href: "/consumer-insight.html", label: "Consumers", key: "consumer", nav: true },
+  { href: "/market-evidence.html", label: "Evidence", key: "evidence", nav: true },
   { href: "/data-strategy.html", label: "Data", key: "data", nav: true },
   // Footer / secondary — keeps the primary bar usable on mobile.
   { href: "/earn-to-burn.html", label: "Earn to burn", key: "earn", nav: false },
@@ -35,6 +36,7 @@ function currentKey() {
   if (path.endsWith("/marketing-plan.html")) return "plan";
   if (path.endsWith("/brand-platform.html")) return "brand";
   if (path.endsWith("/consumer-insight.html")) return "consumer";
+  if (path.endsWith("/market-evidence.html")) return "evidence";
   if (path.endsWith("/privacy.html")) return "privacy";
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";

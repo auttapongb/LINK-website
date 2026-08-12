@@ -17,7 +17,7 @@
 import { hasMarketingConsent, onConsentChange } from "./consent.js";
 
 /** @type {string} Placeholder — leave empty, or replace with a real Clarity ID. */
-export const CLARITY_PROJECT_ID = "";
+export const CLARITY_PROJECT_ID = "y15hcgaitn";
 
 let loadedId = "";
 

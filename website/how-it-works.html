@@ -267,6 +267,8 @@
     dots[currentSlide].classList.add('active');
     // Pause other videos
     slides.forEach((s,i)=>{const v=s.querySelector('video');if(v&&i!==currentSlide)v.pause()});
+    // Auto-play current slide
+    setTimeout(()=>{const v=slides[currentSlide].querySelector('video');if(v){v.muted=true;v.play().catch(()=>{})}},300);
     // Track seen
     if(!tracker.seen.includes(currentSlide)){
       tracker.seen.push(currentSlide);
@@ -287,6 +289,11 @@
     showSlide(tracker.lastIndex % ADS_TOTAL);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    // Auto-play after 1.5s delay
+    setTimeout(()=>{
+      const v = slides[currentSlide].querySelector('video');
+      if(v){v.muted=true;v.play().catch(()=>{})}
+    },1500);
     // Track open
     tracker.seen.push(currentSlide);
     saveTracker(tracker);

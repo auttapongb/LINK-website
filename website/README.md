@@ -52,8 +52,51 @@ what the header, footer and animated marks render from.
 | Privacy | `/privacy.html` |
 | FAQ | `/faq.html` |
 | Demo | `/demo.html` |
+| Log in | `/login.html` |
+| Family Admin dashboard | `/dashboard.html` (auth required) |
 | Sitemap (HTML) | `/sitemap.html` |
 | Sitemap (XML) | `/sitemap.xml` |
+
+## Auth (Family Admin)
+
+The marketing site is still static (Vite). Auth is client-side:
+
+1. **Firebase Auth** (preferred) — email/password + Google, when env vars are set
+2. **Local demo auth** (fallback) — register/login stored in `localStorage`; the Google button becomes **Continue with demo Google account** and does **not** call Google’s servers
+
+### Enable Firebase
+
+1. Create a Firebase project at [console.firebase.google.com](https://console.firebase.google.com/)
+2. Add a **Web** app and copy the config
+3. Authentication → Sign-in method → enable **Email/Password** and **Google**
+4. For local Vite, add your domain (and `localhost`) under Authentication → Settings → Authorized domains
+5. In `website/`, copy `.env.example` → `.env` and fill:
+
+```bash
+VITE_FIREBASE_API_KEY=…
+VITE_FIREBASE_AUTH_DOMAIN=…
+VITE_FIREBASE_PROJECT_ID=…
+VITE_FIREBASE_APP_ID=…
+VITE_FIREBASE_STORAGE_BUCKET=…   # optional
+VITE_FIREBASE_MESSAGING_SENDER_ID=…  # optional
+```
+
+6. Restart `npm run dev`. The login page badge should read **Firebase Auth connected**.
+
+Without `.env`, the site stays in demo auth so evaluators can still register, open the dashboard, and try the goal simulator.
+
+### Dashboard demo rates
+
+Illustrative only (shown on-page):
+
+| Partner | Demo rate |
+| --- | --- |
+| Lotus’s | **1 THB → 100 points** |
+| BTS | 1 ride → 120 points |
+| AIS | 1 THB bill → 10 points |
+| IHG | 1 THB stay spend → 15 points |
+
+Seeded pool matches the site narrative (~48,260 toward a 71,000 IHG getaway). At the Lotus rate, the points shortfall is a few hundred baht of groceries — not six figures.
 
 ## Analytics & heatmaps
 

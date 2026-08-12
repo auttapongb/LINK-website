@@ -25,6 +25,8 @@ export default defineConfig({
         consumerInsight: resolve(__dirname, "consumer-insight.html"),
         marketEvidence: resolve(__dirname, "market-evidence.html"),
         forEvaluators: resolve(__dirname, "for-evaluators.html"),
+        login: resolve(__dirname, "login.html"),
+        dashboard: resolve(__dirname, "dashboard.html"),
       },
     },
   },

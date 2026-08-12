@@ -25,6 +25,8 @@ const PAGES = [
   ["privacy", "/privacy.html"],
   ["faq", "/faq.html"],
   ["demo", "/demo.html"],
+  ["login", "/login.html"],
+  ["dashboard", "/dashboard.html"],
   ["data-strategy", "/data-strategy.html"],
   ["marketing-plan", "/marketing-plan.html"],
   ["brand-platform", "/brand-platform.html"],
@@ -218,10 +220,34 @@ for (const [vpName, viewport] of VIEWPORTS) {
       if (msg.type() === "error") consoleErrors.push(msg.text());
     });
     page.on("pageerror", (err) => consoleErrors.push(`UNCAUGHT: ${err.message}`));
-    page.on("requestfailed", (req) => failedRequests.push(`${req.url()} — ${req.failure()?.errorText}`));
+    page.on("requestfailed", (req) => {
+      const err = req.failure()?.errorText || "";
+      // Carousels and preload=metadata often abort in-flight media when the slide
+      // changes or the page tears down — not a missing asset.
+      if (err === "net::ERR_ABORTED" && /\.(mp4|webm|mov)(\?|$)/i.test(req.url())) return;
+      failedRequests.push(`${req.url()} — ${err}`);
+    });
     page.on("response", (res) => {
       if (res.status() >= 400) failedRequests.push(`${res.url()} — HTTP ${res.status()}`);
     });
+
+    // Family Admin dashboard redirects when logged out — seed a local demo session.
+    if (name === "dashboard") {
+      await page.goto(BASE + "/", { waitUntil: "domcontentloaded", timeout: 45000 });
+      await page.evaluate(() => {
+        localStorage.setItem(
+          "LINK_AUTH_SESSION_V1",
+          JSON.stringify({
+            uid: "verify_demo",
+            email: "verify@link.local",
+            displayName: "Verify Admin",
+            photoURL: null,
+            provider: "password",
+            mode: "demo",
+          })
+        );
+      });
+    }
 
     await page.goto(BASE + path, { waitUntil: "networkidle2", timeout: 45000 });
     await sleep(1600);

@@ -1,4 +1,5 @@
 import { brandSprite } from "./brand.js";
+import { getCurrentUser, initialsFor, logout, onAuthChange } from "./auth.js";
 
 /** Primary top nav — end-consumer marketing only. */
 const NAV = [
@@ -15,6 +16,7 @@ const FOOTER = [
   { href: "/partners.html", label: "Partners" },
   { href: "/earn-to-burn.html", label: "Earn to burn" },
   { href: "/demo.html", label: "Demo" },
+  { href: "/login.html", label: "Log in" },
   { href: "/faq.html", label: "FAQ" },
   { href: "/privacy.html", label: "Privacy" },
   { href: "/sitemap.html", label: "Sitemap" },
@@ -46,11 +48,89 @@ function currentKey() {
   if (path.endsWith("/faq.html")) return "faq";
   if (path.endsWith("/sitemap.html")) return "sitemap";
   if (path.endsWith("/demo.html")) return "demo";
+  if (path.endsWith("/login.html")) return "login";
+  if (path.endsWith("/dashboard.html")) return "dashboard";
   return "home";
 }
 
 function linkAttrs(key, pageKey) {
   return key === pageKey ? ' aria-current="page"' : "";
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderAuthUtils(user, key) {
+  if (!user) {
+    return `
+      <div class="nav__utils" data-nav-auth>
+        <a class="nav__auth-link" href="/login.html"${linkAttrs(key, "login")} data-track="nav_auth" data-track-label="login">Log in</a>
+      </div>`;
+  }
+  const name = escapeHtml(user.displayName || user.email || "Member");
+  const initials = escapeHtml(initialsFor(user));
+  return `
+    <div class="nav__utils" data-nav-auth>
+      <a class="nav__auth-link" href="/dashboard.html"${linkAttrs(key, "dashboard")} data-track="nav_auth" data-track-label="dashboard">Dashboard</a>
+      <div class="nav__user" title="${name}">
+        <span class="nav__avatar" aria-hidden="true">${initials}</span>
+        <span class="nav__user-name">${name}</span>
+      </div>
+      <button class="btn btn--secondary nav__logout" type="button" data-logout data-track="nav_auth" data-track-label="logout">Log out</button>
+    </div>`;
+}
+
+function renderDrawerAuth(user) {
+  if (!user) {
+    return `
+      <div class="nav-drawer__auth" data-drawer-auth>
+        <a class="btn btn--secondary" href="/login.html" data-nav-close data-track="nav_auth" data-track-label="login_drawer">Log in</a>
+      </div>`;
+  }
+  return `
+    <div class="nav-drawer__auth" data-drawer-auth>
+      <a class="btn btn--secondary" href="/dashboard.html" data-nav-close data-track="nav_auth" data-track-label="dashboard_drawer">Dashboard</a>
+      <button class="btn btn--ghost" type="button" data-logout data-nav-close data-track="nav_auth" data-track-label="logout_drawer">Log out</button>
+    </div>`;
+}
+
+function wireLogout(root = document) {
+  root.querySelectorAll("[data-logout]").forEach((btn) => {
+    if (btn.dataset.logoutBound) return;
+    btn.dataset.logoutBound = "1";
+    btn.addEventListener("click", async () => {
+      const drawer = document.querySelector("[data-nav-drawer]");
+      const toggle = document.querySelector("[data-nav-toggle]");
+      if (drawer && !drawer.hidden) {
+        drawer.hidden = true;
+        drawer.classList.remove("is-open");
+        toggle?.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+      }
+      await logout();
+      if (window.location.pathname.replace(/\\/g, "/").endsWith("/dashboard.html")) {
+        window.location.assign("/login.html");
+      }
+    });
+  });
+}
+
+function refreshAuthChrome(user) {
+  const key = currentKey();
+  const utilsHost = document.querySelector("[data-nav-auth]");
+  const drawerHost = document.querySelector("[data-drawer-auth]");
+  if (utilsHost) {
+    utilsHost.outerHTML = renderAuthUtils(user, key).trim();
+  }
+  if (drawerHost) {
+    drawerHost.outerHTML = renderDrawerAuth(user).trim();
+  }
+  wireLogout();
 }
 
 export function mountChrome() {
@@ -78,11 +158,15 @@ export function mountChrome() {
   const primaryCta =
     key === "demo"
       ? `<a class="btn btn--primary nav__cta" href="/how-it-works.html" data-track="nav_cta" data-track-label="how_it_works">How it works<span data-icon="arrow-right"></span></a>`
-      : `<a class="btn btn--primary nav__cta" href="/demo.html" data-track="nav_cta" data-track-label="explore_demo">Explore the demo<span data-icon="arrow-right"></span></a>`;
+      : key === "dashboard" || key === "login"
+        ? `<a class="btn btn--primary nav__cta" href="/demo.html" data-track="nav_cta" data-track-label="explore_demo">Explore the demo<span data-icon="arrow-right"></span></a>`
+        : `<a class="btn btn--primary nav__cta" href="/demo.html" data-track="nav_cta" data-track-label="explore_demo">Explore the demo<span data-icon="arrow-right"></span></a>`;
   const drawerCta =
     key === "demo"
       ? `<a class="btn btn--primary" href="/how-it-works.html" data-nav-close data-track="nav_cta" data-track-label="how_it_works_drawer">How it works</a>`
       : `<a class="btn btn--primary" href="/demo.html" data-nav-close data-track="nav_cta" data-track-label="explore_demo_drawer">Explore the demo</a>`;
+
+  const user = getCurrentUser();
 
   headerHost.innerHTML = `
     <a class="skip-link" href="#main">Skip to content</a>
@@ -92,6 +176,7 @@ export function mountChrome() {
         <nav aria-label="Primary">
           <ul class="nav__links">${navLinks}</ul>
         </nav>
+        ${renderAuthUtils(user, key)}
         ${primaryCta}
         <button class="nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
           <span class="nav__toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -104,6 +189,7 @@ export function mountChrome() {
       <div class="nav-drawer__panel" id="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu">
         ${BRAND_LOCKUP}
         <ul class="nav-drawer__links">${navLinks}</ul>
+        ${renderDrawerAuth(user)}
         ${drawerCta}
         <button class="btn btn--secondary" type="button" data-nav-close>Close</button>
       </div>
@@ -130,4 +216,7 @@ export function mountChrome() {
       </div>
     </footer>
   `;
+
+  wireLogout(headerHost);
+  onAuthChange((nextUser) => refreshAuthChrome(nextUser));
 }

@@ -64,6 +64,11 @@
   transform: translateY(-1px);
 }
 
+.nav > nav {
+  flex: 1;
+  min-width: 0;
+}
+
 .nav__links {
   display: none;
   list-style: none;

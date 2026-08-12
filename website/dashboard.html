@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Admin dashboard — LINK</title>
+    <meta
+      name="description"
+      content="LINK Family Admin: pooled points, goal progress, and a spend simulator with illustrative demo earn rates."
+    />
+    <meta name="theme-color" content="#1FA88A" />
+    <meta property="og:site_name" content="LINK" />
+    <meta property="og:title" content="Family Admin dashboard — LINK" />
+    <meta property="og:description" content="See the family pool and simulate points toward an IHG getaway." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/brand/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/assets/brand/og-image.jpg" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/brand/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body>
+    <div data-chrome-header></div>
+
+    <main id="main">
+      <section class="page-hero dash-page" aria-labelledby="dash-title" data-dashboard>
+        <div class="page-hero__atmos" aria-hidden="true"></div>
+        <div class="shell">
+          <div class="dash-hero reveal" style="--i: 0">
+            <p class="section__eyebrow">Family Admin</p>
+            <div class="dash-hero__row">
+              <span class="dash-hero__avatar" data-dash-avatar aria-hidden="true">?</span>
+              <div>
+                <h1 id="dash-title" class="page-hero__title" data-split>Your family pool</h1>
+                <p class="section__lead" data-dash-greeting>Loading session…</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--pool">
+            <article class="dash-panel reveal" style="--i: 1" aria-labelledby="pool-summary-title">
+              <p class="dash-balance__label" id="pool-summary-title">Combined balance</p>
+              <h2 class="sr-only">Pool summary</h2>
+              <p class="dash-balance" data-pool-balance>0</p>
+              <p style="margin: 0; font-weight: 600" data-pool-name>Somsri Family Pool</p>
+              <p style="margin: 0.35rem 0 0; font-size: var(--text-sm); color: var(--color-muted)" data-pool-goal-meta></p>
+
+              <div class="goal" style="margin-top: var(--space-5)">
+                <div class="dash-goal__top">
+                  <strong data-pool-goal-label>Family getaway · IHG stay</strong>
+                  <span data-pool-goal-pct>0%</span>
+                </div>
+                <div class="progress" aria-hidden="true">
+                  <div class="progress__bar" data-pool-progress style="--progress: 0%"></div>
+                </div>
+              </div>
+
+              <div class="alert-soft" style="margin-top: var(--space-4)">
+                <span aria-hidden="true">!</span>
+                <span data-pool-expiry></span>
+              </div>
+
+              <h3 style="font-size: var(--text-md); margin-top: var(--space-5)">Contributions</h3>
+              <ul class="dash-contrib" data-pool-contrib></ul>
+
+              <div class="btn-row">
+                <button class="btn btn--primary" type="button" data-demo-modal-open>Pool points</button>
+                <a class="btn btn--secondary" href="/demo.html">Open product demo</a>
+              </div>
+            </article>
+
+            <aside class="dash-panel reveal" style="--i: 2" aria-labelledby="shortfall-title">
+              <h2 id="shortfall-title" style="font-size: var(--text-xl)">To reach your goal</h2>
+              <p style="margin: 0; font-size: var(--text-sm); color: var(--color-ink-2)">
+                Points still needed, converted with illustrative demo rates — reachable with ordinary monthly spend.
+              </p>
+              <p class="dash-shortfall__stat" style="margin-top: var(--space-4)">
+                <span data-shortfall-points>0</span>
+                <span style="display: block; font-size: var(--text-sm); font-family: var(--font-body); font-weight: 600; color: var(--color-muted)">
+                  points short of the getaway
+                </span>
+              </p>
+
+              <ul class="dash-paths">
+                <li>
+                  <span>Still to spend at Lotus’s</span>
+                  <strong data-shortfall-lotuss>฿0</strong>
+                  <p style="margin: 0.35rem 0 0; font-size: var(--text-xs); color: var(--color-muted)">
+                    At 1 THB → 100 points
+                  </p>
+                </li>
+                <li>
+                  <span>Or BTS rides</span>
+                  <strong data-shortfall-bts>0 rides</strong>
+                </li>
+                <li>
+                  <span>Or AIS bill spend</span>
+                  <strong data-shortfall-ais>฿0</strong>
+                </li>
+              </ul>
+
+              <div class="dash-rates">
+                <strong>Illustrative demo rates</strong>
+                <ul data-rates-list></ul>
+              </div>
+            </aside>
+          </div>
+
+          <section class="sim-band reveal" style="--i: 3" aria-labelledby="sim-title">
+            <h2 id="sim-title">What could your family already have?</h2>
+            <p class="sim-band__lead">
+              A rough estimate based on typical monthly spending with each partner. Drag the sliders —
+              the household total updates live. iBerry isn’t included — they don’t publish a fixed earn rate.
+            </p>
+
+            <div class="sim-grid">
+              <div class="sim-field">
+                <label for="sim-lotuss">Monthly spend at Lotus’s (฿)</label>
+                <div class="sim-field__row">
+                  <input
+                    id="sim-lotuss"
+                    type="range"
+                    min="0"
+                    max="8000"
+                    step="100"
+                    value="3000"
+                    aria-valuetext="3000 baht"
+                  />
+                  <span class="sim-field__value" data-sim-lotuss-val>฿3,000</span>
+                </div>
+              </div>
+              <div class="sim-field">
+                <label for="sim-bts">BTS rides per week</label>
+                <div class="sim-field__row">
+                  <input id="sim-bts" type="range" min="0" max="40" step="1" value="8" />
+                  <span class="sim-field__value" data-sim-bts-val>8</span>
+                </div>
+              </div>
+              <div class="sim-field">
+                <label for="sim-ais">Monthly AIS bill (฿)</label>
+                <div class="sim-field__row">
+                  <input id="sim-ais" type="range" min="0" max="3000" step="50" value="600" />
+                  <span class="sim-field__value" data-sim-ais-val>฿600</span>
+                </div>
+              </div>
+              <div class="sim-field">
+                <label for="sim-ihg">Monthly IHG spend (฿)</label>
+                <div class="sim-field__row">
+                  <input id="sim-ihg" type="range" min="0" max="20000" step="250" value="0" />
+                  <span class="sim-field__value" data-sim-ihg-val>฿0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-result" aria-live="polite">
+              <div class="sim-result__number" data-sim-total>0</div>
+              <p class="sim-result__label">Estimated points your household could pool each month</p>
+              <p class="sim-result__months" data-sim-months></p>
+              <p class="sim-result__months" style="margin-top: 0.5rem">
+                Goal gap at Lotus’s rate:
+                <strong data-live-lotuss-need>฿0</strong>
+                more spend covers the shortfall in one grocery cycle.
+              </p>
+            </div>
+
+            <p class="sim-footnote">
+              Rough estimate from <em>illustrative demo rates</em> (not published partner terms).
+              <span data-weeks-note></span>
+              Actual points depend on promotions and account tier. BTS points are per ride in this demo,
+              not spend-based.
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div data-chrome-footer></div>
+
+    <div class="lightbox" data-demo-modal hidden>
+      <div class="lightbox__dialog" role="dialog" aria-modal="true" aria-labelledby="dash-demo-modal-title">
+        <div class="lightbox__head">
+          <div>
+            <h2 id="dash-demo-modal-title" style="font-size: var(--text-xl); margin-bottom: 0.35rem">Pilot concept / demo</h2>
+            <p class="concept-caption">This is a non-submitting prototype action — not a live join flow.</p>
+          </div>
+          <button class="lightbox__close" type="button" data-demo-modal-close aria-label="Close">✕</button>
+        </div>
+        <p>
+          In the pilot concept, “Pool points” opens an explicit consent step for the member who owns those points.
+          Explore the interactive walkthrough to see Connect → Pool → Use.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/demo.html">Explore the demo</a>
+          <button class="btn btn--secondary" type="button" data-demo-modal-close>Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/js/app.js"></script>
+  </body>
+</html>

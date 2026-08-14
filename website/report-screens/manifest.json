@@ -1,0 +1,118 @@
+{
+  "shots": [
+    {
+      "file": "00-cookie-banner.jpg",
+      "section": "Consumer site",
+      "title": "Cookie / consent banner",
+      "caption": "First-visit consent gate — documents LINK’s privacy posture for the course report."
+    },
+    {
+      "file": "01-home-hero.jpg",
+      "section": "Consumer site",
+      "title": "Home hero",
+      "caption": "Brand-led first viewport with Family Pool iPhone — the core “worth more together” promise."
+    },
+    {
+      "file": "02-home-concept-mid.png",
+      "section": "Consumer site",
+      "title": "Home · concept mid-page",
+      "caption": "Connect → Pool → Use storytelling that sells why scattered loyalty balances need LINK."
+    },
+    {
+      "file": "03-home-partners-cta.jpg",
+      "section": "Consumer site",
+      "title": "Home · partners / CTA band",
+      "caption": "Lower home band with partner ecosystem and conversion CTAs."
+    },
+    {
+      "file": "04-how-it-works-piggy.jpg",
+      "section": "Consumer site",
+      "title": "How it works · piggy hero",
+      "caption": "Piggy-bank hero for Connect. Pool. Use together — memorable report visual."
+    },
+    {
+      "file": "05-for-families.jpg",
+      "section": "Consumer site",
+      "title": "For families",
+      "caption": "Household roles (Nan, Wit, Ploy) — who earns, who pools, who burns."
+    },
+    {
+      "file": "06-partners.png",
+      "section": "Consumer site",
+      "title": "Partners",
+      "caption": "Partner value page for Lotus’s, AIS, BTS, iBerry, IHG — ecosystem proof."
+    },
+    {
+      "file": "07-earn-to-burn.jpg",
+      "section": "Consumer site",
+      "title": "Earn to burn",
+      "caption": "Earn → pool → goal → burn loop linking everyday spend to a family getaway."
+    },
+    {
+      "file": "08-demo.png",
+      "section": "Consumer site",
+      "title": "Demo",
+      "caption": "Interactive product demo surface for evaluators and partners."
+    },
+    {
+      "file": "09-home-hero-mobile.jpg",
+      "section": "Consumer site",
+      "title": "Home hero · mobile (390px)",
+      "caption": "Phone-first Family Pool presentation for mobile report frames."
+    },
+    {
+      "file": "10-how-it-works-mobile.jpg",
+      "section": "Consumer site",
+      "title": "How it works · mobile (390px)",
+      "caption": "Mobile piggy hero — responsive storytelling for the report."
+    },
+    {
+      "file": "11-cdp-login.png",
+      "section": "CDP Admin",
+      "title": "CDP Admin login",
+      "caption": "Professor gate before the simulated CDP workspace (demo credentials)."
+    },
+    {
+      "file": "12-cdp-overview-kpis.png",
+      "section": "CDP Admin",
+      "title": "CDP overview · KPI strip",
+      "caption": "Pilot KPIs with course rail — Unify → Segment → Activate → Measure."
+    },
+    {
+      "file": "13-cdp-identity-kent.png",
+      "section": "CDP Admin",
+      "title": "Identity graph · Kent OldKiwi",
+      "caption": "Golden-record profile with photo, traits, and resolved partner IDs."
+    },
+    {
+      "file": "14-cdp-partner-tiles.png",
+      "section": "CDP Admin",
+      "title": "Partner mock data tiles",
+      "caption": "Lotus’s, AIS, BTS, iBerry, IHG attribute tiles on Kent’s profile."
+    },
+    {
+      "file": "15-cdp-flag-for-ads.png",
+      "section": "CDP Admin",
+      "title": "Flag for ads · activation",
+      "caption": "Activation moment: queue Kent to LINE / Meta / IHG offer destinations."
+    },
+    {
+      "file": "16-cdp-ai-propensity.jpg",
+      "section": "CDP Admin",
+      "title": "AI propensity · Q4 2026 travel",
+      "caption": "Travel propensity panel — predictive segment that drives partner offers."
+    },
+    {
+      "file": "17-cdp-funnel.png",
+      "section": "CDP Admin",
+      "title": "Conversion funnel",
+      "caption": "Join → Earn → Pool → Goal → Burn measurement for the earn-to-burn loop."
+    },
+    {
+      "file": "18-cdp-course-rail.png",
+      "section": "CDP Admin",
+      "title": "Course materials rail",
+      "caption": "Sidebar course rail — academic framing alongside the live CDP demo."
+    }
+  ]
+}

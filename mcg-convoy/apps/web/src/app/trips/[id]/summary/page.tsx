@@ -60,6 +60,7 @@ export default function SummaryPage() {
             {trip?.title || t.summary.title}
           </h2>
           <p className={ui.lede}>{t.summary.lede}</p>
+          <p className={ui.meta}>{t.social.leave}</p>
         </section>
 
         {results ? (
@@ -87,7 +88,7 @@ export default function SummaryPage() {
                   const url = `${window.location.origin}/trips/${params.id}/summary`;
                   const flex = buildRecapFlex({
                     url,
-                    title: trip?.title || "MCG Convoy",
+                    title: trip?.title || t.brand.name,
                     arrived: results.aggregate.arrivedCount,
                     total: results.aggregate.participantCount,
                     onTimePct: Math.round(results.aggregate.onTimeShare * 100),

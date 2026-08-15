@@ -11,6 +11,7 @@ import {
 import { BrandMark } from "@/components/BrandMark";
 import { LocaleToggle } from "@/components/LocaleToggle";
 import { SafetyBanner } from "@/components/SafetyBanner";
+import { SocialProof } from "@/components/SocialProof";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocale } from "@/lib/i18n/locale";
 import ui from "@/styles/ui.module.css";
@@ -53,6 +54,7 @@ export default function LandingPage() {
       >
         <SafetyBanner />
         <p className={ui.lede}>{t.brand.lede}</p>
+        <SocialProof />
         <div className={ui.ritual} aria-label={t.ritual.label}>
           {ritual.map(({ icon: Icon, title, copy }) => (
             <div key={title} className={ui.ritualItem}>

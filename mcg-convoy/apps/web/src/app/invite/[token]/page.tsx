@@ -11,6 +11,7 @@ import {
   Pause,
   Prohibit,
   ShieldCheck,
+  SignOut,
 } from "@phosphor-icons/react";
 import { AppChrome } from "@/components/AppChrome";
 import { BrandMark } from "@/components/BrandMark";
@@ -37,11 +38,11 @@ export default function InvitePage() {
 
   useEffect(() => {
     void getTripByInvite(params.token).then((found) => {
-      if (!found) setError("This invite is invalid or has expired.");
-      else if (found.inviteRevoked) setError("This invite has been revoked.");
+      if (!found) setError(t.invite.expired);
+      else if (found.inviteRevoked) setError(t.invite.revoked);
       else setTrip(found);
     });
-  }, [params.token]);
+  }, [params.token, t.invite.expired, t.invite.revoked]);
 
   const onJoin = async () => {
     let active = user;
@@ -55,7 +56,7 @@ export default function InvitePage() {
       toast.success(t.invite.toast);
       router.push(`/trips/${trip.id}`);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not join");
+      setError(e instanceof Error ? e.message : t.invite.unable);
     } finally {
       setJoining(false);
     }
@@ -64,6 +65,7 @@ export default function InvitePage() {
   const privacy = [
     { icon: DeviceMobileSlash, text: t.invite.p5 },
     { icon: ChatTeardropSlash, text: t.invite.p6 },
+    { icon: SignOut, text: t.invite.p7 },
     { icon: MapPin, text: t.invite.p1 },
     { icon: EyeSlash, text: t.invite.p2 },
     { icon: Pause, text: t.invite.p3 },
@@ -74,7 +76,7 @@ export default function InvitePage() {
     <AppChrome title={t.invite.title}>
       <div className={`${ui.panel} fade-in`}>
         <BrandMark size="hero" subtitle={t.invite.hero} />
-        <h1 className="sr-only">MCG Convoy invitation</h1>
+        <h1 className="sr-only">{t.invite.title}</h1>
 
         {!ready || (!trip && !error) ? (
           <p className={ui.note}>{t.invite.loading}</p>

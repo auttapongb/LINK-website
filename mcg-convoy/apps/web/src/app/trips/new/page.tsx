@@ -27,7 +27,7 @@ export default function NewTripPage() {
     setError(null);
     try {
       const trip = await createTrip({
-        title: String(fd.get("title") || "MCG Convoy"),
+        title: String(fd.get("title") || t.brand.name),
         destinationName: String(fd.get("destinationName")),
         destination: {
           lat: Number(fd.get("lat")) || DEMO_DESTINATION.lat,
@@ -47,7 +47,7 @@ export default function NewTripPage() {
       toast.success(t.create.toast);
       router.push(`/trips/${trip.id}?share=1`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Could not create trip");
+      setError(err instanceof Error ? err.message : t.create.fail);
     } finally {
       setSaving(false);
     }
@@ -69,7 +69,7 @@ export default function NewTripPage() {
           <p className={ui.lede}>{t.create.lede}</p>
         </section>
 
-        {!ready ? <p className={ui.note}>Loading…</p> : null}
+        {!ready ? <p className={ui.note}>{t.cta.preparing}</p> : null}
 
         <div className={ui.field}>
           <label htmlFor="title">{t.create.name}</label>
@@ -77,7 +77,7 @@ export default function NewTripPage() {
             id="title"
             name="title"
             required
-            defaultValue="MCG Evening Convoy"
+            defaultValue="ขบวนเย็นนี้"
           />
         </div>
         <div className={ui.field}>

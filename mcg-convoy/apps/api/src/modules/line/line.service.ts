@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import { parseWake, type WakeKind } from './wake';
+import { inferMode, parseWake, type WakeKind } from './wake';
 
 @Injectable()
 export class LineService {
@@ -58,10 +58,12 @@ export class LineService {
     const wakes: WakeKind[] = [];
     for (const event of events) {
       const text = extractText(event);
-      const kind = text ? parseWake(text) : null;
-      if (kind) {
-        wakes.push(kind);
-        this.logger.log(`Wake ${kind} — keyword only, chat otherwise ignored`);
+      const hit = text ? parseWake(text, inferMode(event)) : null;
+      if (hit) {
+        wakes.push(hit.kind);
+        this.logger.log(
+          `Wake ${hit.kind} (${inferMode(event)}) — group stays keyword-only`,
+        );
       }
     }
     this.logger.log(

@@ -62,9 +62,9 @@ export function LineShareCard({ trip, inviteUrl, highlight }: Props) {
       ref={cardRef}
       className={`${ui.section} ${highlight ? ui.sharePulse : ""}`}
     >
-      <h2>LINE Flex</h2>
+      <h2>{t.lobby.shareCard}</h2>
       <div className={ui.flexCard}>
-        <p className={ui.flexBrand}>MCG CONVOY</p>
+        <p className={ui.flexBrand}>{t.brand.name}</p>
         <p className={ui.flexTitle}>{trip.title}</p>
         <p className={ui.flexMeta}>
           {meeting} → {trip.destinationName}

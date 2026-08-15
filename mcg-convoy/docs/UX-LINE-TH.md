@@ -23,6 +23,17 @@ Thai people do not “download another app.” They already live in LINE (~50–
 
 ## Category map
 
+### 0. 1:1 habit bots (the chat *is* the product)
+
+| Product | Job | Why it stuck |
+|---------|-----|----------------|
+| **ป้านวล** (@Parnuan) | จดรายรับรายจ่าย | “กินกาแฟ 80”. ~560k / 23M items (15 Aug 2026). TikTok. แก้ได้. เตือนจดทุกวัน. โรงเรียน. |
+| **เหมียวจด** (KX / KBTG) | จดอัตโนมัติจากสลิป | ~600k. อ่านสลิป 20 แบงก์ — **ศูนย์พิมพ์**. เตือนก่อนงบหมด. เหมียวดู. |
+| **เซนไดบิลล์** | บัญชีร้าน / SME ใน LINE | สรุปรายเดือน + Excel. แม่ค้า Lemon8. |
+| **กินดี** | จดอาหาร / แคล | นิสัยรายวันเหมือนป้านวล แต่สุขภาพ. |
+| **ทนอย** | ปรึกษากฎหมายเบื้องต้น | 1:1 OA ที่รับงานเกรงใจอีกแบบ. |
+| **คลินิก LINE OA** | จองคิว + เตือนนัด | เตือน 24 ชม. และ 1 ชม. ลดไม่มา ~40–60%. Rich Menu ค้างบนแชท. |
+
 ### 1. Social-job bots (sit in the group, do the face-saving work)
 
 | Product | Job | Why it stuck |
@@ -116,6 +127,48 @@ Luxury OA ยืนยันสูตรคนละโทน: กลุ่ม�
 - ประกาศชื่อคนมาสายเข้ากรุ๊ป.
 - บังคับโหลดแอปแยกแบบ LINE HERE (บทเรียน: งานเดียวกัน แอปลูก = ตาย).
 
+## ป้านวล — the app the first pass missed
+
+Sources: [parnuan.com](https://parnuan.com/), [education](https://parnuan.com/education), [Khaosod / เส้นทางเศรษฐี](https://www.khaosod.co.th/sentangsedtee/featured/article_317824), [aomMONEY](https://aommoney.com/record-income-and-expenses-easily-by-parnuan-line-05062025/), Instagram reel [DWdoWYyB5dc](https://www.instagram.com/reel/DWdoWYyB5dc/).
+
+Homepage counters on 15 Aug 2026 (พ.ศ. 2569): on the order of **~560k people** and **~23M logged items** (earlier press: 300k / 10M). Their own FAQ asks “ต่างจาก 🐤ขุนทอง ไหม?” — Thais already confuse the two.
+
+### Why it is popular
+
+1. **The job is personal, daily, and shameful to fail at.** Not ทวงเงิน. จดรายรับรายจ่าย — everyone knows they should; everyone quits Excel and Money apps. Pain is *effort*, not *face*.
+2. **Input is a sentence, not a form.** “กินกาแฟ 80” / “ข้าวขาหมู 50”. Type, photo, or voice. That 3-second clip is the Instagram/TikTok unit. Partnered with TikTok “ความปาล์ม”: thousands → tens of thousands in a day → hundreds of thousands in a week. Backend almost died.
+3. **1:1 auntie, not a group bot.** Add @Parnuan. Talk like a friend. Soft nag (“เงินใกล้หมดแล้วนะ”) that creates สติ, not shame. Users are **หลาน**. Name from a real condo cleaner.
+4. **Instant confirm + auto-category.** Log → category → budget. MadamFinney: the product is mindfulness, not a ledger.
+5. **Free text to start; cheap Pro.** Subscription after TikTok scale made LINE API cost real.
+6. **Schools as a second door.** [parnuan.com/education](https://parnuan.com/education) — pocket money + gamification. Distribution that is not a tech blog.
+7. **Accessible because it is just LINE chat.** Blind user testimonial: no custom UI to learn.
+
+### Why the first research miss happened
+
+The first pass framed “LINE hits” as **group social-job bots** (ขุนทอง, Lightsplit) + civic OA + brand OA + location apps. ป้านวล is none of those:
+
+| Filter we used | ป้านวล |
+|----------------|--------|
+| Group treasurer / ทวงเงิน | Personal 1:1 ledger |
+| Techsauce / KBank 2020 PR | Indie, 2025 TikTok, not a bank |
+| Keyword-only privacy | The *chat is the product* — it must read 1:1 messages |
+| Luxury / club | Mass auntie + schools |
+| News search, not Reels | Growth engine is Instagram/TikTok demos |
+
+Also missed **เหมียวจด** (KBTG’s own personal expense app) sitting next to ขุนทอง. Two LINE money products; we only looked at the group one.
+
+### What we copy from ป้านวล (not the auntie)
+
+| ป้านวล | MCG |
+|--------|-----|
+| “กินกาแฟ 80” | 1:1: “รถนำออกแล้ว” / “พักปั๊ม” — no hash |
+| Instant “จดแล้ว” | Confirm the note; never post names to the group |
+| Soft nag | T-30 reminder, butler tone — not ดุหลาน |
+| Viral 3-second clip | One sentence → logged status |
+| Group vs 1:1 | **Group still keyword-only** (ขุนทอง trust). Natural language only in DM |
+
+We do **not** copy: ป้า/หลาน slapstick, spend-shame, school gamification coins, reading club group chat.
+
 ## Shipped from this research
 
 - Landing ritual **ถาม** — MCG asks so the organizer does not.
@@ -125,5 +178,9 @@ Luxury OA ยืนยันสูตรคนละโทน: กลุ่ม�
 - Quiet proof chip: `X / Y แชร์ · ไม่ต้องถามถึงไหนแล้ว`.
 - Live HUD: share status into the group without naming anyone.
 - Summary recap Flex: counts only, then “กรุ๊ปเงียบ”.
-- LINE webhook: keyword-only `parseWake` — ordinary chat is ignored.
+- LINE webhook: group = keyword-only; 1:1 = natural language (`รถนำออกแล้ว` → จดแล้ว).
+- Steward accepts Parnuan-style sentences; **undo last** (ป้านวลแก้ได้); auto-category รถนำ / พักปั๊ม / ด่าน.
+- **เหมียวจด zero-effort:** start-share and arrival auto-log — no typing.
+- **Clinic stack:** reminders at 24h / 30 min / 5 min. Bot nags, not หัวขบวน.
+- **Rich Menu strip:** สถานะ / บรีฟ / จด / เตือน — persistent like a clinic OA.
 - Status / brief / remind / recap Flex: never late names, never speed.

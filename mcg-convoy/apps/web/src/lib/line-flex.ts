@@ -55,6 +55,10 @@ export type FlexMessage = {
   };
 };
 
+function brandMark(th: boolean) {
+  return th ? "ขบวนพร้อม" : "KHABUAN";
+}
+
 function row(label: string, value: string): FlexBox {
   return {
     type: "box",
@@ -85,8 +89,8 @@ function row(label: string, value: string): FlexBox {
 export function buildInviteFlex(input: FlexShareInput): FlexMessage {
   const th = input.locale === "th";
   const alt = th
-    ? `เชิญร่วมขบวน MCG · ${input.title}`
-    : `MCG convoy invite · ${input.title}`;
+    ? `เชิญร่วมขบวน · ${input.title}`
+    : `Convoy invite · ${input.title}`;
 
   return {
     type: "flex",
@@ -100,7 +104,7 @@ export function buildInviteFlex(input: FlexShareInput): FlexMessage {
         contents: [
           {
             type: "text",
-            text: "MCG CONVOY",
+            text: brandMark(th),
             color: "#D4B978",
             size: "xs",
             weight: "bold",
@@ -128,8 +132,8 @@ export function buildInviteFlex(input: FlexShareInput): FlexMessage {
           {
             type: "text",
             text: th
-              ? "ไม่โหลดแอป · MCG ถามสถานะแทนหัวขบวน · ไม่มีรางวัลจากความเร็ว"
-              : "No download. MCG asks status so the organizer does not. No speed rewards.",
+              ? "ไม่โหลดแอป · ข้าถามแทนหัวขบวน · ไม่แข่งความเร็ว"
+              : "No download. I’ll ask so the lead doesn’t have to. No racing.",
             size: "xs",
             color: "#C97A7A",
             wrap: true,
@@ -187,7 +191,7 @@ export function buildStatusFlex(input: {
         contents: [
           {
             type: "text",
-            text: "MCG CONVOY",
+            text: brandMark(th),
             color: "#D4B978",
             size: "xs",
             weight: "bold",
@@ -225,8 +229,8 @@ export function buildStatusFlex(input: {
           {
             type: "text",
             text: th
-              ? "MCG ถามสถานะแทนหัวขบวน — ไม่ระบุชื่อคนมาสาย"
-              : "MCG asks status so the organizer does not. No late names.",
+              ? "ข้าถามแทนหัวขบวน — ไม่ระบุชื่อคนมาสาย"
+              : "I’ll ask so the lead doesn’t have to. No names.",
             size: "xs",
             color: "#8A8070",
             wrap: true,
@@ -282,12 +286,13 @@ export function buildBriefFlex(input: {
         row(th ? "ด่าน" : "Toll", input.toll),
         note(
           th
-            ? "พิมพ์ #ขบวน ในกรุ๊ปเมื่อต้องการสถานะ — MCG ไม่ได้อ่านแชท"
-            : "Type #ขบวน in the group for status — MCG does not read chat.",
+            ? "ในกรุ๊ปพิมพ์ #ขบวน เมื่ออยากรู้สถานะ — ข้าไม่อ่านแชท"
+            : "Type #ขบวน in the group for status — I don’t read chat.",
         ),
       ],
       th ? "เปิดล็อบบี้" : "Open lobby",
       input.url,
+      th,
     ),
   };
 }
@@ -311,12 +316,13 @@ export function buildRemindFlex(input: {
         row(th ? "เป้าถึง" : "Target", input.timeLabel),
         note(
           th
-            ? "MCG เตือนแทนหัวขบวน — เปิดแชร์เมื่อขบวนเปิด ไม่ต้องพิมพ์ถึงไหนแล้ว"
-            : "MCG reminds so the organizer does not. Share when live — no ถึงไหนแล้ว.",
+            ? "ข้าเตือนแทนหัวขบวน — เปิดแชร์ตอนออก ไม่ต้องพิมพ์ถึงไหนแล้ว"
+            : "I’ll remind so the lead doesn’t have to. Share when we roll.",
         ),
       ],
       th ? "เปิดขบวน" : "Open convoy",
       input.url,
+      th,
     ),
   };
 }
@@ -343,12 +349,13 @@ export function buildRecapFlex(input: {
         row(th ? "ตรงเวลา" : "On time", `${input.onTimePct}%`),
         note(
           th
-            ? "กรุ๊ปเงียบ — MCG ถามแทน · ไม่ระบุชื่อ · ไม่แข่งความเร็ว"
-            : "Quiet group — MCG asked instead. No names. No speed.",
+            ? "กรุ๊ปเงียบ ข้าถามแทน · ไม่ระบุชื่อ · ไม่แข่งความเร็ว"
+            : "The group stayed quiet. I asked instead. No names. No racing.",
         ),
       ],
       th ? "ดูสรุป" : "View summary",
       input.url,
+      th,
     ),
   };
 }
@@ -369,6 +376,7 @@ function bubble(
   body: Array<FlexText | FlexBox>,
   label: string,
   uri: string,
+  th = true,
 ): FlexMessage["contents"] {
   return {
     type: "bubble",
@@ -379,7 +387,7 @@ function bubble(
       contents: [
         {
           type: "text",
-          text: "MCG CONVOY",
+          text: brandMark(th),
           color: "#D4B978",
           size: "xs",
           weight: "bold",

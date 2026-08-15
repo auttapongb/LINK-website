@@ -14,7 +14,8 @@ import { LineShareCard } from "@/components/LineShareCard";
 import { QuietProof } from "@/components/QuietProof";
 import { SharingIndicator } from "@/components/SharingIndicator";
 import { getTrip, setSharing, createContinuation } from "@/lib/api";
-import { getReminder, scheduleT30 } from "@/lib/reminders";
+import { addNote } from "@/lib/convoy-log";
+import { listReminders, scheduleClinicStack } from "@/lib/reminders";
 import { convoyRole } from "@/lib/convoy-roles";
 import { openExternalBrowser } from "@/lib/liff";
 import { tapHaptic } from "@/lib/haptic";
@@ -48,15 +49,17 @@ export default function TripLobbyPage() {
 
   useEffect(() => {
     if (!trip) return;
-    const reminder = getReminder(trip.id);
-    if (!reminder) return;
-    const wait = new Date(reminder.fireAt).getTime() - Date.now();
-    if (wait > 6 * 60 * 60_000) return;
-    const id = window.setTimeout(
-      () => toast(t.steward.previewRemind),
-      Math.max(0, wait),
-    );
-    return () => window.clearTimeout(id);
+    const timers = listReminders(trip.id)
+      .map((reminder) => {
+        const wait = new Date(reminder.fireAt).getTime() - Date.now();
+        if (wait > 26 * 60 * 60_000) return null;
+        return window.setTimeout(
+          () => toast(t.steward.previewRemind),
+          Math.max(0, wait),
+        );
+      })
+      .filter((id): id is number => id != null);
+    return () => timers.forEach((id) => window.clearTimeout(id));
   }, [trip, t.steward.previewRemind]);
 
   const me = trip?.participants.find((p) => p.userId === user?.id);
@@ -77,6 +80,7 @@ export default function TripLobbyPage() {
     setBusy(true);
     try {
       await setSharing(params.id, "start");
+      addNote(params.id, t.steward.autoShare, "share");
       tapHaptic();
       toast.success(t.lobby.toastShareOn);
       router.push(`/trips/${params.id}/live`);
@@ -175,13 +179,12 @@ export default function TripLobbyPage() {
               type="button"
               className={ui.btnGhost}
               onClick={() => {
-                const next = scheduleT30(trip.id, trip.targetArrivalAt);
+                const next = scheduleClinicStack(trip.id, trip.targetArrivalAt);
                 tapHaptic();
                 toast.success(
-                  t.lobby.remindArmed.replace(
-                    "{time}",
-                    formatTime(next.fireAt),
-                  ),
+                  t.lobby.remindStack +
+                    " · " +
+                    next.map((r) => formatTime(r.fireAt)).join(" · "),
                 );
               }}
             >

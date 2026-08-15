@@ -1,16 +1,34 @@
-export type WakeKind = "status" | "brief" | "share" | "remind" | "help";
+export type WakeKind = "status" | "brief" | "share" | "remind" | "help" | "log";
+export type WakeMode = "group" | "dm";
 
-const WAKE = /#ขบวน|#convoy|ขบวน|mcg\s*convoy/i;
+const GROUP_WAKE = /#ขบวน|#convoy|ขบวน|mcg\s*convoy/i;
+const LOG =
+  /รถนำออก|ออกแล้ว|พักปั๊ม|ถึงด่าน|ถึงจุดนัด|ถึงอนุสาวรีย์|ปิดท้ายถึง|ถึงแล้ว|fuel stop|lead (is )?out/i;
 
-/** Keyword-only, like ขุนทอง. Anything else is silence. */
-export function parseWake(text: string): WakeKind | null {
+export type WakeHit = {
+  kind: WakeKind;
+  logged?: string;
+};
+
+/**
+ * Group chat: keyword-only (ขุนทอง). Do not read the rest.
+ * 1:1 OA: natural language (ป้านวล) — “รถนำออกแล้ว” is enough.
+ */
+export function parseWake(
+  text: string,
+  mode: WakeMode = "dm",
+): WakeHit | null {
   const t = text.trim();
-  if (!t || !WAKE.test(t)) return null;
-  if (/บรีฟ|brief|ด่าน|toll|easy\s*pass/i.test(t)) return "brief";
-  if (/เตือน|remind/i.test(t)) return "remind";
-  if (/แชร์|share|เชิญ|invite/i.test(t)) return "share";
-  if (/สถานะ|status|ถึงไหน/i.test(t)) return "status";
-  return "help";
+  if (!t) return null;
+  if (mode === "group" && !GROUP_WAKE.test(t)) return null;
+
+  if (LOG.test(t)) return { kind: "log", logged: t };
+  if (/บรีฟ|brief|ด่าน|toll|easy\s*pass/i.test(t)) return { kind: "brief" };
+  if (/เตือน|remind/i.test(t)) return { kind: "remind" };
+  if (/แชร์|share|เชิญ|invite/i.test(t)) return { kind: "share" };
+  if (/สถานะ|status|ถึงไหน/i.test(t)) return { kind: "status" };
+  if (mode === "group" || GROUP_WAKE.test(t)) return { kind: "help" };
+  return null;
 }
 
 export const WAKE_PHRASE = "#ขบวน";

@@ -8,17 +8,17 @@ const LIFF_ID = process.env.NEXT_PUBLIC_LIFF_ID || "";
 export const DEMO_USERS: Record<"organizer" | "member" | "admin", User> = {
   organizer: {
     id: "demo-organizer",
-    displayName: "Alex Rivera",
+    displayName: "เอก",
     role: "organizer",
   },
   member: {
     id: "demo-member",
-    displayName: "Jordan Lee",
+    displayName: "มิ้นท์",
     role: "member",
   },
   admin: {
     id: "demo-admin",
-    displayName: "MCG Admin",
+    displayName: "แอดมิน",
     role: "admin",
   },
 };

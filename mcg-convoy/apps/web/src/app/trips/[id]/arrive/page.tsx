@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { CheckCircle, MapPin, WarningCircle } from "@phosphor-icons/react";
 import { AppChrome } from "@/components/AppChrome";
 import { confirmArrival, getTrip } from "@/lib/api";
+import { addNote } from "@/lib/convoy-log";
 import { tapHaptic } from "@/lib/haptic";
 import { useAuth } from "@/hooks/useAuth";
 import { useLocale } from "@/lib/i18n/locale";
@@ -36,6 +37,7 @@ export default function ArrivePage() {
       if (dispute) {
         toast.message(t.arrive.toastDispute);
       } else {
+        addNote(params.id, t.steward.autoArrive, "arrive");
         toast.success(t.arrive.toastOk);
         setTimeout(() => router.push(`/trips/${params.id}/summary`), 700);
       }

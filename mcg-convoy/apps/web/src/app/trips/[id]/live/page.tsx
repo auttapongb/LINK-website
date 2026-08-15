@@ -178,7 +178,7 @@ export default function LiveTripPage() {
         const freshness = i === 2 ? "stale" : i === 1 ? "delayed" : "live";
         return {
           userId: `sim_${i + 1}`,
-          displayName: ["Lead car", "Wing", "Trail"][i],
+          displayName: ["รถนำ", "ปีก", "ปิดท้าย"][i],
           lat: pos.lat,
           lng: pos.lng,
           speed: 12,

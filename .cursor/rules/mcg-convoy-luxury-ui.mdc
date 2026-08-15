@@ -1,0 +1,43 @@
+---
+description: MCG Convoy luxury UI — instrument cluster, never SaaS chrome
+globs: mcg-convoy/**
+alwaysApply: false
+---
+
+# MCG Convoy luxury UI
+
+Private club instrument cluster. Graphite + champagne. Cormorant for Latin brand marks. IBM Plex Sans Thai for Thai UI. Thai-default + equal-weight EN toggle.
+
+## Product rules
+
+- No rewards, copy, or visuals based on speed, racing, or beating ETA.
+- No public late shaming. Late badges stay private.
+- Driving mode: passengers operate the map; drivers get locked dense inputs.
+- Generic vehicle silhouettes only — no manufacturer marks.
+
+## Visual system
+
+- Steal patterns from Motion / Vaul / NumberFlow / Base UI / Phosphor — never Aceternity/Magic UI/shadcn default look.
+- Color with purpose. Build from black. Contrast ≥ 4.5:1.
+- Live map is the hero: OpenFreeMap graphite/champagne, 150 m geofence, heading needles.
+- One motion per navigation. `prefers-reduced-motion` disables NumberFlow/Vaul spring.
+- No custom cursor, particles, Lenis, or sitewide GSAP inside LIFF.
+
+## Screen jobs
+
+- Thai club words are first-class: จุดนัดพบ, รถนำ, รถปิดท้าย, พักปั๊ม.
+- PDPA: location consent is purpose-limited and withdrawable (Pause/Stop).
+- Dates in `th` use `th-TH` + Asia/Bangkok (พ.ศ.).
+- Landing: foyer + ritual (invite → convoy → arrive).
+- Invite: privacy + PDPA checkbox before join.
+- Live HUD: peek = action (share + ETA); expanded = overview (roster).
+- Arrival: confirm ritual, disputes private.
+- Summary: safe aggregates + badges only.
+
+```tsx
+// ❌ BAD — SaaS feature grid + speed leaderboard
+<h2>Fastest arrival</h2>
+
+// ✅ GOOD — punctuality, never speed
+<p>Arrive together — never race.</p>
+```
